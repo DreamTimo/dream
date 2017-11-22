@@ -1,0 +1,49 @@
+banner使用流程介绍:
+
+布局引用: <include layout="@layout/fragment_title"/>
+        //普通使用
+        //成员变量:
+         private List<ItemData> dataList;
+         private BannerData bannerData;
+         private Banner banner;
+        //设置数据
+        dataList = new ArrayList<>();
+        ItemData itemData1 = new ItemData();
+        itemData1.setImgUrl("http://img.leiyugame.com/2017/07/06/img_ssbanner2.png");
+        itemData1.setLink("http://img.leiyugame.com/2017/07/06/img_ssbanner2.png");
+        dataList.add(itemData1);
+        //初始化
+        banner = (Banner) findViewById(R.id.banner_banner);
+        bannerData = new BannerData();
+        bannerData.setDatas(dataList);
+        banner.setData(bannerData);
+
+        //设置背景图--缩略图
+        //成员变量:
+         private List<ItemData> dataList;
+         private BannerData bannerData;
+         private ImageView bgImage;
+         private Banner banner;
+
+        //设置数据
+        dataList = new ArrayList<>();
+        ItemData itemData1 = new ItemData();
+        itemData1.setImgUrl("http://img.leiyugame.com/2017/07/06/img_ssbanner2.png");
+        itemData1.setLink("http://img.leiyugame.com/2017/07/06/img_ssbanner2.png");
+        dataList.add(itemData1);
+        //初始化
+        banner = (Banner) findViewById(R.id.banner_banner);
+        bgImage= (ImageView) findViewById(R.id.banner_image);
+        bannerData = new BannerData();
+        bannerData.setDatas(dataList);
+        banner.setPaddingVertical(20);
+        banner.setPaddingHorizontial(40);
+        banner.setPageMargin(10);
+        banner.setData(bannerData,new ScaleInTransformer());
+        GlideUtils.getInstance().load(MainActivity.this, bannerData.getDatas().get(0).getImgUrl(),bgImage,25);
+        banner.setOnBannerChangeListener(new BaseBanner.OnBannerChangeListener() {
+            @Override
+            public void onBannerChange(int position) {
+                GlideUtils.getInstance().load(MainActivity.this, bannerData.getDatas().get(position).getImgUrl(),bgImage,25);
+            }
+        });

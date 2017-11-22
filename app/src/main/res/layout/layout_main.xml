@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:orientation="vertical"
+    >
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/rg_bottom"
+        android:layout_weight="1000"
+    />
+    <View
+        style="@style/line"/>
+    <RadioGroup
+        android:id="@+id/rg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+        <RadioButton
+            android:id="@+id/rb_main"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/navigation_dream"
+            android:text="@string/main_home"
+            android:textColor="@drawable/navigation_text_selector"/>
+        <RadioButton
+            android:id="@+id/rb_find"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/navigation_home"
+            android:text="@string/mian_dream"
+            android:textColor="@drawable/navigation_text_selector"/>
+
+
+        <RadioButton
+            android:id="@+id/rb_mine"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/navigation_mine"
+            android:text="@string/main_mine"
+            android:textColor="@drawable/navigation_text_selector"/>
+    </RadioGroup>
+</LinearLayout>

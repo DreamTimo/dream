@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- 轮播图布局 -->
+    <item type="id" name="loop_view_pager"/>
+    <item type="id" name="loop_view_dots"/>
+    <item type="id" name="loop_view_desc"/>
+
+    <item type="id" name="root"/>
+
+    <item type="id" name="xstatusbar_fake_status_bar_view" />
+    <item type="id" name="xstatusbar_translucent_view" />
+    <item type="id" name="xloading_retry" />
+</resources>

@@ -1,0 +1,621 @@
+// Variables
+$numLetters: 30;
+$primary-color: hsl(310, 90%, 50%);
+
+@import 'https://fonts.googleapis.com/css?family=Baloo+Chettan|Gloria+Hallelujah';
+
+
+html, body, .anim-wrap {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+body {
+	font-family: Helvetica Neueu, HelveticaNeueu, Helvetica, Arial, sans-serif;
+	overflow: hidden;
+}
+
+.anim-wrap {
+	position: absolute;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.anim-text {
+	font: 4em "Baloo Chettan", Helvetica Neueu, HelveticaNeueu, Helvetica, Arial, ;
+	white-space: nowrap;
+	min-width: 1em;
+	min-height: 1.2em;
+	border-bottom: 1px solid transparent;
+	caret-color: $primary-color;
+	&:empty,
+	&:focus {
+		border-bottom-color: $primary-color;
+		outline: none;
+	}
+}
+.char {
+	position: relative;
+	margin: 0 .05em;
+}
+.char,
+.letter-inner {
+	display: inline-block;
+}
+
+
+// Animations
+.anim {
+	&[data-effect=fade] > .letter {
+		animation: fadeIn 1.5s backwards;
+	}
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: scale(2);
+		}
+	}
+
+	&[data-effect=slide] > .letter {
+		animation: slide 1s backwards;
+		transform-origin: bottom left;
+	}
+	@keyframes slide {
+		0% {
+			transform: translateX(90vw) skew(-17deg) scaleX(3);
+			animation-timing-function: ease-in;
+		}
+		80% {
+			transform: translateX(0) skew(-17deg) scaleX(3);
+			animation-timing-function: ease-out;
+		}
+		88% {
+			transform: translateX(0) skew(12deg) scaleX(.8);
+			animation-timing-function: ease-in-out;
+		}
+		95% {
+			transform: translateX(0) skew(-5deg) scaleX(1);
+			animation-timing-function: ease-in-out;
+		}
+		100% {
+			transform: translateX(0) skew(0deg) scaleX(1);
+			animation-timing-function: ease-in-out;
+		}
+	}
+
+	@keyframes slideIn {
+		from {
+			transform: translateX(70vw);
+		}
+	}
+
+	&[data-effect=roll] > .letter {
+		animation: rollIn 1.1s cubic-bezier(0, 0, 0.6, 1) backwards;
+	}
+	@keyframes rollIn {
+		from {
+			transform: translateX(90vw) rotate(1200deg);
+		}
+	}
+
+	&[data-effect=peel] > .letter {
+		animation: peelIn 2s backwards ease-in-out;
+		
+		> .letter-inner {
+			animation: rotateY 1.3s 0.7s backwards ease-in;
+		}
+	}
+	@keyframes peelIn {
+		from {
+			transform: translate(-100vw, 0);
+		}
+	}
+	@keyframes rotateY {
+		from {
+			transform: scale(3) rotateY(180deg);
+		}
+	}
+
+	&[data-effect=swivel] {
+		> .letter:not(.space)::before {
+			background: currentColor;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			opacity: .2;
+		}
+	}
+	&[data-effect=swivel] {
+		perspective: 100vmax;
+		perspective-origin: top;
+		
+		> .letter {
+			padding: 0 .1em;
+			animation: swivel 5s backwards;
+			transform-origin: top;
+		}
+	}
+	@keyframes swivel {
+		0% {
+			transform: rotateX(-90deg);
+		}
+		10% {
+			transform: rotateX(82deg);
+		}
+		20% {
+			transform: rotateX(-74deg);
+		}
+		30% {
+			transform: rotateX(66deg);
+		}
+		39% {
+			transform: rotateX(-58deg);
+		}
+		48% {
+			transform: rotateX(50deg);
+		}
+		56% {
+			transform: rotateX(-42deg);
+		}
+		63% {
+			transform: rotateX(35deg);
+		}
+		70% {
+			transform: rotateX(-28deg);
+		}
+		77% {
+			transform: rotateX(21deg);
+		}
+		83% {
+			transform: rotateX(-15deg);
+		}
+		89% {
+			transform: rotateX(9deg);
+		}
+		95% {
+			transform: rotateX(-4deg);
+		}
+		100% {
+			transform: none;
+		}
+	}
+
+	&[data-effect=hop] > .letter {
+		animation: slideIn 2s linear backwards;
+		> .letter-inner {
+			animation: hop .1s 20 alternate;
+		}
+	}
+	@keyframes hop {
+		to {
+			transform: translateY(-.6em);
+		}
+	}
+
+	&[data-effect=wave] {
+		animation: slideIn 3s linear backwards;
+		> .letter {
+			animation: hop .15s 20 alternate;
+		}
+	}
+
+	&[data-effect=wave2] {
+		animation: slideIn 3s linear backwards;
+		> .letter {
+			animation: inflate .5s 6 linear alternate;
+		}
+	}
+	@keyframes inflate {
+		to {
+			transform: scale(2);
+		}
+	}
+
+	&[data-effect=converge] > .letter {
+		animation: converge 2.5s forwards;
+		
+		@for $i from 1 through $numLetters {
+			$d: random(200) - 100;
+			$side: random(4);
+			$x: 0;
+			$y: 0;
+			@if $side % 2 == 0 {
+				$x: $d+vw;
+				$y: 100vh * ($side - 3);
+			} @else {
+				$y: $d+vh;
+				$x: 100vw * ($side - 2);
+			}
+			&:nth-child(#{$i}n) {
+				transform: translate($x, $y);
+			}
+		}
+	}
+	@keyframes converge {
+		to {
+			transform: translate(0, 0);
+		}
+	}
+
+	&[data-effect=spiral] > .letter {
+		animation: spiral 3s ease-in both;
+	}
+	@keyframes spiral {
+		from {
+			transform: rotate(720deg) translateY(-60vmax);
+		}
+	}
+
+	&[data-effect=snow] > .letter {
+		animation: snow 5s cubic-bezier(0.68, 0.21, 0.7, 1) both;
+		> .letter-inner {
+			animation: sway 1s cubic-bezier(0.46, 0.03, 0.52, 0.96) 5 alternate;
+		}
+	}
+	@keyframes snow {
+		from {
+			transform: translateY(-60vh);
+		}
+	}
+	@keyframes sway {
+		from {
+			transform: translate(2em, 0);
+		}
+		to {
+			transform: none;
+		}
+	}
+
+	&[data-effect=meteorite] {
+		> .char {
+			margin: 0 .15em;
+			animation: 0.5s cubic-bezier(0.33, 0.08, 0.7, 0.32) forwards;
+		}
+
+		@for $i from 1 through $numLetters {
+			> .letter:nth-child(#{$numLetters}n + #{$i}) {
+				animation-name: meteorite;
+				transform: translate(random() * 50 - 25vw, -60vh);
+				> .letter-inner {
+					transform: translate(random() * 0.2 - 0.1em, random() * 0.3 - 0.15em) rotate(random() * 20 - 10deg);
+				}
+			}
+			@keyframes meteorite {
+				to {
+					transform: none;
+				}
+			}
+		}
+	}
+
+	&[data-effect=bounce] > .letter {
+		animation: bounce 2s ease-in both;
+	}
+	@keyframes bounce {
+		// Why doesn't this work in Firefox?
+		// 0%, 58%, 84%, 96% {
+		// 	animation-timing-function: cubic-bezier(0.55, 0.09, 0.68, 0.53);
+		// }
+		// 40%, 76%, 92%, 100% {
+		// 	animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		// }
+		0% {
+			transform: translateY(-60vh);
+			animation-timing-function: cubic-bezier(0.5, 0, 0.82, 0.52);
+		}
+		37% {
+			transform: none;
+			animation-timing-function: cubic-bezier(0.18, 0.48, 0.5, 1);
+		}
+		55% {
+			transform: translateY(-25vh);
+			animation-timing-function: cubic-bezier(0.5, 0, 0.82, 0.52);
+		}
+		73% {
+			transform: none;
+			animation-timing-function: cubic-bezier(0.18, 0.48, 0.5, 1);
+		}
+		81% {
+			transform: translateY(-10vh);
+			animation-timing-function: cubic-bezier(0.5, 0, 0.82, 0.52);
+		}
+		89% {
+			transform: none;
+			animation-timing-function: cubic-bezier(0.18, 0.48, 0.5, 1);
+		}
+		93% {
+			transform: translateY(-4vh);
+			animation-timing-function: cubic-bezier(0.5, 0, 0.82, 0.52);
+		}
+		97% {
+			transform: none;
+			animation-timing-function: cubic-bezier(0.18, 0.48, 0.5, 1);
+		}
+		98.5% {
+			transform: translateY(-1.1vh);
+			animation-timing-function: cubic-bezier(0.5, 0, 0.82, 0.52);
+		}
+		100% {
+			transform: none;
+			animation-timing-function: cubic-bezier(0.18, 0.48, 0.5, 1);
+		}
+	}
+
+	&[data-effect=float] > .letter {
+		animation: float 18s ease-in-out backwards;
+		> .letter-inner {
+			animation: float-perpetual ease-in-out 10s 18s infinite alternate;
+		}
+	}
+	@keyframes float {
+		0% {
+			transform: translateY(60vh);
+		}
+		33% {
+			transform: translateY(-8vh);
+		}
+		51% {
+			transform: translateY(6vh);
+		}
+		66% {
+			transform: translateY(-4vh);
+		}
+		80% {
+			transform: translateY(3vh);
+		}
+		91% {
+			transform: translateY(-1.3vh);
+		}
+		100% {
+			transform: none;
+		}
+	}
+	@keyframes float-perpetual {
+		0% {
+			transform: translateY(0);
+		}
+		37% {
+			transform: translateY(-1.5vh);
+		}
+		58% {
+			transform: translateY(1.3vh);
+		}
+		81% {
+			transform: translateY(-1vh);
+		}
+		100% {
+			transform: translateY(0.8vh);
+		}
+	}
+
+
+	&[data-effect=bubble] > .letter {
+		position: relative;
+		animation: bubble-letter 1.3s cubic-bezier(0, 0, 0.33, 1) both;
+		
+		&::after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			border: 3px solid;
+			border-radius: 999px;
+			animation: bubble 2.6s cubic-bezier(0, 0.41, 0.28, 1) both;
+			animation-delay: inherit;
+		}
+		&::before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			background: currentColor;
+			border-radius: 999px;
+			animation: bubble 2.6s cubic-bezier(0, 0.41, 0.28, 1) both;
+			animation-delay: inherit;
+			opacity: 0.3;
+		}
+	}
+	@keyframes bubble-letter {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes bubble {
+		from {
+			width: 0;
+			height: 0;
+		}
+		to {
+			width: 10em;
+			height: 10em;
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+// Controls
+.btn, .control {
+	padding: .5em 1em;
+	font-size: 1.2em;
+}
+.btn {
+	background: $primary-color;
+	border: 1px solid transparent;
+	color: white;
+	cursor: pointer;
+	transition: .25s;
+}
+.btn:hover, .btn:focus {
+	background: lighten($primary-color, 15%);
+}
+
+select {
+	border: none;
+	outline-color: $primary-color;
+}
+
+#controls {
+	position: absolute;
+	right: 1px;
+	top: 1px;
+	border-bottom-left-radius: 5px;
+	box-shadow: -1px 2px 13px hsla(310, 100%, 10%, 0.4);
+}
+#controls button {
+	width: -moz-available;
+	width: -webkit-fill-available;
+	width: fill-available;
+	border-bottom-left-radius: 5px;
+}
+
+// Other
+.hide {
+	display: none !important;
+}
+.alert {
+	position: absolute;
+	bottom: -1.6em;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: .4em 1em 2em;
+	background: $primary-color;
+	color: hsl(310, 100%, 97%);
+	animation: 2s 40s peep-in both ease-in-out;
+	border-radius: 5px;
+	box-shadow: 0 -1px 6px 1px rgba($primary-color, 0.3);
+	&.close {
+		animation: peep-out .8s linear both;
+	}
+}
+@keyframes peep-in {
+	0% {
+		transform: translate(-50%, 100%);
+		animation-timing-function: linear;
+	}
+	76% {
+		transform: translate(-50%, -18%);
+	}
+	90% {
+		transform: translate(-50%, -20%);
+	}
+	98% {
+		transform: translate(-50%, 8%);
+	}
+	100% {
+		transform: translate(-50%, 0);
+	}
+}
+@keyframes peep-out {
+	to {
+		transform: translate(-50%, 100%);
+		visibility: hidden;
+	}
+}
+.dismiss {
+	border: none;
+	background: hsl(310, 100%, 72%);
+	color: white;
+	padding: .2em .5em;
+	cursor: pointer;
+	margin-left: .2em;
+}
+
+.tip {
+	position: absolute;
+	color: $primary-color;
+	animation: show-tip .5s 15s ease-in both;
+	font-size: 1.3rem;
+	font-family: "Gloria Hallelujah", cursive;
+
+	@keyframes show-tip {
+		from {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
+	.text {
+		text-shadow: -1px 2px 4px hsla(310, 100%, 10%, .2);
+	}
+	strong {
+		font-weight: normal;
+	}
+
+	svg {
+		width: 110px;
+		height: auto;
+		-webkit-filter: drop-shadow(-1px 3px 5px hsla(310, 100%, 10%, .3));
+		        filter: drop-shadow(-1px 3px 5px hsla(310, 100%, 10%, .3));
+		path {
+			fill: $primary-color;
+		}
+		animation: show-tip .5s 15.1s ease-in both;
+		@keyframes show-tip-arrow {
+			0% {
+				visibility: hidden;
+				opacity: 0;
+				transform: scale(0);
+			}
+			85% {
+				visibility: visible;
+				opacity: 1;
+				transform: scale(1.2);
+			}
+			100% {
+				visibility: visible;
+				opacity: 1;
+				transform: none;
+			}
+		}
+	}
+}
+.tip-effect {
+	left: -120px;
+	top: .5em;
+	animation-delay: 20s;
+	.text {
+		width: 110px;
+		display: flex;
+		justify-content: center;
+		white-space: nowrap;
+		margin-left: -40px;
+	}
+	svg {
+		animation-delay: 20.1s;
+	}
+}
+
+.tip-type {
+	display: flex;
+	left: 50%;
+	top: calc(50% - 6rem);
+	transform: translateX(-50%);
+	animation-delay: 12s;
+	svg {
+		animation-delay: 12.1s;
+		width: 40px;
+		height: 40px;
+		margin-top: .8em;
+		margin-left: 20px;
+		transform: rotate(-9deg);
+		-webkit-filter: drop-shadow(0px 1px 3px rgba(51, 0, 43, 0.3));
+		        filter: drop-shadow(0px 1px 3px rgba(51, 0, 43, 0.3));
+	}
+}

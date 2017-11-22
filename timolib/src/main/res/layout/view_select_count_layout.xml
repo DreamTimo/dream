@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="90dp"
+              android:layout_height="42dp"
+              android:orientation="horizontal"
+              android:showDividers="middle"
+              android:weightSum="4">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/button_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/selector_view_select_count_left_button"
+            android:gravity="center"
+            android:minWidth="30dp"
+            android:textColor="#000"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/text_count"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:digits="0123456789"
+        android:gravity="center"
+        android:inputType="number"
+        android:minWidth="65dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="3dp"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textCursorDrawable="@null"/>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/button_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/selector_view_select_count_right_button"
+            android:gravity="center"
+            android:minWidth="30dp"
+            android:textColor="#000"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

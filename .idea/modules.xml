@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GameLife.iml" filepath="$PROJECT_DIR$/GameLife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/onlyone.iml" filepath="$PROJECT_DIR$/onlyone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/timolib/timolib.iml" filepath="$PROJECT_DIR$/timolib/timolib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xflib/xflib.iml" filepath="$PROJECT_DIR$/xflib/xflib.iml" />
+    </modules>
+  </component>
+</project>
