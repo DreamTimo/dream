@@ -25,12 +25,11 @@
     <!--定位信息是敏感信息，可通过Setting.setLocationEnable(false)关闭定位请求 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!--如需使用人脸识别，还要添加：摄相头权限，拍照需要用到 -->
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application android:allowBackup="true"
                  android:label="@string/app_name"
                  android:supportsRtl="true"
     >
-
     </application>
 
 </manifest>

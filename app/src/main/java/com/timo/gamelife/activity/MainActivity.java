@@ -1,6 +1,5 @@
 package com.timo.gamelife.activity;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +13,7 @@ import com.timo.gamelife.fragment.HomeFragment;
 import com.timo.gamelife.fragment.MineFragment;
 import com.timo.gamelife.fragment.DreamFragment;
 import com.timo.timolib.base_activity.BaseActivity;
+import com.timo.timolib.utils.PermissionUtils;
 import com.timo.timolib.view.CommonWebView;
 
 import butterknife.BindView;
@@ -50,6 +50,7 @@ public class MainActivity extends BaseActivity {
     protected void initEvent() {
         mRgBottom.setOnCheckedChangeListener(new MyCheckChangeListener());
         showFragment(0);
+        PermissionUtils.getInstance().applyPermission(this);
     }
 
     class MyCheckChangeListener implements RadioGroup.OnCheckedChangeListener {

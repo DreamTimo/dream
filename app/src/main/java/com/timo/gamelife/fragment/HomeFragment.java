@@ -89,13 +89,21 @@ public class HomeFragment extends BaseFragment {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 if (url.contains("my.html")) {
-                    XFVoiceUtils.getInstance().speakMessage(getContext(), getString(R.string.introduction_a));
+//                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_a));
                 } else if (url.contains("resume.html")) {
-                    XFVoiceUtils.getInstance().speakMessage(getContext(), getString(R.string.introduction_b));
+//                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_b));
                 }
             }
         });
 
+        XFVoiceUtils.getInstance().initXFHear(getActivity());
+        mBtIcon.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                XFVoiceUtils.getInstance().xfHear();
+                return false;
+            }
+        });
     }
 
     @OnClick({R.id.bt_icon})
@@ -108,5 +116,4 @@ public class HomeFragment extends BaseFragment {
                 break;
         }
     }
-
 }

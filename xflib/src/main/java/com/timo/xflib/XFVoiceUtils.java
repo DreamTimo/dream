@@ -9,11 +9,17 @@ import android.widget.Toast;
 
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
+import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SynthesizerListener;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.iflytek.sunflower.FlowerCollector;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by 蔡永汪 on 2017/11/22.
@@ -52,13 +58,15 @@ public class XFVoiceUtils {
                     }
                 }
             });
-            mSharedPreferences = context.getSharedPreferences(XFConfig.sp_setting, context.MODE_PRIVATE);
+            if (mSharedPreferences == null) {
+                mSharedPreferences = context.getSharedPreferences(XFConfig.sp_setting, context.MODE_PRIVATE);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void speakMessage(final Context context, String message) {
+    public static void xfSpeak(final Context context, String message) {
         try {
             if (TextUtils.isEmpty(message)) {
                 return;
@@ -146,6 +154,97 @@ public class XFVoiceUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // 语音听写UI
+    private static RecognizerDialog mIatDialog;
+    private static Context mContext;
+
+    public static void initXFHear(final Context context) {
+        try {
+            mContext = context;
+            // 初始化听写Dialog，如果只使用有UI听写功能，无需创建SpeechRecognizer
+            // 使用UI听写功能，请根据sdk文件目录下的notice.txt,放置布局文件和图片资源
+            mIatDialog = new RecognizerDialog(context, mInitListener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 初始化监听器。
+     */
+    private static InitListener mInitListener = new InitListener() {
+
+        @Override
+        public void onInit(int code) {
+            if (code != ErrorCode.SUCCESS) {
+                Toast.makeText(mContext, "初始化失败，错误码：" + code, Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    };
+    /**
+     * 听写UI监听器
+     */
+    private static RecognizerDialogListener mRecognizerDialogListener = new RecognizerDialogListener() {
+        public void onResult(RecognizerResult results, boolean isLast) {
+            if (mTranslateEnable) {
+                printTransResult(mContext, results);
+            } else {
+                printResult(mContext, results);
+            }
+        }
+
+        /**
+         * 识别回调错误.
+         */
+        public void onError(SpeechError error) {
+            if (mTranslateEnable && error.getErrorCode() == 14002) {
+                Toast.makeText(mContext, error.getPlainDescription(true) + "\n请确认是否已开通翻译功能", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mContext, error.getPlainDescription(true), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    };
+
+    private static boolean mTranslateEnable = true;
+
+    // 引擎类型
+    public static void xfHear() {
+        try {
+            // 显示听写对话框
+            mIatDialog.setListener(mRecognizerDialogListener);
+            mIatDialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void printTransResult(Context context, RecognizerResult results) {
+        String trans = JsonParser.parseTransResult(results.getResultString(), "dst");
+        String oris = JsonParser.parseTransResult(results.getResultString(), "src");
+        if (TextUtils.isEmpty(trans) || TextUtils.isEmpty(oris)) {
+            Toast.makeText(context, context.getString(R.string.text_begin), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "原始语言:\n" + oris + "\n目标语言:\n" + trans, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private static void printResult(Context context, RecognizerResult results) {
+        String text = JsonParser.parseIatResult(results.getResultString());
+
+        String sn = null;
+        // 读取json结果中的sn字段
+        try {
+            JSONObject resultJson = new JSONObject(results.getResultString());
+            sn = resultJson.optString("sn");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Toast.makeText(context, "原始语言:\n" + text + "\n目标语言:\n" + sn, Toast.LENGTH_SHORT).show();
     }
 
     public static void stopSpeak() {

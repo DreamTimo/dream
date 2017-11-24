@@ -56,14 +56,16 @@ public final class PermissionUtils {
         return instance;
     }
 
+    //无底洞  狮驼  五庄  龙宫  化生
+
     //需要申请的权限
     private String[] permissions = new String[]{
             Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.RECORD_AUDIO
     };
-
 
     //检测权限
     public String[] checkPermission() {
