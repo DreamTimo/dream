@@ -9,6 +9,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.timo.gamelife.R;
+import com.timo.gamelife.login.LoginActivity;
+import com.timo.gamelife.user.UserActivity;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.base_fragment.BaseFragment;
 import com.timo.timolib.view.CommonWebView;
@@ -89,9 +91,9 @@ public class HomeFragment extends BaseFragment {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 if (url.contains("my.html")) {
-//                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_a));
+                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_a));
                 } else if (url.contains("resume.html")) {
-//                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_b));
+                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_b));
                 }
             }
         });
@@ -100,11 +102,31 @@ public class HomeFragment extends BaseFragment {
         mBtIcon.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                XFVoiceUtils.getInstance().xfHear();
+//                XFVoiceUtils.getInstance().xfHear(mXFListener);
+//                Intent intent = new Intent(getContext(), TestActivity.class);
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    ActivityOptions options = ActivityOptions
+//                            .makeSceneTransitionAnimation((Activity) getActivity(), mBtIcon, "电影图片");
+//                    getActivity().startActivity(intent, options.toBundle());
+//                } else {
+//                    //让新的Activity从一个小的范围扩大到全屏
+//                    ActivityOptionsCompat options = ActivityOptionsCompat
+//                            .makeScaleUpAnimation(mBtIcon, mBtIcon.getWidth() / 2, mBtIcon.getHeight() / 2, 0, 0);
+//                    ActivityCompat.startActivity((Activity) getActivity(), intent, options.toBundle());
+//                }
+                startActivityNoFinish(UserActivity.class);
                 return false;
             }
         });
+
     }
+
+    private XFVoiceUtils.XFListener mXFListener = new XFVoiceUtils.XFListener() {
+        @Override
+        public void listener(String result) {
+            BaseTools.showToast(result);
+        }
+    };
 
     @OnClick({R.id.bt_icon})
     public void onViewClicked(View view) {

@@ -189,48 +189,28 @@ public class XFVoiceUtils {
      */
     private static RecognizerDialogListener mRecognizerDialogListener = new RecognizerDialogListener() {
         public void onResult(RecognizerResult results, boolean isLast) {
-            if (mTranslateEnable) {
-                printTransResult(mContext, results);
-            } else {
-                printResult(mContext, results);
-            }
+            printResult(mContext, results);
         }
 
         /**
          * 识别回调错误.
          */
         public void onError(SpeechError error) {
-            if (mTranslateEnable && error.getErrorCode() == 14002) {
-                Toast.makeText(mContext, error.getPlainDescription(true) + "\n请确认是否已开通翻译功能", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(mContext, error.getPlainDescription(true), Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(mContext, error.getPlainDescription(true), Toast.LENGTH_SHORT).show();
         }
 
     };
 
-    private static boolean mTranslateEnable = true;
-
     // 引擎类型
-    public static void xfHear() {
+    public static void xfHear(XFListener listener) {
         try {
+            mXFListener=listener;
             // 显示听写对话框
             mIatDialog.setListener(mRecognizerDialogListener);
             mIatDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static void printTransResult(Context context, RecognizerResult results) {
-        String trans = JsonParser.parseTransResult(results.getResultString(), "dst");
-        String oris = JsonParser.parseTransResult(results.getResultString(), "src");
-        if (TextUtils.isEmpty(trans) || TextUtils.isEmpty(oris)) {
-            Toast.makeText(context, context.getString(R.string.text_begin), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "原始语言:\n" + oris + "\n目标语言:\n" + trans, Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     private static void printResult(Context context, RecognizerResult results) {
@@ -244,7 +224,15 @@ public class XFVoiceUtils {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Toast.makeText(context, "原始语言:\n" + text + "\n目标语言:\n" + sn, Toast.LENGTH_SHORT).show();
+        if (mXFListener != null && !TextUtils.isEmpty(sn)) {
+            mXFListener.listener(sn);
+        }
+    }
+
+    private static XFListener mXFListener;
+
+    public interface XFListener {
+        void listener(String result);
     }
 
     public static void stopSpeak() {

@@ -3,7 +3,7 @@ package com.timo.timolib.utils;
 import android.content.Context;
 import android.content.Intent;
 
-import com.timo.timolib.base.BaseConstancts;
+import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.MyApplication;
 import com.timo.timolib.Params;
 

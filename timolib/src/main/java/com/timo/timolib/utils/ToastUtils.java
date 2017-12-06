@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.timo.timolib.base.BaseConstancts;
+import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.MyApplication;
 import com.timo.timolib.R;
 

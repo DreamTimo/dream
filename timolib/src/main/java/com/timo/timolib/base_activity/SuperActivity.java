@@ -17,7 +17,7 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.timo.timolib.BaseConfig;
 import com.timo.timolib.R;
-import com.timo.timolib.base.BaseConstancts;
+import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.MyApplication;
 import com.timo.timolib.Params;
@@ -40,7 +40,6 @@ public abstract class SuperActivity extends FragmentActivity {
     private Params getParams;
     private Params setParams;
     private TitleBar baseTitleBar;
-    public int cameraRequestCode = 9745;//开启相机的请求Code
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +147,7 @@ public abstract class SuperActivity extends FragmentActivity {
                     return true;
                 } else {
                     if ((System.currentTimeMillis() - mExitTime) > BaseConfig.exit_time) {
-                        BaseTools.showToast("再按一次，退出程序");
+                        BaseTools.showToast(getString(R.string.hint_exit));
                         mExitTime = System.currentTimeMillis();
                     } else {
                         stopAndFinish();
@@ -192,10 +191,10 @@ public abstract class SuperActivity extends FragmentActivity {
                 ActivityCompat.requestPermissions(this, new String[]{
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.RECORD_AUDIO,
-                        Manifest.permission.CAMERA}, GET_PERMISSION_REQUEST);
+                        Manifest.permission.CAMERA}, BaseConstancts.get_camera_permission_request);
             }
         } else {
-            startActivityForResult(new Intent(this, CameraActivity.class), cameraRequestCode);
+            startActivityForResult(new Intent(this, CameraActivity.class), BaseConstancts.cameraRequestCode);
         }
     }
 
@@ -204,8 +203,6 @@ public abstract class SuperActivity extends FragmentActivity {
         searchFragment.setOnSearchClickListener(listener);
         searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
     }
-
-    private final int GET_PERMISSION_REQUEST = 100; //权限申请自定义码
 
     @TargetApi(23)
     @Override
@@ -217,7 +214,7 @@ public abstract class SuperActivity extends FragmentActivity {
             }
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + super_phone));
             startActivity(intent);
-        } else if (requestCode == GET_PERMISSION_REQUEST) {
+        } else if (requestCode == BaseConstancts.get_camera_permission_request) {
             int size = 0;
             if (grantResults.length >= 1) {
                 int writeResult = grantResults[0];
@@ -241,7 +238,7 @@ public abstract class SuperActivity extends FragmentActivity {
                 if (size == 0) {
                     startActivityForResult(new Intent(this, CameraActivity.class), 100);
                 } else {
-                    BaseTools.showToast("请到设置-权限管理中开启相机权限");
+                    BaseTools.showToast(getString(R.string.hint_camera_need_permission));
                 }
             }
         }
@@ -250,7 +247,7 @@ public abstract class SuperActivity extends FragmentActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == cameraRequestCode) {
+        if (requestCode == BaseConstancts.cameraRequestCode) {
             String cameraPicture = BaseTools.getCameraPicture(resultCode, data);
         } else if (requestCode == PictureConfig.CHOOSE_REQUEST && resultCode == RESULT_OK) {
             // 图片选择结果回调

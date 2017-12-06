@@ -1,4 +1,4 @@
-package com.timo.timolib.base;
+package com.timo.timolib;
 
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
@@ -11,7 +11,8 @@ public interface BaseConstancts {
     String BASE_SHARE_NAME = "base_share_name";//sp保存名称
     String BASE_PARAM = "base_param";
     String BASE_PASSWORD = "base_password"; //密码
-
+    int cameraRequestCode = 9745;//开启相机的请求Code
+    int get_camera_permission_request = 100; //相机权限申请自定义码
     @ColorInt
     int COLOR_DEFAULT_TEXT = Color.parseColor("#FFFFFF");
     @ColorInt

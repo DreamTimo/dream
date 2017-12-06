@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Base64;
 
+import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.MyApplication;
 import com.timo.timolib.UserBean;
 import com.timo.timolib.utils.FileUtils;

@@ -14,6 +14,6 @@ public class App extends MyApplication {
     public void onCreate() {
         super.onCreate();
         SpeechUtility.createUtility(App.this, SpeechConstant.APPID + "=5a14e3a0");
-//        XFVoiceUtils.getInstance().initXFVoice(App.this);//初始化讯飞语音
+        XFVoiceUtils.getInstance().initXFVoice(App.this);//初始化讯飞语音
     }
 }

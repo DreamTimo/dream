@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 
+import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.Params;
 import com.timo.timolib.base.adapter.ItemViewDelegate;
 import com.timo.timolib.base.adapter.MultiItemTypeAdapter;

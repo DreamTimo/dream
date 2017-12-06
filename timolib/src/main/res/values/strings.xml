@@ -14,4 +14,9 @@
     <string name="xloading_error_text">加载失败，请稍后再试</string>
     <string name="xloading_empty_text">暂无数据</string>
     <string name="xloading_retry_text">点击重试</string>
+
+    <!--提示话语-->
+    <string name="hint_camera_need_permission">请到设置-权限管理中开启相机权限</string>
+    <string name="hint_exit">再按一次，退出程序</string>
+
 </resources>
