@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="default_text_color">#333333</color>
     <color name="color_green">#05BCA5</color>
     <!--加载框颜色信息-->
     <color name="loading_bg_color">#99000000</color>
@@ -9,7 +10,7 @@
     <color name="gray">#F0F0F0</color>
     <color name="transparent_half">#8f000000</color>
 
-
+    <color name="ic_default_bg_color">#33000000</color>
     <color name="XFrame_darker_gray">#aaaaaa</color>
     <color name="XFrame_white">#ffffff</color>
     <color name="XFrame_text_gray">#8a8a8a</color>

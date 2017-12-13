@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/px100"
+    android:layout_marginRight="@dimen/px100"
+    android:paddingBottom="@dimen/px16"
+    android:background="@drawable/dialog_bg" >
+
+   
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/px40"
+            android:paddingRight="@dimen/px40"
+            android:layout_marginTop="@dimen/px30"
+            android:layout_marginBottom="@dimen/px30"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/red"
+            android:text="请选择购车方式"
+            android:textSize="@dimen/px28" />
+     
+           <Button
+            android:id="@+id/bt_new"
+            android:layout_width="@dimen/px336"
+            android:layout_height="@dimen/px90"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_dialog"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="新车优选"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/px24"
+            android:layout_marginRight="@dimen/px24"
+            android:layout_marginBottom="@dimen/px16"
+            android:textColor="@drawable/button_dialog_color"
+            android:textSize="@dimen/px28" />
+           
+           <Button
+            android:id="@+id/bt_sale"
+            android:layout_width="@dimen/px336"
+            android:layout_height="@dimen/px90"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_dialog"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="汇特价"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/px24"
+            android:layout_marginRight="@dimen/px24"
+            android:layout_marginBottom="@dimen/px16"
+            android:textColor="@drawable/button_dialog_color"
+            android:textSize="@dimen/px28" />
+           
+           <Button
+            android:id="@+id/bt_rent"
+            android:layout_width="@dimen/px336"
+            android:layout_height="@dimen/px90"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_dialog"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="以租代购"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/px24"
+            android:layout_marginRight="@dimen/px24"
+            android:layout_marginBottom="@dimen/px16"
+            android:textColor="@drawable/button_dialog_color"
+            android:textSize="@dimen/px28" />
+</LinearLayout>

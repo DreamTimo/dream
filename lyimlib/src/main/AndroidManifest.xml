@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.luyz.lyimlib">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+        <activity android:name="com.lykj.UI.activity.LYPhotosActivity" />
+        <activity android:name="com.lykj.UI.activity.LYLocationActivity" />
+        <activity android:name="com.lykj.UI.activity.LYMapActivity" />
+        <activity android:name="com.lykj.UI.activity.LYFriendsActivity" />
+        <activity android:name="com.lykj.UI.activity.LYAddFriendActivity" />
+        <activity android:name="com.lykj.UI.activity.LYUserContactsActivity"></activity>
+    </application>
+
+</manifest>

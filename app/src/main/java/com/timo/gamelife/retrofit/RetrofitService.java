@@ -1,5 +1,8 @@
 package com.timo.gamelife.retrofit;
+
+import com.timo.gamelife.HttpUrl;
 import com.timo.gamelife.bean.Book;
+import com.timo.gamelife.bean.CityInfo;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -14,4 +17,7 @@ public interface RetrofitService {
     Observable<Book> getSearchBooks(@Query("q") String name,
                                     @Query("tag") String tag, @Query("start") int start,
                                     @Query("count") int count);
+
+    @GET(HttpUrl.githubData)
+    Observable<CityInfo> getMyData();
 }

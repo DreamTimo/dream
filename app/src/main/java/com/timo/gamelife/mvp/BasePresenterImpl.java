@@ -2,6 +2,10 @@ package com.timo.gamelife.mvp;
 
 import com.timo.gamelife.retrofit.RetrofitManager;
 
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -35,5 +39,13 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter<V> {
         if (mCompositeSubscription.hasSubscriptions()) {
             mCompositeSubscription.unsubscribe();
         }
+    }
+
+    public void addSubscription(Observable observable, Observer observer) {
+        mCompositeSubscription.add(observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer)
+        );
     }
 }

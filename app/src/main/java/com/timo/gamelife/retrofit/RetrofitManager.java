@@ -3,6 +3,7 @@ package com.timo.gamelife.retrofit;
 import android.content.Context;
 
 import com.timo.gamelife.bean.Book;
+import com.timo.gamelife.bean.CityInfo;
 
 import rx.Observable;
 
@@ -19,5 +20,8 @@ public class RetrofitManager {
 
     public Observable<Book> getSearchBooks(String name, String tag, int start, int count) {
         return mRetrofitService.getSearchBooks(name, tag, start, count);
+    }
+    public Observable<CityInfo> getMyData() {
+        return mRetrofitService.getMyData();
     }
 }

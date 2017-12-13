@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@drawable/dialog_bg">
+
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/confirm_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="确定"
+            android:gravity="center"
+            android:textSize="16sp" />
+        <View 
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#D2D2D4"/>
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@null"
+            android:text="取消"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#D2D2D4"/>
+
+    <LinearLayout
+        android:id="@+id/date_selelct_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+   <RelativeLayout 
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
+         <TextView 
+             android:id="@+id/tv_year"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:gravity="center_horizontal"
+             android:layout_centerHorizontal="true"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+             android:text="年" />
+        <com.dlbase.dateutil.DLWheelView
+            android:id="@+id/year"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_year"
+              android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:padding="5dp" />
+        </RelativeLayout>
+      <RelativeLayout 
+          android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
+         <TextView 
+             android:id="@+id/tv_month"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:gravity="center_horizontal"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+             android:layout_centerHorizontal="true"
+             android:text="月" />
+        <com.dlbase.dateutil.DLWheelView
+            android:id="@+id/month"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+              android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_month"
+            android:padding="5dp" />
+	</RelativeLayout>
+        <RelativeLayout 
+          android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
+         <TextView 
+             android:id="@+id/tv_day"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:gravity="center_horizontal"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+             android:layout_centerHorizontal="true"
+             android:text="日" />
+        <com.dlbase.dateutil.DLWheelView
+            android:id="@+id/day"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_day"
+            android:padding="5dp" />
+	</RelativeLayout>
+      
+        <RelativeLayout 
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:id="@+id/rl_hour"
+         android:visibility="gone"
+         android:layout_weight="1">
+         <TextView 
+             android:id="@+id/tv_hours"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:gravity="center_horizontal"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+             android:layout_centerHorizontal="true"
+             android:text="时" />
+        <com.dlbase.dateutil.DLWheelView
+            android:id="@+id/hours"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_hours"
+            android:padding="5dp" />
+		</RelativeLayout>
+
+     <RelativeLayout 
+         android:layout_width="0dp"
+         android:id="@+id/rl_mins"
+         android:layout_height="wrap_content"
+         android:visibility="gone"
+         android:layout_weight="1">
+         <TextView 
+             android:id="@+id/tv_mins"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+             android:gravity="center_horizontal"
+             android:text="分" />
+        <com.dlbase.dateutil.DLWheelView
+            android:id="@+id/mins"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_mins"
+            android:padding="5dp" />
+		</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

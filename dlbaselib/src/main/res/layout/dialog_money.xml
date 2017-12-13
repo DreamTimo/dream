@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout   
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bgcolor">
+   <com.lykj.util.SigleWheelView
+            android:id="@+id/data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp" />
+   <Button 
+       android:id="@+id/bt_finish"
+        android:layout_width="match_parent"
+       android:layout_height="@dimen/px80"
+       android:textColor="@color/btn_blue_normal"
+       android:textSize="@dimen/px24"
+       android:gravity="center"     
+       android:text="@string/finish"
+       android:background="#7fd2d2d4"
+       />
+</LinearLayout>

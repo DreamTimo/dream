@@ -141,4 +141,36 @@
             <enum name="invisible" value="1"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="LineTabIndicator">
+        <attr name="indicatorColor" format="color"/>
+        <attr name="underlineColor" format="color"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="textSelectedColor" format="color"/>
+        <attr name="textUnselectColor" format="color"/>
+        <attr name="tabTextSize" format="dimension"/>
+        <attr name="indicatorHeight" format="dimension"/>
+        <attr name="underlineHeight" format="dimension"/>
+        <attr name="dividerPadding" format="dimension"/>
+        <attr name="tabPadding" format="dimension"/>
+        <attr name="dividerWidth" format="dimension"/>
+        <attr name="viewPagerScrollWithAnimation" format="reference|boolean"/>
+        <attr name="enableDivider" format="reference|boolean"/>
+        <attr name="indicatorOnTop" format="reference|boolean"/>
+        <attr name="enableExpand" format="reference|boolean"/>
+        <attr name="bottomDividerEnlable" format="reference|boolean"/>
+        <attr name="bottomDividerColor" format="color"/>
+        <attr name="bottomDividerHeight" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="NineGridView">
+        <attr name="ngv_singleImageSize" format="dimension"/>
+        <attr name="ngv_singleImageRatio" format="float"/>
+        <attr name="ngv_gridSpacing" format="dimension"/>
+        <attr name="ngv_maxSize" format="integer"/>
+        <attr name="ngv_mode" format="enum">
+            <enum name="fill" value="0"/>
+            <enum name="grid" value="1"/>
+        </attr>
+    </declare-styleable>
 </resources>

@@ -1,0 +1,28 @@
+<resources>
+
+    <string name="app_name">DLBaseLib</string>
+
+    
+    <!-- showShareDialog -->
+    <string name="showShareDialog_wechat">微信好友</string>   
+    <string name="showShareDialog_favorite">微信朋友圈</string>   
+    <string name="showShareDialog_sina">新浪微博</string>
+    <!-- showSexDialog -->
+    <string name="showSexDialog_man">男</string>   
+    <string name="showSexDialog_woman">女</string>   
+     <string name="showSexDialog_cancle">取消</string>   
+    <!-- showPhotoDialog -->
+    <string name="showPhotoDialog_takePhto">拍照</string>   
+    <string name="showPhotoDialog_pickPhoto">从相册选取</string>   
+     <string name="showPhotoDialog_cancle">取消</string>  
+     
+    <string name="camera_open_error">启动相机失败</string>
+    <string name="photo_preview">PhotoPreview</string>
+    <string name="take_photo">TakePhoto</string>
+    <string name="display_to_gallery">显示到相册</string>
+    <string name="not_specify_a_directory">未指定存储目录</string>
+    <string name="help">帮助</string>
+    <string name="help_content">当前权限被禁用，建议到设置界面开启权限!</string>
+    
+     <string name="finish">完成</string>
+</resources>

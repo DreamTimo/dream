@@ -7,6 +7,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.timo.gamelife.R;
+import com.timo.gamelife.recommend.RecommendFragment;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.base_fragment.FragmentFactory;
 import com.timo.gamelife.fragment.HomeFragment;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.rg_bottom)
     RadioGroup mRgBottom;
     private Class[] fragments = new Class[]{
+            RecommendFragment.class,
             HomeFragment.class,
             DreamFragment.class,
             MineFragment.class,
@@ -56,12 +58,14 @@ public class MainActivity extends BaseActivity {
     class MyCheckChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            if (checkedId == R.id.rb_main) {
+            if (checkedId == R.id.rb_recommend) {
                 showFragment(0);
-            } else if (checkedId == R.id.rb_find) {
+            } else if (checkedId == R.id.rb_main) {
                 showFragment(1);
-            } else if (checkedId == R.id.rb_mine) {
+            } else if (checkedId == R.id.rb_find) {
                 showFragment(2);
+            } else if (checkedId == R.id.rb_mine) {
+                showFragment(3);
             }
         }
     }
@@ -94,6 +98,8 @@ public class MainActivity extends BaseActivity {
         } else if (i == 1) {
             BaseTools.loadWeb(mWebview, "file:///android_asset/snow.html");
         } else if (i == 2) {
+            BaseTools.loadWeb(mWebview, "file:///android_asset/snow.html");
+        } else if (i == 3) {
             BaseTools.loadWeb(mWebview, "file:///android_asset/snow.html");
         }
     }

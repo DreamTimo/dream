@@ -1,7 +1,11 @@
 package com.timo.gamelife.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
@@ -9,7 +13,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.timo.gamelife.R;
-import com.timo.gamelife.login.LoginActivity;
 import com.timo.gamelife.user.UserActivity;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.base_fragment.BaseFragment;
@@ -103,16 +106,16 @@ public class HomeFragment extends BaseFragment {
             @Override
             public boolean onLongClick(View v) {
 //                XFVoiceUtils.getInstance().xfHear(mXFListener);
-//                Intent intent = new Intent(getContext(), TestActivity.class);
+                Intent intent = new Intent(getContext(), UserActivity.class);
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //                    ActivityOptions options = ActivityOptions
 //                            .makeSceneTransitionAnimation((Activity) getActivity(), mBtIcon, "电影图片");
 //                    getActivity().startActivity(intent, options.toBundle());
 //                } else {
 //                    //让新的Activity从一个小的范围扩大到全屏
-//                    ActivityOptionsCompat options = ActivityOptionsCompat
-//                            .makeScaleUpAnimation(mBtIcon, mBtIcon.getWidth() / 2, mBtIcon.getHeight() / 2, 0, 0);
-//                    ActivityCompat.startActivity((Activity) getActivity(), intent, options.toBundle());
+                    ActivityOptionsCompat options = ActivityOptionsCompat
+                            .makeScaleUpAnimation(mBtIcon, mBtIcon.getWidth() / 2, mBtIcon.getHeight() / 2, 0, 0);
+                    ActivityCompat.startActivity((Activity) getActivity(), intent, options.toBundle());
 //                }
                 startActivityNoFinish(UserActivity.class);
                 return false;

@@ -26,11 +26,19 @@
         android:paddingBottom="5dp"
         android:paddingTop="5dp">
         <RadioButton
-            android:id="@+id/rb_main"
+            android:id="@+id/rb_recommend"
             style="@style/bottombar"
             android:layout_weight="1"
             android:button="@null"
             android:checked="true"
+            android:drawableTop="@drawable/navigation_dream"
+            android:text="推荐"
+            android:textColor="@drawable/navigation_text_selector"/>
+        <RadioButton
+            android:id="@+id/rb_main"
+            style="@style/bottombar"
+            android:layout_weight="1"
+            android:button="@null"
             android:drawableTop="@drawable/navigation_dream"
             android:text="@string/main_home"
             android:textColor="@drawable/navigation_text_selector"/>

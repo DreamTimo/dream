@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/text_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor="#CCCCCC"
+            android:gravity="center_horizontal"
+            android:textSize="12sp" />
+        
+    </LinearLayout>
+    
+    <ImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ic_selected" />
+
+
+</LinearLayout>

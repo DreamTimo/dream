@@ -13,5 +13,6 @@
     <string name="introduction_a">人活着一定要有梦想，即使它现在有点遥远！因为有了梦想，我们才能拥有奋斗的目标，而这些目标凝结成希望的萌芽，在汗水与泪水浇灌下，绽放成功之花。梦想从来不会选择人，它是上天赋予每个人构建未来蓝图的神奇画笔。梦想不分高低贵贱，只要你心中有梦，乐观充实地过好每一天。</string>
     <string name="introduction_b">唯有坚持下去梦想，才能演绎成功的人生。让我们共同为梦而努力，为梦而奋斗，为梦创造奇迹。</string>
 
-
+    <string name="MessageFragment_mine">好友消息</string>
+    <string name="MessageFragment_sys">系统消息</string>
 </resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  	android:layout_width="match_parent"
+  	android:layout_height="wrap_content"
+  	android:orientation="vertical"
+  	android:background="@color/bgcolor">
+   <com.dhqc.widget.CustomerDrawerLayout     
+            android:id="@+id/drawer_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+            <FrameLayout
+                android:id="@+id/fl_brands"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:clickable="true"
+                android:visibility="visible" >
+                <com.dhqc.widget.PinnedHeaderListView
+                    android:id="@+id/listView_brand"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:descendantFocusability="blocksDescendants"
+                    android:divider="@null"
+                    android:listSelector="@null"
+                    android:visibility="visible" />
+               <TextView
+	            android:id="@+id/tv_dl"
+	            android:layout_width="@dimen/px140"
+	            android:layout_height="@dimen/px140"
+	           android:layout_gravity="center"
+	            android:gravity="center"
+	            android:textColor="#ffffff"
+	            android:textSize="@dimen/px50"
+	            android:visibility="invisible" />
+	           <com.dhqc.widget.SideBar
+	            android:id="@+id/sidrbar"
+	            android:layout_width="@dimen/px60"
+	            android:layout_height="fill_parent"
+	            android:visibility="visible"
+	           android:layout_gravity="end|center"/>	   
+            </FrameLayout>
+
+                <ListView
+                    android:id="@+id/listView_series"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/px180"
+                    android:layout_marginStart="@dimen/px180"
+                    android:descendantFocusability="blocksDescendants"
+                    android:divider="@null"
+                    android:visibility="gone"
+                     android:layout_gravity="end"
+                    android:listSelector="@color/white" 
+                    android:background="@color/white"/>      
+        </com.dhqc.widget.CustomerDrawerLayout>    
+</RelativeLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <SurfaceView
+        android:id="@+id/video_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         >
+    </SurfaceView>
+
+    <ProgressBar
+        android:id="@+id/video_pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/video_ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#e0000000"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/video_btn_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/qiyi_sdk_player_btn_back_land" />
+
+        <TextView
+            android:id="@+id/video_tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="视频"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/player_favor"
+            android:visibility="gone" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/player_landscape_share_normal"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/video_ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="150dp"
+        android:background="#e0000000"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/video_btn_play"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/qiyi_sdk_play_btn_pause" />
+
+        <TextView
+            android:id="@+id/video_tv_otime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="0:0"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <SeekBar
+            android:id="@+id/video_seekbar_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/video_tv_ctime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="0:0"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/video_btn_full"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/qiyi_sdk_play_btn_tolandscape"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/video_btn_lock"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/player_landscape_screen_on_noraml" />
+
+</RelativeLayout>

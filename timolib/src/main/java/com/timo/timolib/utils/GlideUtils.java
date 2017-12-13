@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.timo.timolib.BaseTools;
 
 import java.io.File;
 import java.net.URL;
@@ -25,6 +26,7 @@ public class GlideUtils {
     }
 
     public void load(Context context, String url, ImageView view) {
+        if (BaseTools.isEmpty(url) || view == null) return;
         if (url.startsWith("http")) {
             Glide
                     .with(context)

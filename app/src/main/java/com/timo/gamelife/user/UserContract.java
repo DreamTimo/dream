@@ -1,5 +1,6 @@
 package com.timo.gamelife.user;
 
+import com.timo.gamelife.bean.CityInfo;
 import com.timo.gamelife.mvp.BasePresenter;
 import com.timo.gamelife.mvp.BaseView;
 import com.timo.gamelife.bean.Book;
@@ -14,9 +15,11 @@ public class UserContract {
         void onSuccess(Book mBook);
 
         void onError(String result);
+        void getData(CityInfo info);
     }
 
     interface Presenter extends BasePresenter<View> {
         void onStop();
+        void getData();
     }
 }
