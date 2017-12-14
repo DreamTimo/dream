@@ -20,9 +20,9 @@ public abstract class MVPBaseActivity<V extends BaseView, T extends BasePresente
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         mPresenter = getInstance(this, 1);
         mPresenter.attachView((V) this);
+        super.onCreate(savedInstanceState);
     }
 
     @Override

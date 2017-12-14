@@ -45,6 +45,7 @@ public abstract class BaseFragment extends Fragment {
     private TitleBar baseTitleBar;
     private Unbinder unbinder;
     private String super_phone;
+
     public void startActivity(Class<?> cls) {
         if (setParams == null) {
             startActivity(new Intent(getActivity(), cls));
@@ -58,10 +59,15 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getContentResId(), container, false);
         unbinder = ButterKnife.bind(this, view);
-        setTitle(view);
-        initEvent(view);
         return view;
 
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setTitle(view);
+        initEvent(view);
     }
 
     protected void setTitle(View view) {
@@ -130,6 +136,7 @@ public abstract class BaseFragment extends Fragment {
     public Serializable getMyResult(Intent data) {
         return data.getSerializableExtra(BaseConstancts.BASE_PARAM);
     }
+
     /**
      * 拨打电话
      */
@@ -143,6 +150,7 @@ public abstract class BaseFragment extends Fragment {
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
         startActivity(intent);
     }
+
     /**
      * 打开相机
      */
@@ -166,6 +174,7 @@ public abstract class BaseFragment extends Fragment {
             startActivityForResult(new Intent(getActivity(), CameraActivity.class), BaseConstancts.cameraRequestCode);
         }
     }
+
     @TargetApi(23)
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

@@ -2,6 +2,7 @@ package com.timo.timolib.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.ScrollView;
 
 /**
@@ -31,7 +32,7 @@ public class CustomScrollView extends ScrollView {
     }
 
     // 滑动距离监听器
-    public interface OnScrollListener{
+    public interface OnScrollListener {
         /**
          * 在滑动的时候调用，scrollY为已滑动的距离
          */
@@ -41,8 +42,8 @@ public class CustomScrollView extends ScrollView {
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        if(listener != null){
-            listener.onScroll(l,t,oldl,oldt);
+        if (listener != null) {
+            listener.onScroll(l, t, oldl, oldt);
         }
     }
 }

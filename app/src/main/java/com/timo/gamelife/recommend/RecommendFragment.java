@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.timo.gamelife.BannerUtils;
 import com.timo.gamelife.R;
 import com.timo.gamelife.bean.HouseBean;
+import com.timo.gamelife.detail.DetailActivity;
 import com.timo.gamelife.mvp.MVPBaseFragment;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.view.CustomScrollView;
@@ -118,10 +119,19 @@ public class RecommendFragment extends MVPBaseFragment<RecommendContract.View, R
         BannerUtils.getInstance().setHouseProfiltBanner(getActivity(), mBannerRecommend, bannerData);
     }
 
+    private LinearLayout root_1;
+
     @Override
     public void setLl1(List<HouseBean> data) {
         for (int i = 0; i < data.size(); i++) {
             View view = BaseTools.getView(getContext(), R.layout.recommend_item_1, mHomeRoot);
+            root_1 = (LinearLayout) view.findViewById(R.id.root);
+            root_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivityNoFinish(DetailActivity.class);
+                }
+            });
             mRecommendLl1.addView(view);
         }
     }
