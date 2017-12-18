@@ -18,13 +18,13 @@ import android.widget.TextView;
 import com.timo.gamelife.R;
 import com.timo.timolib.base.AppInfo;
 import com.timo.timolib.base_activity.BaseActivity;
+
 import java.util.ArrayList;
 
 public class GuideActivity extends BaseActivity {
 
     private static final int WHAT_JUMP_TO_MAIN = 2;
     private static final int REFRESH_TIME = 3;
-
     private ViewPager viewPager;
     private TextView description;
     //添加小点的
@@ -34,7 +34,6 @@ public class GuideActivity extends BaseActivity {
     // 引导图片资源
     private static final int[] pics = {R.drawable.guide_a, R.drawable.guide_b, R.drawable.guide_c, R.drawable.guide_d, R.drawable.welcome_image};
     private Button bt_skip;
-
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

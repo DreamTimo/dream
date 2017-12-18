@@ -1,11 +1,7 @@
 package com.timo.gamelife.fragment.plan;
 
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.timo.gamelife.R;
@@ -18,8 +14,6 @@ import com.timo.timolib.view.InnerScrollView;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * MVPPlugin
