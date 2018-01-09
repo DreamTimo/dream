@@ -15,4 +15,9 @@
 
     <string name="MessageFragment_mine">好友消息</string>
     <string name="MessageFragment_sys">系统消息</string>
+
+    <string name="title_1">游学</string>
+    <string name="title_2">旅居</string>
+    <string name="title_3">发现</string>
+    <string name="title_4">我的</string>
 </resources>

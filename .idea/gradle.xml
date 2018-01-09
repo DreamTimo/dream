@@ -10,11 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/dlbaselib" />
-            <option value="$PROJECT_DIR$/dlemojiconlib" />
-            <option value="$PROJECT_DIR$/lyimlib" />
             <option value="$PROJECT_DIR$/timolib" />
-            <option value="$PROJECT_DIR$/xflib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

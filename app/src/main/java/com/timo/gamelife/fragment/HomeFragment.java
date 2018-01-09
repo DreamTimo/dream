@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
@@ -13,16 +14,20 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.timo.gamelife.R;
+import com.timo.gamelife.adapter.DetailFragmentAdapter;
 import com.timo.gamelife.user.UserActivity;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.base_fragment.BaseFragment;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.FloatTouchView;
 import com.timo.timolib.view.TitleBar;
-import com.timo.xflib.XFVoiceUtils;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Created by lykj on 2017/9/12.
@@ -38,6 +43,8 @@ public class HomeFragment extends BaseFragment {
     CommonWebView mWebMine;
     @BindView(R.id.web_title)
     TitleBar mWebTitle;
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
 
     @Override
     protected String setTitleName() {
@@ -81,7 +88,6 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void onDrawerClosed(View drawerView) {
-                XFVoiceUtils.getInstance().stopSpeak();
             }
 
             @Override
@@ -93,15 +99,8 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                if (url.contains("my.html")) {
-                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_a));
-                } else if (url.contains("resume.html")) {
-                    XFVoiceUtils.getInstance().xfSpeak(getContext(), getString(R.string.introduction_b));
-                }
             }
         });
-
-        XFVoiceUtils.getInstance().initXFHear(getActivity());
         mBtIcon.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -113,23 +112,17 @@ public class HomeFragment extends BaseFragment {
 //                    getActivity().startActivity(intent, options.toBundle());
 //                } else {
 //                    //让新的Activity从一个小的范围扩大到全屏
-                    ActivityOptionsCompat options = ActivityOptionsCompat
-                            .makeScaleUpAnimation(mBtIcon, mBtIcon.getWidth() / 2, mBtIcon.getHeight() / 2, 0, 0);
-                    ActivityCompat.startActivity((Activity) getActivity(), intent, options.toBundle());
+                ActivityOptionsCompat options = ActivityOptionsCompat
+                        .makeScaleUpAnimation(mBtIcon, mBtIcon.getWidth() / 2, mBtIcon.getHeight() / 2, 0, 0);
+                ActivityCompat.startActivity((Activity) getActivity(), intent, options.toBundle());
 //                }
                 startActivityNoFinish(UserActivity.class);
                 return false;
             }
         });
+        mViewPager.setAdapter(new DetailFragmentAdapter(getFragmentManager()));
 
     }
-
-    private XFVoiceUtils.XFListener mXFListener = new XFVoiceUtils.XFListener() {
-        @Override
-        public void listener(String result) {
-            BaseTools.showToast(result);
-        }
-    };
 
     @OnClick({R.id.bt_icon})
     public void onViewClicked(View view) {
@@ -141,4 +134,5 @@ public class HomeFragment extends BaseFragment {
                 break;
         }
     }
+
 }

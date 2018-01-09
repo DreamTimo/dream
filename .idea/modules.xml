@@ -4,12 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GameLife.iml" filepath="$PROJECT_DIR$/GameLife.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dlbaselib/dlbaselib.iml" filepath="$PROJECT_DIR$/dlbaselib/dlbaselib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dlemojiconlib/dlemojiconlib.iml" filepath="$PROJECT_DIR$/dlemojiconlib/dlemojiconlib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lyimlib/lyimlib.iml" filepath="$PROJECT_DIR$/lyimlib/lyimlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/onlyone.iml" filepath="$PROJECT_DIR$/onlyone.iml" />
       <module fileurl="file://$PROJECT_DIR$/timolib/timolib.iml" filepath="$PROJECT_DIR$/timolib/timolib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xflib/xflib.iml" filepath="$PROJECT_DIR$/xflib/xflib.iml" />
     </modules>
   </component>
 </project>

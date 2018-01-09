@@ -16,4 +16,13 @@
         android:layout_height="180dp"/>
     <View
         style="@style/line"/>
+    <com.timo.timolib.view.CommonWebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"/>
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"/>
 </LinearLayout>

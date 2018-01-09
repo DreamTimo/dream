@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">XFLib</string>
-    <string name="pref_key_translate">translate</string>
-    <string name="text_begin">请开始说话…</string>
-</resources>

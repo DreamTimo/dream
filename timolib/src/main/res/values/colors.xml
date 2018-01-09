@@ -23,4 +23,8 @@
     <color name="text_grey">#9DA0A3</color>
 
     <color name="divider">#e6e6e6</color>
+
+    <color name="bb_inActiveBottomBarItemColor">#747474</color>
+    <color name="bb_darkBackgroundColor">#212121</color>
+    <color name="bb_tabletRightBorderDark">#505050</color>
 </resources>

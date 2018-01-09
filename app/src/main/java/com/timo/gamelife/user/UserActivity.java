@@ -2,18 +2,15 @@ package com.timo.gamelife.user;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.widget.TextView;
+import android.support.v4.view.ViewPager;
 
 import com.timo.gamelife.R;
-import com.timo.gamelife.bean.CityInfo;
-import com.timo.gamelife.message.MessageFragment;
-import com.timo.gamelife.mvp.MVPBaseActivity;
+import com.timo.gamelife.adapter.DetailFragmentAdapter;
 import com.timo.gamelife.bean.Book;
-import com.timo.timolib.BaseTools;
+import com.timo.gamelife.bean.CityInfo;
+import com.timo.gamelife.mvp.MVPBaseActivity;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * MVPPlugin
@@ -21,6 +18,8 @@ import butterknife.OnClick;
  */
 
 public class UserActivity extends MVPBaseActivity<UserContract.View, UserPresenter> implements UserContract.View {
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
     private FragmentTransaction fragmentTransaction;
     private Fragment fragment;
 
@@ -36,9 +35,11 @@ public class UserActivity extends MVPBaseActivity<UserContract.View, UserPresent
 
     @Override
     protected void initEvent() {
-        fragment = new MessageFragment();
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.rl_content, fragment).commit();
+//        fragment = new MessageFragment();
+//        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//        fragmentTransaction.add(R.id.rl_content, fragment).commit();
+        mViewPager.setAdapter(new DetailFragmentAdapter(getSupportFragmentManager()));
+        mViewPager.setCurrentItem(1);
     }
 
     @Override

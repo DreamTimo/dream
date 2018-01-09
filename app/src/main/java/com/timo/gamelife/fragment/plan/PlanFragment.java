@@ -39,9 +39,9 @@ public class PlanFragment extends MVPBaseFragment<PlanContract.View, PlanPresent
 
     @Override
     protected void initEvent(View view) {
-        DetailActivity activity = (DetailActivity) getActivity();
-        CustomScrollView scrollView = (CustomScrollView) activity.findViewById(R.id.parent_scrollview);
-        mScrollview.setParentScrollView(scrollView);
+//        DetailActivity activity = (DetailActivity) getActivity();
+//        CustomScrollView scrollView = (CustomScrollView) activity.findViewById(R.id.parent_scrollview);
+//        mScrollview.setParentScrollView(scrollView);
         mPresenter.initData();
     }
 
