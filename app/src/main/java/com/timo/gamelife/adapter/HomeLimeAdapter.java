@@ -2,14 +2,12 @@ package com.timo.gamelife.adapter;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.timo.gamelife.R;
 import com.timo.gamelife.bean.HouseBean;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.base.BaseAdapter;
 import com.timo.timolib.base.adapter.ViewHolder;
-import com.timo.timolib.utils.GlideUtils;
 
 import java.util.List;
 

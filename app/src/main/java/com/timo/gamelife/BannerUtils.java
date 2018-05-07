@@ -18,8 +18,7 @@ import java.util.List;
  */
 
 public class BannerUtils extends BaseUtils {
-    private BannerUtils() {
-    }
+    private BannerUtils() {}
 
     private static BannerUtils instance;
 

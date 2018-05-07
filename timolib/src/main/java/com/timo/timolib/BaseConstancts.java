@@ -7,7 +7,8 @@ import android.support.annotation.ColorInt;
  * 常量类
  */
 public interface BaseConstancts {
-
+    boolean ISLOG = true; //log信息
+    String TAG = "timolog"; //log信息
     String BASE_SHARE_NAME = "base_share_name";//sp保存名称
     String BASE_PARAM = "base_param";
     String BASE_PASSWORD = "base_password"; //密码

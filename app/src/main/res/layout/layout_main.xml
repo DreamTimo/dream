@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/transparent"
     android:orientation="vertical"
-    >
+>
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
@@ -33,7 +33,8 @@
             android:checked="true"
             android:drawableTop="@drawable/navigation_dream"
             android:text="推荐"
-            android:textColor="@drawable/navigation_text_selector"/>
+            android:textColor="@drawable/navigation_text_selector"
+            android:visibility="gone"/>
         <RadioButton
             android:id="@+id/rb_main"
             style="@style/bottombar"

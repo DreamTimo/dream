@@ -9,6 +9,10 @@ android {
         versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
+        //  允许使用jdk1.8新特性，支持lambat
+        // jackOptions {
+        //    enabled true
+        // }
     }
     buildTypes {
         release {

@@ -29,6 +29,12 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
+            android:name=".activity.projectweb.ProjectWebActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
             android:name=".user.UserActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
@@ -42,13 +48,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <!--<activity-->
-        <!--android:name=".ui.main.activity.maina.MainAActivity"-->
-        <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-        <!--android:launchMode="singleTask"-->
-        <!--android:screenOrientation="portrait"-->
-        <!--android:theme="@style/AppTheme"-->
-        <!--android:windowSoftInputMode="stateHidden|adjustPan"/>-->
         <meta-data
             android:name="UPDATE_APP_KEY"
             android:value="ab55ce55Ac4bcP408cPb8c1Aaeac179c5f6f"/>

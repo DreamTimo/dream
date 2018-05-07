@@ -1,6 +1,5 @@
 package com.timo.gamelife.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -48,7 +47,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected String setTitleName() {
-        return "首页";
+        return getString(R.string.main_home);
     }
 
     @Override
@@ -104,18 +103,9 @@ public class HomeFragment extends BaseFragment {
         mBtIcon.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-//                XFVoiceUtils.getInstance().xfHear(mXFListener);
-                Intent intent = new Intent(getContext(), UserActivity.class);
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    ActivityOptions options = ActivityOptions
-//                            .makeSceneTransitionAnimation((Activity) getActivity(), mBtIcon, "电影图片");
-//                    getActivity().startActivity(intent, options.toBundle());
-//                } else {
-//                    //让新的Activity从一个小的范围扩大到全屏
                 ActivityOptionsCompat options = ActivityOptionsCompat
                         .makeScaleUpAnimation(mBtIcon, mBtIcon.getWidth() / 2, mBtIcon.getHeight() / 2, 0, 0);
-                ActivityCompat.startActivity((Activity) getActivity(), intent, options.toBundle());
-//                }
+                ActivityCompat.startActivity(getActivity(), new Intent(getContext(), UserActivity.class), options.toBundle());
                 startActivityNoFinish(UserActivity.class);
                 return false;
             }

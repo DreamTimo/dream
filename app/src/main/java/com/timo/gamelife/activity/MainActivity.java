@@ -20,7 +20,6 @@ import com.timo.timolib.view.CommonWebView;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
-
     @BindView(R.id.rb_main)
     RadioButton mRbMain;
     @BindView(R.id.rb_find)
@@ -51,7 +50,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initEvent() {
         mRgBottom.setOnCheckedChangeListener(new MyCheckChangeListener());
-        showFragment(0);
+        showFragment(1);
         PermissionUtils.getInstance().applyPermission(this);
     }
 
@@ -59,7 +58,7 @@ public class MainActivity extends BaseActivity {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId == R.id.rb_recommend) {
-                showFragment(0);
+//                showFragment(0);
             } else if (checkedId == R.id.rb_main) {
                 showFragment(1);
             } else if (checkedId == R.id.rb_find) {
@@ -93,12 +92,13 @@ public class MainActivity extends BaseActivity {
         ft.commitAllowingStateLoss();
         mCurrentPos = i;
         ((RadioButton) mRgBottom.getChildAt(mCurrentPos)).setChecked(true);
-        if (i == 0) {
-            BaseTools.loadWeb(mWebview, "file:///android_asset/sakura.html");
-        } else if (i == 1) {
+//        if (i == 0) {
+//            BaseTools.loadWeb(mWebview, "file:///android_asset/sakura.html");
+//        } else
+        if (i == 1) {
             BaseTools.loadWeb(mWebview, "file:///android_asset/snow.html");
         } else if (i == 2) {
-            BaseTools.loadWeb(mWebview, "file:///android_asset/snow.html");
+            BaseTools.loadWeb(mWebview, "file:///android_asset/sakura.html");
         } else if (i == 3) {
             BaseTools.loadWeb(mWebview, "file:///android_asset/snow.html");
         }

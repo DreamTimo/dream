@@ -26,6 +26,6 @@ public class BannerImageView extends android.support.v7.widget.AppCompatImageVie
     }
 
     public void setImage(BannerImage image) {
-        GlideUtils.getInstance().load(getContext(), R.drawable.ceshi, image.getImageView());
+        GlideUtils.getInstance().load(getContext(), "http://1111111111111111", image.getImageView());
     }
 }

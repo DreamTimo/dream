@@ -2,6 +2,12 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="yellow">#fbc02d</color> <!-- 黄色 -->
+    <color name="gold">#FFD700</color>   <!-- 金色 -->
+    <color name="orange">#f57c00</color> <!-- 橙色 -->
+    <color name="red">#d01716</color>    <!-- 红色 -->
+    <color name="green">#0a7e07</color>  <!-- 绿色 -->
+    <color name="blue">#455ede</color>   <!-- 蓝色 -->
     <color name="default_text_color">#333333</color>
     <color name="color_green">#05BCA5</color>
     <!--加载框颜色信息-->
@@ -16,9 +22,6 @@
     <color name="XFrame_text_gray">#8a8a8a</color>
     <color name="XFrame_loading_dialog_message">#595959</color>
 
-    <color name="colorWhite">#FFF</color>
-    <color name="transparent">#0000</color>
-
     <color name="text_black">#737373</color>
     <color name="text_grey">#9DA0A3</color>
 
@@ -27,4 +30,35 @@
     <color name="bb_inActiveBottomBarItemColor">#747474</color>
     <color name="bb_darkBackgroundColor">#212121</color>
     <color name="bb_tabletRightBorderDark">#505050</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="transparent05">#0B000000</color>
+    <color name="transparent10">#1A000000</color>
+    <color name="transparent20">#33000000</color>
+    <color name="transparent30">#4D000000</color>
+    <color name="transparent40">#66000000</color>
+    <color name="transparent50">#80000000</color>
+    <color name="transparent60">#9A000000</color>
+    <color name="transparent70">#B3000000</color>
+    <color name="transparent80">#CC000000</color>
+    <color name="transparent90">#E5000000</color>
+    <color name="transparent100">#FF000000</color>
+
+    <color name="transparent_white">#00ffffff</color>
+    <color name="transparent10_white">#1Affffff</color>
+    <color name="transparent20_white">#33ffffff</color>
+    <color name="transparent30_white">#4Dffffff</color>
+    <color name="transparent40_white">#66ffffff</color>
+    <color name="transparent50_white">#80ffffff</color>
+    <color name="transparent60_white">#9Affffff</color>
+    <color name="transparent70_white">#B3ffffff</color>
+    <color name="transparent80_white">#CCffffff</color>
+    <color name="transparent90_white">#E5ffffff</color>
+    <color name="transparent100_white">#FFffffff</color>
+
+    <color name="placeholder">#33000000</color>
+    <color name="placeholder_yellow">#33fbc02d</color>
+    <color name="placeholder_orange">#33f57c00</color>
+
+
 </resources>
