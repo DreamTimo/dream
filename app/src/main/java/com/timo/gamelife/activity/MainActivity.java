@@ -9,12 +9,13 @@ import android.widget.RadioGroup;
 import com.timo.gamelife.R;
 import com.timo.gamelife.recommend.RecommendFragment;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.base_fragment.FragmentFactory;
+import com.timo.timolib.base.base_fragment.FragmentFactory;
 import com.timo.gamelife.fragment.HomeFragment;
 import com.timo.gamelife.fragment.MineFragment;
 import com.timo.gamelife.fragment.DreamFragment;
-import com.timo.timolib.base_activity.BaseActivity;
-import com.timo.timolib.utils.PermissionUtils;
+import com.timo.timolib.base.base_activity.BaseActivity;
+import com.timo.timolib.tools.daynightmodeutils.ChangeModeController;
+import com.timo.timolib.tools.utils.PermissionUtils;
 import com.timo.timolib.view.CommonWebView;
 
 import butterknife.BindView;

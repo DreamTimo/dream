@@ -3,8 +3,7 @@ package com.timo.timolib.view.banner;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.timo.timolib.R;
-import com.timo.timolib.utils.GlideUtils;
+import com.timo.timolib.BaseTools;
 import com.timo.timolib.view.banner.internal.BannerImage;
 
 public class BannerImageView extends android.support.v7.widget.AppCompatImageView {
@@ -26,6 +25,6 @@ public class BannerImageView extends android.support.v7.widget.AppCompatImageVie
     }
 
     public void setImage(BannerImage image) {
-        GlideUtils.getInstance().load(getContext(), "http://1111111111111111", image.getImageView());
+        BaseTools.load(getContext(), image.getUrl(), image.getImageView());
     }
 }

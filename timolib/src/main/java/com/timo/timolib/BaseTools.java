@@ -13,28 +13,38 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.timo.timolib.base.DialogListener;
-import com.timo.timolib.service_bg.DaemonEnv;
-import com.timo.timolib.service_bg.IntentWrapper;
-import com.timo.timolib.updata_app.UpdateAppHttpManager;
-import com.timo.timolib.updata_app.UpdateAppManager;
-import com.timo.timolib.utils.DialogUtils;
-import com.timo.timolib.utils.ScreenUtils;
-import com.timo.timolib.utils.ToastUtils;
-import com.timo.timolib.utils.math.DateUtils;
-import com.timo.timolib.utils.math.MathUtils;
+import com.timo.timolib.tools.glide.GlideImageView;
+import com.timo.timolib.tools.glide.progress.CircleProgressView;
+import com.timo.timolib.tools.glide.progress.OnGlideImageViewListener;
+import com.timo.timolib.tools.service_bg.DaemonEnv;
+import com.timo.timolib.tools.service_bg.IntentWrapper;
+import com.timo.timolib.tools.updata_app.UpdateAppHttpManager;
+import com.timo.timolib.tools.updata_app.UpdateAppManager;
+import com.timo.timolib.tools.utils.DialogUtils;
+import com.timo.timolib.tools.utils.ScreenUtils;
+import com.timo.timolib.tools.utils.ToastUtils;
+import com.timo.timolib.tools.utils.math.DateUtils;
+import com.timo.timolib.tools.utils.math.MathUtils;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.TitleBar;
 
 import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,13 +59,13 @@ public class BaseTools {
     }
 
     public static void e(String msg) {
-        if (BaseConfig.log) {
-            Log.e(BaseConfig.log_tag, msg);
+        if (Timo_BaseConfig.log) {
+            Log.e(Timo_BaseConfig.log_tag, msg);
         }
     }
 
     public static void printErrorMessage(Exception e) {
-        if (BaseConfig.log) {
+        if (Timo_BaseConfig.log) {
             e.printStackTrace();
         }
     }
@@ -213,7 +223,7 @@ public class BaseTools {
      * @param location 默认为1；1:左 2:右 3:上 4:下
      */
     public static void setTextViewDrawable(int resourceId, TextView view, int location) {
-        Drawable drawable = MyApplication.getInstance().getContext().getResources().getDrawable(resourceId);
+        Drawable drawable = Timo_Application.getInstance().getContext().getResources().getDrawable(resourceId);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         if (location == 1) {
             view.setCompoundDrawables(drawable, null, null, null);
@@ -257,7 +267,7 @@ public class BaseTools {
      * 获取Data时间
      */
     public static Date getData(String str) {
-        return getData(str, MyApplication.getInstance().getString(R.string.data_format));
+        return getData(str, Timo_Application.getInstance().getString(R.string.data_format));
     }
 
     public static Date getData(String str, String formatString) {
@@ -313,8 +323,8 @@ public class BaseTools {
      * Toast调用
      */
     public static void showToast(int resourceId) {
-        if (isEmpty(MyApplication.getInstance().getString(resourceId))) return;
-        showToast(MyApplication.getInstance().getString(resourceId));
+        if (isEmpty(Timo_Application.getInstance().getString(resourceId))) return;
+        showToast(Timo_Application.getInstance().getString(resourceId));
     }
 
     /**
@@ -358,7 +368,7 @@ public class BaseTools {
     }
 
     public static String getTime(String str) {
-        return getTime(str, MyApplication.getInstance().getString(R.string.data_format));
+        return getTime(str, Timo_Application.getInstance().getString(R.string.data_format));
     }
 
     /**
@@ -371,7 +381,7 @@ public class BaseTools {
     }
 
     public static String getTime(long time) {
-        return getTime(time, MyApplication.getInstance().getString(R.string.data_format));
+        return getTime(time, Timo_Application.getInstance().getString(R.string.data_format));
     }
 
     /**
@@ -384,7 +394,7 @@ public class BaseTools {
     }
 
     public static String getTime(Date date) {
-        return getTime(date, MyApplication.getInstance().getString(R.string.data_format));
+        return getTime(date, Timo_Application.getInstance().getString(R.string.data_format));
     }
 
     /**
@@ -423,6 +433,174 @@ public class BaseTools {
         return MathUtils.getInstance().isNotEmpty(obj);
     }
 
+    public static void load(Context context, String url, ImageView view) {
+        if (BaseTools.isEmpty(url) || view == null) return;
+
+        if (url.startsWith("http")) {
+            Glide
+                    .with(context)
+                    .load(url)
+                    .into(view);
+        } else {
+            Glide
+                    .with(context)
+                    .load("http://" + url)
+                    .into(view);
+        }
+
+    }
+
+    public static void load(Context context, URL url, ImageView view) {
+        Glide
+                .with(context)
+                .load(url)
+                .into(view);
+    }
+
+    public static void load(Context context, File file, ImageView view) {
+        Glide
+                .with(context)
+                .load(file)
+                .into(view);
+    }
+
+    public static void load(Context context, int resourceId, ImageView view) {
+        Glide
+                .with(context)
+                .load(resourceId)
+                .into(view);
+    }
+
+    public static void load(Context context, int resourceId, ImageView view, int defaultResId) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(defaultResId)
+                .error(defaultResId)
+                .priority(Priority.HIGH);
+        Glide
+                .with(context)
+                .setDefaultRequestOptions(options)
+                .load(resourceId)
+                .into(view);
+    }
+
+    public static void load(Context context, int resourceId, ImageView view, int defaultResId, int errorResId) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(defaultResId)
+                .error(errorResId)
+                .priority(Priority.HIGH);
+        Glide
+                .with(context)
+                .setDefaultRequestOptions(options)
+                .load(resourceId)
+                .into(view);
+    }
+
+    public static void load(Context context, int resourceId, ImageView view, RequestOptions options) {
+        Glide
+                .with(context)
+                .setDefaultRequestOptions(options)
+                .load(resourceId)
+                .into(view);
+    }
+
+    public static void load(String url, GlideImageView view, int defaultResId) {
+        view.loadImage(url, defaultResId);
+    }
+
+    public static void load(String url, GlideImageView view, int defaultResId, boolean setCircle, int broderWidth, int broderColor) {
+        view.setCircle(setCircle);
+        view.setBorderWidth(broderWidth);
+        view.setBorderColor(broderColor);
+        view.loadImage(url, defaultResId);
+    }
+
+    public static void load(int resourceId, GlideImageView view, int defaultResId) {
+        view.load(resourceId, view.requestOptions(defaultResId));
+    }
+
+    public static void load(int resourceId, GlideImageView view, int defaultResId, boolean setCircle, int broderWidth, int broderColor) {
+        view.setCircle(setCircle);
+        view.setBorderWidth(broderWidth);
+        view.setBorderColor(broderColor);
+        view.load(resourceId, view.requestOptions(defaultResId));
+    }
+
+    public static void load(String url, GlideImageView view, int defaultResId, final CircleProgressView progressBar) {
+        view.loadImage(url, defaultResId).listener(new OnGlideImageViewListener() {
+            @Override
+            public void onProgress(int percent, boolean isDone, GlideException exception) {
+                progressBar.setProgress(percent);
+                progressBar.setVisibility(isDone ? View.GONE : View.VISIBLE);
+            }
+        });
+    }
+
+    public static void load(String url, GlideImageView view, int defaultResId, final CircleProgressView progressBar, boolean setCircle, int broderWidth, int broderColor) {
+        view.setCircle(setCircle);
+        view.setBorderWidth(broderWidth);
+        view.setBorderColor(broderColor);
+        view.loadImage(url, defaultResId).listener(new OnGlideImageViewListener() {
+            @Override
+            public void onProgress(int percent, boolean isDone, GlideException exception) {
+                progressBar.setProgress(percent);
+                progressBar.setVisibility(isDone ? View.GONE : View.VISIBLE);
+            }
+        });
+    }
+
+    public static void load(int resourceId, GlideImageView view, int defaultResId, final CircleProgressView progressBar) {
+        view.load(resourceId, view.requestOptions(defaultResId)).listener(new OnGlideImageViewListener() {
+            @Override
+            public void onProgress(int percent, boolean isDone, GlideException exception) {
+                progressBar.setProgress(percent);
+                progressBar.setVisibility(isDone ? View.GONE : View.VISIBLE);
+            }
+        });
+    }
+
+    public static void load(int resourceId, GlideImageView view, int defaultResId, final CircleProgressView progressBar, boolean setCircle, int broderWidth, int broderColor) {
+        view.setCircle(setCircle);
+        view.setBorderWidth(broderWidth);
+        view.setBorderColor(broderColor);
+        view.load(resourceId, view.requestOptions(defaultResId)).listener(new OnGlideImageViewListener() {
+            @Override
+            public void onProgress(int percent, boolean isDone, GlideException exception) {
+                progressBar.setProgress(percent);
+                progressBar.setVisibility(isDone ? View.GONE : View.VISIBLE);
+            }
+        });
+    }
+
+    public static void setGlideImageViewRadius(GlideImageView imageView, int radius, int borderWidth, int borderColor, boolean pressedModeEnabled, int pressBorderColor, View.OnClickListener listener) {
+        imageView.setCornerRadius(radius);
+        imageView.setBorderWidth(borderWidth);
+        imageView.setBorderColor(borderColor);
+        imageView.setPressedModeEnabled(pressedModeEnabled);
+        imageView.setPressedBorderWidth(borderWidth);
+        imageView.setPressedBorderColor(pressBorderColor);
+        imageView.setPressedMaskColor(Timo_BaseConstancts.COLOR_PRESS_MASK);
+        if (listener != null) {
+            imageView.setOnClickListener(listener);
+        }
+    }
+
+    public static void setGlideImageViewRadius(GlideImageView imageView, int radius, int borderWidth, int borderColor, boolean pressedModeEnabled, int pressBorderColor) {
+        setGlideImageViewRadius(imageView, radius, borderWidth, borderColor, pressedModeEnabled, pressBorderColor, null);
+    }
+
+    public static void setGlideImageViewCircle(GlideImageView imageView, int borderWidth, int borderColor, View.OnClickListener listener) {
+        imageView.setCircle(true);
+        imageView.setBorderWidth(borderWidth);
+        imageView.setBorderColor(borderColor);
+        if (listener != null) {
+            imageView.setOnClickListener(listener);
+        }
+    }
+
+    public static void setGlideImageViewCircle(GlideImageView imageView, int borderWidth, int borderColor) {
+        setGlideImageViewCircle(imageView, borderWidth, borderColor, null);
+    }
+
     /**
      * 空检验
      */
@@ -450,7 +628,7 @@ public class BaseTools {
      * 获取mate信息
      */
     public static String getMeta(String name) {
-        final Context context = MyApplication.getInstance().getContext();
+        final Context context = Timo_Application.getInstance().getContext();
         String str = "";
 
         ApplicationInfo ai = null;

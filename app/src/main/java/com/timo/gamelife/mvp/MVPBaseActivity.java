@@ -3,9 +3,8 @@ package com.timo.gamelife.mvp;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
-import com.timo.timolib.base_activity.BaseActivity;
+import com.timo.timolib.base.base_activity.BaseActivity;
 
 import java.lang.reflect.ParameterizedType;
 

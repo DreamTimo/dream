@@ -3,9 +3,8 @@ package com.timo.gamelife.mvp;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 
-import com.timo.timolib.base_fragment.BaseFragment;
+import com.timo.timolib.base.base_fragment.BaseFragment;
 
 import java.lang.reflect.ParameterizedType;
 

@@ -3,7 +3,7 @@ package com.timo.timolib;
 import android.content.Intent;
 import android.os.IBinder;
 
-import com.timo.timolib.service_bg.AbsWorkService;
+import com.timo.timolib.tools.service_bg.AbsWorkService;
 
 import java.util.concurrent.TimeUnit;
 

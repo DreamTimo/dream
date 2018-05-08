@@ -16,17 +16,13 @@ import com.timo.gamelife.R;
 import com.timo.gamelife.adapter.DetailFragmentAdapter;
 import com.timo.gamelife.user.UserActivity;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.base_fragment.BaseFragment;
+import com.timo.timolib.base.base_fragment.BaseFragment;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.FloatTouchView;
 import com.timo.timolib.view.TitleBar;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by lykj on 2017/9/12.

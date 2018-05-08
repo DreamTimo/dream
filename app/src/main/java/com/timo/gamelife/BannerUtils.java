@@ -3,8 +3,8 @@ package com.timo.gamelife;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
-import com.timo.timolib.http.Http;
-import com.timo.timolib.utils.BaseUtils;
+
+import com.timo.timolib.tools.utils.BaseUtils;
 import com.timo.timolib.view.banner.Banner;
 import com.timo.timolib.view.banner.internal.BannerData;
 import com.timo.timolib.view.banner.internal.BaseBannerAdapter;

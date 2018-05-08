@@ -25,13 +25,13 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_sync_black_24dp"/>
 
-    <com.timo.timolib.camera.CaptureLayout
+    <com.timo.timolib.tools.camera.CaptureLayout
         android:id="@+id/capture_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"/>
 
-    <com.timo.timolib.camera.FoucsView
+    <com.timo.timolib.tools.camera.FoucsView
         android:id="@+id/fouce_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

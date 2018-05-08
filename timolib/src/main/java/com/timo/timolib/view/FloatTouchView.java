@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.utils.ScreenUtils;
+import com.timo.timolib.tools.utils.ScreenUtils;
 
 /**
  * Created by 蔡永汪 on 2017/11/15.

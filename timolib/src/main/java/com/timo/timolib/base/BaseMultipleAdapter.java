@@ -3,9 +3,9 @@ package com.timo.timolib.base;
 import android.content.Context;
 import android.view.LayoutInflater;
 
-import com.timo.timolib.base.adapter.ItemViewDelegate;
-import com.timo.timolib.base.adapter.MultiItemTypeAdapter;
-import com.timo.timolib.base.adapter.ViewHolder;
+import com.timo.timolib.base.base_adapter.ItemViewDelegate;
+import com.timo.timolib.base.base_adapter.MultiItemTypeAdapter;
+import com.timo.timolib.base.base_adapter.ViewHolder;
 
 import java.util.List;
 

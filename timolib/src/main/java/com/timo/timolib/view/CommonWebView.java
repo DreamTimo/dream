@@ -25,7 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.timo.timolib.R;
-import com.timo.timolib.utils.NetUtil;
+import com.timo.timolib.tools.utils.NetUtil;
 
 /**
  * 2015年3月31日

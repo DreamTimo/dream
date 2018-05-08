@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.utils.DialogUtils;
+import com.timo.timolib.tools.utils.DialogUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.builder.PostFormBuilder;
 import com.zhy.http.okhttp.callback.StringCallback;

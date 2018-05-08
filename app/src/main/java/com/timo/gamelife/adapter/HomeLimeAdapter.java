@@ -7,7 +7,7 @@ import com.timo.gamelife.R;
 import com.timo.gamelife.bean.HouseBean;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.base.BaseAdapter;
-import com.timo.timolib.base.adapter.ViewHolder;
+import com.timo.timolib.base.base_adapter.ViewHolder;
 
 import java.util.List;
 

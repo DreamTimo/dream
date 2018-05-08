@@ -1,21 +1,16 @@
 package com.timo.gamelife.fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.timo.gamelife.BannerUtils;
 import com.timo.gamelife.R;
-import com.timo.gamelife.activity.projectweb.ProjectWebActivity;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.base_fragment.BaseFragment;
-import com.timo.timolib.camera.util.FileUtil;
-import com.timo.timolib.utils.JCVideoUtils;
+import com.timo.timolib.base.base_fragment.BaseFragment;
+import com.timo.timolib.tools.camera.util.FileUtil;
+import com.timo.timolib.tools.daynightmodeutils.ChangeModeController;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.banner.Banner;
 
@@ -23,8 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.jzvd.JZVideoPlayerStandard;
 
 /**
@@ -68,7 +61,7 @@ public class MineFragment extends BaseFragment {
         mTextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FileUtil.saveDeviceIdFile("425", Environment.getExternalStorageDirectory() + "/", "deviceId.config");
+                ChangeModeController.toggleThemeSetting(getActivity());
             }
         });
 //        mTextview.setOnClickListener(new View.OnClickListener() {

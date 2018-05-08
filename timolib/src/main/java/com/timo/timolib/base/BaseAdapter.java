@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 
-import com.timo.timolib.BaseConstancts;
-import com.timo.timolib.Params;
-import com.timo.timolib.base.adapter.ItemViewDelegate;
-import com.timo.timolib.base.adapter.MultiItemTypeAdapter;
-import com.timo.timolib.base.adapter.ViewHolder;
+import com.timo.timolib.Timo_BaseConstancts;
+import com.timo.timolib.Timo_Params;
+import com.timo.timolib.base.base_adapter.ItemViewDelegate;
+import com.timo.timolib.base.base_adapter.MultiItemTypeAdapter;
+import com.timo.timolib.base.base_adapter.ViewHolder;
 
 import java.util.List;
 
@@ -56,15 +56,15 @@ public abstract class BaseAdapter<T> extends MultiItemTypeAdapter<T> {
         if (setParams == null) {
             mContext.startActivity(new Intent(mContext, cls));
         } else {
-            mContext.startActivity(new Intent(mContext, cls).putExtra(BaseConstancts.BASE_PARAM, setParams));
+            mContext.startActivity(new Intent(mContext, cls).putExtra(Timo_BaseConstancts.BASE_PARAM, setParams));
         }
     }
 
-    private Params setParams;
+    private Timo_Params setParams;
 
-    public Params setParams() {
+    public Timo_Params setParams() {
         if (setParams == null) {
-            setParams = new Params();
+            setParams = new Timo_Params();
         }
         return setParams;
     }

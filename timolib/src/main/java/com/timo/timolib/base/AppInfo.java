@@ -11,12 +11,12 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Base64;
 
-import com.timo.timolib.BaseConstancts;
-import com.timo.timolib.MyApplication;
+import com.timo.timolib.Timo_BaseConstancts;
+import com.timo.timolib.Timo_Application;
 import com.timo.timolib.UserBean;
-import com.timo.timolib.utils.FileUtils;
-import com.timo.timolib.utils.Md5Util;
-import com.timo.timolib.utils.SPUtils;
+import com.timo.timolib.tools.utils.FileUtils;
+import com.timo.timolib.tools.utils.Md5Util;
+import com.timo.timolib.tools.utils.SPUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -40,7 +40,7 @@ public class AppInfo {
      * @return
      */
     public static String getPackageName() {
-        String packageName = MyApplication.getInstance().getContext().getPackageName();
+        String packageName = Timo_Application.getInstance().getContext().getPackageName();
         return packageName;
     }
 
@@ -53,7 +53,7 @@ public class AppInfo {
         int versionCode = 0;
         try {
             String packageName = getPackageName();
-            versionCode = MyApplication.getInstance().getContext().getPackageManager().getPackageInfo(
+            versionCode = Timo_Application.getInstance().getContext().getPackageManager().getPackageInfo(
                     packageName, 0).versionCode;
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class AppInfo {
     public static String getVersionName() {
         String versionName = "";
         try {
-            versionName = MyApplication.getInstance().getContext().getPackageManager().getPackageInfo(
+            versionName = Timo_Application.getInstance().getContext().getPackageManager().getPackageInfo(
                     getPackageName(), 0).versionName;
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +79,7 @@ public class AppInfo {
     public static String apiHost() {
         String ahiHost = "";
         try {
-            ApplicationInfo appInfo = MyApplication.getInstance().getContext().getPackageManager()
+            ApplicationInfo appInfo = Timo_Application.getInstance().getContext().getPackageManager()
                     .getApplicationInfo(getPackageName(),
                             PackageManager.GET_META_DATA);
             ahiHost = appInfo.metaData.getString("api_host");
@@ -120,11 +120,11 @@ public class AppInfo {
      * 保存密码
      */
     public static void savePass(String pass) {
-        SPUtils.getInstance().save(BaseConstancts.BASE_PASSWORD, pass);
+        SPUtils.getInstance().save(Timo_BaseConstancts.BASE_PASSWORD, pass);
     }
 
     public static String getPass() {
-        return SPUtils.getInstance().get(BaseConstancts.BASE_PASSWORD, "").toString();
+        return SPUtils.getInstance().get(Timo_BaseConstancts.BASE_PASSWORD, "").toString();
     }
 
     /**
@@ -189,7 +189,7 @@ public class AppInfo {
      */
     public static void startApp(String packageName) {
         if (TextUtils.isEmpty(packageName)) return;
-        MyApplication.getInstance().getContext().startActivity(MyApplication.getInstance().getContext().getPackageManager().getLaunchIntentForPackage(packageName));
+        Timo_Application.getInstance().getContext().startActivity(Timo_Application.getInstance().getContext().getPackageManager().getLaunchIntentForPackage(packageName));
     }
 
     /**
@@ -199,7 +199,7 @@ public class AppInfo {
      * @return
      */
     public static boolean isInstallApp(String packageName) {
-        PackageManager manager = MyApplication.getInstance().getContext().getPackageManager();
+        PackageManager manager = Timo_Application.getInstance().getContext().getPackageManager();
         List<PackageInfo> pkgList = manager.getInstalledPackages(0);
         for (int i = 0; i < pkgList.size(); i++) {
             PackageInfo info = pkgList.get(i);
@@ -220,7 +220,7 @@ public class AppInfo {
         intent.setAction(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(file),
                 "application/vnd.android.package-archive");
-        MyApplication.getInstance().getContext().startActivity(intent);
+        Timo_Application.getInstance().getContext().startActivity(intent);
     }
 
     /**
@@ -232,7 +232,7 @@ public class AppInfo {
         Intent intent = new Intent(Intent.ACTION_DELETE);
         Uri packageURI = Uri.parse("package:" + packageName);
         intent.setData(packageURI);
-        MyApplication.getInstance().getContext().startActivity(intent);
+        Timo_Application.getInstance().getContext().startActivity(intent);
     }
 
     /**
@@ -248,11 +248,11 @@ public class AppInfo {
      * 系统应用（有系统签名）可以调用该权限。
      */
     public static boolean isRunningForeground() {
-        ActivityManager am = (ActivityManager) MyApplication.getInstance().getContext().getSystemService(MyApplication.getInstance().getContext().ACTIVITY_SERVICE);
+        ActivityManager am = (ActivityManager) Timo_Application.getInstance().getContext().getSystemService(Timo_Application.getInstance().getContext().ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> taskList = am.getRunningTasks(1);
         if (taskList != null && !taskList.isEmpty()) {
             ComponentName componentName = taskList.get(0).topActivity;
-            if (componentName != null && componentName.getPackageName().equals(MyApplication.getInstance().getContext().getPackageName())) {
+            if (componentName != null && componentName.getPackageName().equals(Timo_Application.getInstance().getContext().getPackageName())) {
                 return true;
             }
         }
@@ -267,7 +267,7 @@ public class AppInfo {
      */
     public static boolean isServiceRunning(String className) {
         boolean isRunning = false;
-        ActivityManager activityManager = (ActivityManager) MyApplication.getInstance().getContext().getSystemService(MyApplication.getInstance().getContext().ACTIVITY_SERVICE);
+        ActivityManager activityManager = (ActivityManager) Timo_Application.getInstance().getContext().getSystemService(Timo_Application.getInstance().getContext().ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> servicesList = activityManager.getRunningServices(Integer.MAX_VALUE);
         Iterator<ActivityManager.RunningServiceInfo> l = servicesList.iterator();
         while (l.hasNext()) {
@@ -289,12 +289,12 @@ public class AppInfo {
         Intent intent = null;
         boolean ret = false;
         try {
-            intent = new Intent(MyApplication.getInstance().getContext(), Class.forName(className));
+            intent = new Intent(Timo_Application.getInstance().getContext(), Class.forName(className));
         } catch (Exception e) {
             e.printStackTrace();
         }
         if (intent != null) {
-            ret = MyApplication.getInstance().getContext().stopService(intent);
+            ret = Timo_Application.getInstance().getContext().stopService(intent);
         }
         return ret;
     }
@@ -305,10 +305,10 @@ public class AppInfo {
      * @return PackageInfo
      */
     public static PackageInfo getPackageInfo() {
-        PackageManager packageManager = MyApplication.getInstance().getContext().getPackageManager();
+        PackageManager packageManager = Timo_Application.getInstance().getContext().getPackageManager();
         PackageInfo packageInfo = null;
         try {
-            packageInfo = packageManager.getPackageInfo(MyApplication.getInstance().getContext().getPackageName(), 0);
+            packageInfo = packageManager.getPackageInfo(Timo_Application.getInstance().getContext().getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -343,7 +343,7 @@ public class AppInfo {
      */
     public static String getSign(String pkgName) {
         try {
-            PackageInfo pis = MyApplication.getInstance().getContext().getPackageManager()
+            PackageInfo pis = Timo_Application.getInstance().getContext().getPackageManager()
                     .getPackageInfo(pkgName,
                             PackageManager.GET_SIGNATURES);
             return hexDigest(pis.signatures[0].toByteArray());

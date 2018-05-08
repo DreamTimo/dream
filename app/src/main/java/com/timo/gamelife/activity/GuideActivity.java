@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.timo.gamelife.R;
 import com.timo.timolib.base.AppInfo;
-import com.timo.timolib.base_activity.BaseActivity;
+import com.timo.timolib.base.base_activity.BaseActivity;
 
 import java.util.ArrayList;
 

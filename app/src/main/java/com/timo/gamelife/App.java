@@ -4,15 +4,15 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import com.timo.timolib.MyApplication;
-import com.timo.timolib.utils.GlideUtils;
+import com.timo.timolib.BaseTools;
+import com.timo.timolib.Timo_Application;
 import com.timo.timolib.view.ninegridview.NineGridView;
 
 /**
  * Created by 蔡永汪 on 2017/11/8.
  */
 
-public class App extends MyApplication {
+public class App extends Timo_Application {
     @Override
     public void onCreate() {
         super.onCreate();
@@ -26,7 +26,7 @@ public class App extends MyApplication {
 
         @Override
         public void onDisplayImage(Context context, ImageView imageView, String url) {
-            GlideUtils.getInstance().load(context, url, imageView);
+            BaseTools.load(context,url,imageView);
         }
 
         @Override

@@ -31,7 +31,7 @@
                  android:label="@string/app_name"
                  android:supportsRtl="true"
     >
-        <activity android:name=".camera.CameraActivity"
+        <activity android:name=".tools.camera.CameraActivity"
                   android:configChanges="keyboardHidden|orientation|screenSize"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
@@ -40,7 +40,7 @@
         />
         <service android:name=".BgService"/>
         <receiver
-            android:name=".service_bg.WakeUpReceiver"
+            android:name=".tools.service_bg.WakeUpReceiver"
             android:process=":watch">
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT"/>
@@ -51,7 +51,7 @@
         </receiver>
 
         <receiver
-            android:name="com.timo.timolib.service_bg.WakeUpReceiver$WakeUpAutoStartReceiver"
+            android:name="com.timo.timolib.tools.service_bg.WakeUpReceiver$WakeUpAutoStartReceiver"
             android:process=":watch">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -64,21 +64,21 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.timo.timolib.service_bg.AbsWorkService$WorkNotificationService"/>
+        <service android:name="com.timo.timolib.tools.service_bg.AbsWorkService$WorkNotificationService"/>
 
         <service
-            android:name="com.timo.timolib.service_bg.JobSchedulerService"
+            android:name="com.timo.timolib.tools.service_bg.JobSchedulerService"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:process=":watch"/>
 
         <service
-            android:name="com.timo.timolib.service_bg.WatchDogService"
+            android:name="com.timo.timolib.tools.service_bg.WatchDogService"
             android:process=":watch"/>
 
         <service
-            android:name="com.timo.timolib.service_bg.WatchDogService$WatchDogNotificationService"
+            android:name="com.timo.timolib.tools.service_bg.WatchDogService$WatchDogNotificationService"
             android:process=":watch"/>
 
     </application>
