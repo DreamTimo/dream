@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <!--android:name=".activity.GuideActivity"-->
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.testmain.TestMainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -22,12 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.main.activity.maina.MainAActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".activity.projectweb.ProjectWebActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
