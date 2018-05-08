@@ -14,6 +14,8 @@ import com.timo.timolib.view.tablayout.CommonTabLayout;
 public class TestMainContract {
     interface View extends BaseView {
         void showFragment(int position);
+        void initWave();
+
     }
 
     interface  Presenter extends BasePresenter<View> {

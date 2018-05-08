@@ -40,6 +40,10 @@ import com.timo.timolib.tools.utils.math.DateUtils;
 import com.timo.timolib.tools.utils.math.MathUtils;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.TitleBar;
+import com.timo.timolib.view.tablayout.CommonTabLayout;
+import com.timo.timolib.view.tablayout.TabEntity;
+import com.timo.timolib.view.tablayout.listener.CustomTabEntity;
+import com.timo.timolib.view.tablayout.listener.OnTabSelectListener;
 
 import java.io.Closeable;
 import java.io.File;
@@ -48,6 +52,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -161,6 +166,19 @@ public class BaseTools {
      */
     public static void showPictureSelector(Activity activity) {
         showPictureSelector(activity, 1, 1, true, true);
+    }
+
+    /**
+     * 选择图片
+     */
+    public static void setNavigation(CommonTabLayout mTabLayout, String[] titles, int[] noSelectPic, int[] selectedPic, OnTabSelectListener listener) {
+        ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+        for (int i = 0; i < titles.length; i++) {
+            mTabEntities.add(new TabEntity(titles[i], selectedPic[i], noSelectPic[i]));
+        }
+        mTabLayout.setTabData(mTabEntities);
+        //点击监听
+        mTabLayout.setOnTabSelectListener(listener);
     }
 
     /**
