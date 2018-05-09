@@ -8,12 +8,17 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +26,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.Gson;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.timo.timolib.base.DialogListener;
+import com.timo.timolib.base.base_fragment.FragmentFactory;
 import com.timo.timolib.tools.glide.GlideImageView;
 import com.timo.timolib.tools.glide.progress.CircleProgressView;
 import com.timo.timolib.tools.glide.progress.OnGlideImageViewListener;
+import com.timo.timolib.tools.logger.Logger;
 import com.timo.timolib.tools.service_bg.DaemonEnv;
 import com.timo.timolib.tools.service_bg.IntentWrapper;
 import com.timo.timolib.tools.updata_app.UpdateAppHttpManager;
@@ -40,6 +48,7 @@ import com.timo.timolib.tools.utils.math.DateUtils;
 import com.timo.timolib.tools.utils.math.MathUtils;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.TitleBar;
+import com.timo.timolib.view.WaveView;
 import com.timo.timolib.view.tablayout.CommonTabLayout;
 import com.timo.timolib.view.tablayout.TabEntity;
 import com.timo.timolib.view.tablayout.listener.CustomTabEntity;
@@ -73,6 +82,14 @@ public class BaseTools {
         if (Timo_BaseConfig.log) {
             e.printStackTrace();
         }
+    }
+
+    public static void logBean(Object bean) {
+        Logger.json(new Gson().toJson(bean));
+    }
+
+    public static void logJson(String json) {
+        Logger.json(json);
     }
 
     public static void StartBgService() {
@@ -343,6 +360,13 @@ public class BaseTools {
     public static void showToast(int resourceId) {
         if (isEmpty(Timo_Application.getInstance().getString(resourceId))) return;
         showToast(Timo_Application.getInstance().getString(resourceId));
+    }
+
+    /**
+     * Toast调用
+     */
+    public static void showFragment(int currentPosition, int position, int containerId, Class[] fragments, FragmentManager fm) {
+
     }
 
     /**
@@ -709,5 +733,23 @@ public class BaseTools {
             e.printStackTrace();
         }
         return fragment;
+    }
+
+    /**
+     * 上下浮动的图片
+     *
+     * @param waveView  浮动图片
+     * @param imageView 浮动的Imageview
+     */
+    public static void setWave(WaveView waveView, final ImageView imageView) {
+        final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(-2, -2);
+        lp.gravity = Gravity.CENTER;
+        waveView.setOnWaveAnimationListener(new WaveView.OnWaveAnimationListener() {
+            @Override
+            public void OnWaveAnimation(float y) {
+                lp.setMargins(0, 0, 0, (int) y + 2);
+                imageView.setLayoutParams(lp);
+            }
+        });
     }
 }

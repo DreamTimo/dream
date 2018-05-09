@@ -28,7 +28,7 @@ import com.timo.timolib.tools.camera.util.CameraParamUtil;
 import com.timo.timolib.tools.camera.util.CheckPermission;
 import com.timo.timolib.tools.camera.util.DeviceUtil;
 import com.timo.timolib.tools.camera.util.FileUtil;
-import com.timo.timolib.tools.camera.util.LogUtil;
+import com.timo.timolib.tools.camera.util.CameraLogUtil;
 import com.timo.timolib.tools.camera.util.ScreenUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -244,7 +244,7 @@ public class CameraInterface implements Camera.PreviewCallback {
                     mParams.setZoom(nowScaleRate);
                     mCamera.setParameters(mParams);
                 }
-                LogUtil.i("setZoom = " + nowScaleRate);
+                CameraLogUtil.i("setZoom = " + nowScaleRate);
                 break;
         }
 
@@ -313,7 +313,7 @@ public class CameraInterface implements Camera.PreviewCallback {
             SELECTED_CAMERA = CAMERA_POST_POSITION;
         }
         doDestroyCamera();
-        LogUtil.i("open start");
+        CameraLogUtil.i("open start");
         openCamera(SELECTED_CAMERA);
 //        mCamera = Camera.open();
         if (Build.VERSION.SDK_INT > 17 && this.mCamera != null) {
@@ -323,7 +323,7 @@ public class CameraInterface implements Camera.PreviewCallback {
                 e.printStackTrace();
             }
         }
-        LogUtil.i("open end");
+        CameraLogUtil.i("open end");
         doStartPreview(holder, screenProp);
     }
 
@@ -332,7 +332,7 @@ public class CameraInterface implements Camera.PreviewCallback {
      */
     public void doStartPreview(SurfaceHolder holder, float screenProp) {
         if (isPreviewing) {
-            LogUtil.i("doStartPreview isPreviewing");
+            CameraLogUtil.i("doStartPreview isPreviewing");
         }
         if (this.screenProp < 0) {
             this.screenProp = screenProp;

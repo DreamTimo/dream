@@ -10,7 +10,7 @@ import android.util.Log;
  * 描    述：
  * =====================================
  */
-public class LogUtil {
+public class CameraLogUtil {
 
     private static final String DEFAULT_TAG = "CJT";
 

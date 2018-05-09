@@ -6,7 +6,7 @@ import android.view.SurfaceHolder;
 
 import com.timo.timolib.tools.camera.CameraInterface;
 import com.timo.timolib.tools.camera.JCameraView;
-import com.timo.timolib.tools.camera.util.LogUtil;
+import com.timo.timolib.tools.camera.util.CameraLogUtil;
 
 /**
  * =====================================
@@ -38,7 +38,7 @@ class PreviewState implements State {
 
     @Override
     public void foucs(float x, float y, CameraInterface.FocusCallback callback) {
-        LogUtil.i("preview state foucs");
+        CameraLogUtil.i("preview state foucs");
         if (machine.getView().handlerFoucs(x, y)) {
             CameraInterface.getInstance().handleFocus(machine.getContext(), x, y, callback);
         }
@@ -61,7 +61,7 @@ class PreviewState implements State {
             public void captureResult(Bitmap bitmap, boolean isVertical) {
                 machine.getView().showPicture(bitmap, isVertical);
                 machine.setState(machine.getBorrowPictureState());
-                LogUtil.i("capture");
+                CameraLogUtil.i("capture");
             }
         });
     }
@@ -88,17 +88,17 @@ class PreviewState implements State {
 
     @Override
     public void cancle(SurfaceHolder holder, float screenProp) {
-        LogUtil.i("浏览状态下,没有 cancle 事件");
+        CameraLogUtil.i("浏览状态下,没有 cancle 事件");
     }
 
     @Override
     public void confirm() {
-        LogUtil.i("浏览状态下,没有 confirm 事件");
+        CameraLogUtil.i("浏览状态下,没有 confirm 事件");
     }
 
     @Override
     public void zoom(float zoom, int type) {
-        LogUtil.i(TAG, "zoom");
+        CameraLogUtil.i(TAG, "zoom");
         CameraInterface.getInstance().setZoom(zoom, type);
     }
 }

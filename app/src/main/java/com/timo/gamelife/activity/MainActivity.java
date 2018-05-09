@@ -1,5 +1,6 @@
 package com.timo.gamelife.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -49,7 +50,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initEvent() {
+    protected void initEvent(Bundle savedInstanceState) {
         mRgBottom.setOnCheckedChangeListener(new MyCheckChangeListener());
         showFragment(1);
         PermissionUtils.getInstance().applyPermission(this);

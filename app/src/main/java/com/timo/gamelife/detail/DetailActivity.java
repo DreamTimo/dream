@@ -1,5 +1,6 @@
 package com.timo.gamelife.detail;
 
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -49,7 +50,7 @@ public class DetailActivity extends MVPBaseActivity<DetailContract.View, DetailP
     }
 
     @Override
-    protected void initEvent() {
+    protected void initEvent(Bundle savedInstanceState) {
         BaseTools.setTitleBar(mTitle, "线路详情", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

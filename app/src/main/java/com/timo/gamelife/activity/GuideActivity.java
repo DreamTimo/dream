@@ -1,5 +1,6 @@
 package com.timo.gamelife.activity;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
@@ -60,7 +61,7 @@ public class GuideActivity extends BaseActivity {
     }
 
     @Override
-    protected void initEvent() {
+    protected void initEvent(Bundle savedInstanceState) {
         if (AppInfo.isFirst()) {
             initGuide();
         } else {

@@ -29,7 +29,7 @@ import com.timo.timolib.tools.camera.lisenter.ReturnLisenter;
 import com.timo.timolib.tools.camera.lisenter.TypeLisenter;
 import com.timo.timolib.tools.camera.state.CameraMachine;
 import com.timo.timolib.tools.camera.util.FileUtil;
-import com.timo.timolib.tools.camera.util.LogUtil;
+import com.timo.timolib.tools.camera.util.CameraLogUtil;
 import com.timo.timolib.tools.camera.util.ScreenUtils;
 import com.timo.timolib.tools.camera.view.CameraView;
 
@@ -133,7 +133,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 //        manager.getDefaultDisplay().getMetrics(outMetrics);
         layout_width = ScreenUtils.getScreenWidth(mContext);
         zoomGradient = (int) (layout_width / 16f);
-        LogUtil.i("zoom = " + zoomGradient);
+        CameraLogUtil.i("zoom = " + zoomGradient);
         machine = new CameraMachine(getContext(), this, this);
     }
 
@@ -188,7 +188,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
             @Override
             public void recordZoom(float zoom) {
-                LogUtil.i("recordZoom");
+                CameraLogUtil.i("recordZoom");
                 machine.zoom(zoom, CameraInterface.TYPE_RECORDER);
             }
 
@@ -239,7 +239,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     //生命周期onResume
     public void onResume() {
-        LogUtil.i("JCameraView onResume");
+        CameraLogUtil.i("JCameraView onResume");
         resetState(TYPE_DEFAULT); //重置状态
         CameraInterface.getInstance().registerSensorManager(mContext);
         CameraInterface.getInstance().setSwitchView(mSwitchCamera);
@@ -248,7 +248,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     //生命周期onPause
     public void onPause() {
-        LogUtil.i("JCameraView onPause");
+        CameraLogUtil.i("JCameraView onPause");
         stopVideo();
         resetState(TYPE_PICTURE);
         CameraInterface.getInstance().isPreview(false);
@@ -258,7 +258,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     //SurfaceView生命周期
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        LogUtil.i("JCameraView SurfaceCreated");
+        CameraLogUtil.i("JCameraView SurfaceCreated");
         new Thread() {
             @Override
             public void run() {
@@ -273,7 +273,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        LogUtil.i("JCameraView SurfaceDestroyed");
+        CameraLogUtil.i("JCameraView SurfaceDestroyed");
         CameraInterface.getInstance().doDestroyCamera();
     }
 

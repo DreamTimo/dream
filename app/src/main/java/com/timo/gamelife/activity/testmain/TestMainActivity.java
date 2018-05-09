@@ -1,24 +1,19 @@
 package com.timo.gamelife.activity.testmain;
 
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
 import com.timo.gamelife.R;
 import com.timo.gamelife.mvp.MVPBaseActivity;
 import com.timo.timolib.BaseTools;
+import com.timo.timolib.Timo_BaseConstancts;
+import com.timo.timolib.UserBean;
+import com.timo.timolib.tools.logger.Logger;
 import com.timo.timolib.view.WaveView;
 import com.timo.timolib.view.tablayout.CommonTabLayout;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-
-
-/**
- * MVPPlugin
- * 邮箱 784787081@qq.com
- */
 
 public class TestMainActivity extends MVPBaseActivity<TestMainContract.View, TestMainPresenter> implements TestMainContract.View {
 
@@ -40,27 +35,29 @@ public class TestMainActivity extends MVPBaseActivity<TestMainContract.View, Tes
     }
 
     @Override
-    protected void initEvent() {
+    protected void initEvent(Bundle savedInstanceState) {
         mPresenter.initTop(mTabLayout);
+        mPresenter.initFragment(savedInstanceState, getSupportFragmentManager(), mTabLayout, R.id.fragment);
         initWave();
     }
 
     @Override
     public void showFragment(int position) {
-        BaseTools.showToast(position + "");
+        mPresenter.showFragment(position, getSupportFragmentManager());
     }
 
     @Override
     public void initWave() {
-        final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(-2, -2);
-        lp.gravity = Gravity.CENTER;
-        mWaveView.setOnWaveAnimationListener(new WaveView.OnWaveAnimationListener() {
-            @Override
-            public void OnWaveAnimation(float y) {
-                lp.setMargins(0, 0, 0, (int) y + 2);
-                mImgLogo.setLayoutParams(lp);
-            }
-        });
+        BaseTools.setWave(mWaveView, mImgLogo);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //奔溃前保存位置
+        if (mTabLayout != null) {
+            outState.putInt(Timo_BaseConstancts.currentPosition, mTabLayout.getCurrentTab());
+        }
     }
 
 }

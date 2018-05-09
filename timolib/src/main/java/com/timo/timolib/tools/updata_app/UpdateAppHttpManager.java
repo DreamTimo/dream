@@ -2,7 +2,7 @@ package com.timo.timolib.tools.updata_app;
 
 import android.support.annotation.NonNull;
 
-import com.timo.timolib.tools.camera.util.LogUtil;
+import com.timo.timolib.tools.camera.util.CameraLogUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -34,7 +34,7 @@ public class UpdateAppHttpManager implements HttpManager {
                     @Override
                     public void onResponse(String response, int id) {
                         callBack.onResponse(response);
-                        LogUtil.e(response);
+                        CameraLogUtil.e(response);
                     }
                 });
     }
@@ -54,7 +54,7 @@ public class UpdateAppHttpManager implements HttpManager {
                     @Override
                     public void onResponse(String response, int id) {
                         callBack.onResponse(response);
-                        LogUtil.e(response);
+                        CameraLogUtil.e(response);
                     }
                 });
     }

@@ -9,6 +9,7 @@ import android.support.annotation.ColorInt;
 public interface Timo_BaseConstancts {
     boolean ISLOG = true; //log信息
     String TAG = "timolog"; //log信息
+    String currentPosition = "currentPosition"; //log信息
     String BASE_SHARE_NAME = "base_share_name";//sp保存名称
     String BASE_PARAM = "base_param";
     String BASE_PASSWORD = "base_password"; //密码

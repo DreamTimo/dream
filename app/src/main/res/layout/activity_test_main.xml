@@ -6,17 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/dayNightBackground"
+        app:dayNightBackgroundAttr="dayNightBackground"/>
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/green">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="center|top"
-            android:gravity="center"
-            android:text="我关注的"
-            android:textColor="@color/white"/>
-
         <com.timo.timolib.view.WaveView
             android:id="@+id/wave_view"
             android:layout_width="match_parent"
@@ -30,6 +28,7 @@
             android:layout_gravity="center"
             android:src="@mipmap/ic_launcher"/>
     </FrameLayout>
+
     <com.timo.timolib.view.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"

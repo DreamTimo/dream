@@ -1,5 +1,6 @@
 package com.timo.gamelife.user;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -34,10 +35,7 @@ public class UserActivity extends MVPBaseActivity<UserContract.View, UserPresent
     }
 
     @Override
-    protected void initEvent() {
-//        fragment = new MessageFragment();
-//        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.rl_content, fragment).commit();
+    protected void initEvent(Bundle savedInstanceState) {
         mViewPager.setAdapter(new DetailFragmentAdapter(getSupportFragmentManager()));
         mViewPager.setCurrentItem(1);
     }

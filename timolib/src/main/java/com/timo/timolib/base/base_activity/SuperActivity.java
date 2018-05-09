@@ -45,12 +45,12 @@ public abstract class SuperActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //夜间模式
-        ChangeModeController.getInstance().init(this, R.attr.class);
+//        ChangeModeController.getInstance().init(this, R.attr.class);
         super.onCreate(savedInstanceState);
         setContentView(getContentResId());
         ButterKnife.bind(this);
         setTitle();
-        initEvent();
+        initEvent(savedInstanceState);
     }
 
     protected abstract int getContentResId();
@@ -64,7 +64,7 @@ public abstract class SuperActivity extends FragmentActivity {
 
     protected abstract String setTitleName();
 
-    protected abstract void initEvent();
+    protected abstract void initEvent(Bundle savedInstanceState);
 
     public void startActivityNoFinish(Class<?> cls) {
         if (setParams == null) {

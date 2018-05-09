@@ -16,7 +16,6 @@ import java.lang.reflect.ParameterizedType;
 
 public abstract class MVPBaseActivity<V extends BaseView, T extends BasePresenterImpl<V>> extends BaseActivity implements BaseView {
     public T mPresenter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = getInstance(this, 1);

@@ -5,7 +5,7 @@ import android.view.SurfaceHolder;
 
 import com.timo.timolib.tools.camera.CameraInterface;
 import com.timo.timolib.tools.camera.JCameraView;
-import com.timo.timolib.tools.camera.util.LogUtil;
+import com.timo.timolib.tools.camera.util.CameraLogUtil;
 
 /**
  * =====================================
@@ -79,6 +79,6 @@ public class BorrowVideoState implements State {
 
     @Override
     public void zoom(float zoom, int type) {
-        LogUtil.i(TAG, "zoom");
+        CameraLogUtil.i(TAG, "zoom");
     }
 }

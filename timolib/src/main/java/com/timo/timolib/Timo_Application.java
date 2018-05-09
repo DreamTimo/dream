@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.multidex.MultiDex;
 
+import com.timo.timolib.tools.logger.AndroidLogAdapter;
+import com.timo.timolib.tools.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.cookie.CookieJarImpl;
 import com.zhy.http.okhttp.cookie.store.PersistentCookieStore;
@@ -37,7 +39,13 @@ public class Timo_Application extends Application {
         mContext = this;
         MultiDex.install(this);
         initOkHttp();
+        initLog();
     }
+
+    private void initLog() {
+        Logger.addLogAdapter(new AndroidLogAdapter());
+    }
+
     private void initOkHttp() {
         CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
