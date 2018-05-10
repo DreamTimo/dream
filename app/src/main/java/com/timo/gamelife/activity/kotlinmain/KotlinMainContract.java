@@ -1,4 +1,4 @@
-package com.timo.gamelife.activity.testmain;
+package com.timo.gamelife.activity.kotlinmain;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,18 +10,21 @@ import com.timo.timolib.view.tablayout.CommonTabLayout;
 
 /**
  * MVPPlugin
- *  邮箱 784787081@qq.com
+ * 邮箱 784787081@qq.com
  */
 
-public class TestMainContract {
-    interface View extends BaseView {
+public class KotlinMainContract {
+    public interface View extends BaseView {
         void showFragment(int position);
+
         void initWave();
     }
 
-    interface  Presenter extends BasePresenter<View> {
+    public interface Presenter extends BasePresenter<View> {
         void initTop(CommonTabLayout mTabLayout);
+
         void initFragment(Bundle savedInstanceState, FragmentManager fragmentManager, CommonTabLayout mTabLayout, int replaceId);
-        void showFragment(int position,FragmentManager fragmentManager);
+
+        void showFragment(int position, FragmentManager fragmentManager);
     }
 }

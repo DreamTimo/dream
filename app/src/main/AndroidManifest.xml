@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <!--android:name=".activity.GuideActivity"-->
         <activity
-            android:name=".activity.testmain.TestMainActivity"
+            android:name=".activity.kotlinmain.KotlinMainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
