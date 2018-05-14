@@ -1,7 +1,5 @@
 package com.timo.gamelife.activity.kotlinmain;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 import com.timo.gamelife.mvp.BasePresenter;
@@ -23,7 +21,7 @@ public class KotlinMainContract {
     public interface Presenter extends BasePresenter<View> {
         void initTop(CommonTabLayout mTabLayout);
 
-        void initFragment(Bundle savedInstanceState, FragmentManager fragmentManager, CommonTabLayout mTabLayout, int replaceId);
+        void initFragment(FragmentManager fragmentManager, CommonTabLayout mTabLayout, int replaceId);
 
         void showFragment(int position, FragmentManager fragmentManager);
     }

@@ -47,8 +47,10 @@ public abstract class SuperActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(getContentResId());
         setTitle();
+        initEvent();
         initEvent(savedInstanceState);
     }
+
 
     protected abstract int getContentResId();
 
@@ -61,7 +63,9 @@ public abstract class SuperActivity extends FragmentActivity {
 
     protected abstract String setTitleName();
 
-    protected abstract void initEvent(Bundle savedInstanceState);
+    protected abstract void initEvent();
+
+    protected void initEvent(Bundle savedInstanceState) {}
 
     public void startActivityNoFinish(Class<?> cls) {
         if (setParams == null) {

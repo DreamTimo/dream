@@ -24,9 +24,9 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
     override fun getContentResId(): Int = R.layout.activity_test_main
 
     override fun setTitleName(): String? = getString(R.string.title_1)
-    override fun initEvent(savedInstanceState: Bundle?) {
+    override fun initEvent() {
         mPresenter.initTop(tab_layout)
-        mPresenter.initFragment(savedInstanceState, supportFragmentManager, tab_layout, R.id.fragment)
+        mPresenter.initFragment(supportFragmentManager, tab_layout, R.id.fragment)
         initWave()
         RxManager.getInstance().on(Timo_BaseConstancts.TAG, Action1<Boolean> { hideOrShow ->
             BaseTools.showToast("ceshi" + hideOrShow)

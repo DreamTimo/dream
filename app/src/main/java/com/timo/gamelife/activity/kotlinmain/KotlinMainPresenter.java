@@ -46,22 +46,15 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
     private MineFragment mMineFragment;
 
     @Override
-    public void initFragment(Bundle savedInstanceState, FragmentManager fragmentManager, CommonTabLayout mTabLayout, int replaceId) {
+    public void initFragment(FragmentManager fragmentManager, CommonTabLayout mTabLayout, int replaceId) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         int currentTabPosition = 0;
-        if (savedInstanceState != null) {
-            mHomeFragment = (HomeFragment) fragmentManager.findFragmentByTag(BaseConstances.homeFragment);
-            mDreamFragment = (DreamFragment) fragmentManager.findFragmentByTag(BaseConstances.dreamFragment);
-            mMineFragment = (MineFragment) fragmentManager.findFragmentByTag(BaseConstances.mineFragment);
-            currentTabPosition = savedInstanceState.getInt(Timo_BaseConstancts.currentPosition);
-        } else {
-            mHomeFragment = new HomeFragment();
-            mDreamFragment = new DreamFragment();
-            mMineFragment = new MineFragment();
-            transaction.add(replaceId, mHomeFragment, BaseConstances.homeFragment);
-            transaction.add(replaceId, mDreamFragment, BaseConstances.dreamFragment);
-            transaction.add(replaceId, mMineFragment, BaseConstances.mineFragment);
-        }
+        mHomeFragment = new HomeFragment();
+        mDreamFragment = new DreamFragment();
+        mMineFragment = new MineFragment();
+        transaction.add(replaceId, mHomeFragment, BaseConstances.homeFragment);
+        transaction.add(replaceId, mDreamFragment, BaseConstances.dreamFragment);
+        transaction.add(replaceId, mMineFragment, BaseConstances.mineFragment);
         transaction.commit();
         mView.showFragment(currentTabPosition);
         mTabLayout.setCurrentTab(currentTabPosition);

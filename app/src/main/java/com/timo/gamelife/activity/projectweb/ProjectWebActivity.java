@@ -31,7 +31,7 @@ public class ProjectWebActivity extends MVPBaseActivity<ProjectWebContract.View,
     }
 
     @Override
-    protected void initEvent(Bundle savedInstanceState) {
+    protected void initEvent() {
         mWebview= (CommonWebView) findViewById(R.id.webview);
         mTitle= (TitleBar) findViewById(R.id.title);
         BaseTools.setTitleBar(mTitle, getString(R.string.title_project), new View.OnClickListener() {

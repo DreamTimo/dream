@@ -61,7 +61,7 @@ public class GuideActivity extends BaseActivity {
     }
 
     @Override
-    protected void initEvent(Bundle savedInstanceState) {
+    protected void initEvent() {
         if (AppInfo.isFirst()) {
             initGuide();
         } else {

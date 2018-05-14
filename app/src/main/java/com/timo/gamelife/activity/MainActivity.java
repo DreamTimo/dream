@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initEvent(Bundle savedInstanceState) {
+    protected void initEvent() {
         mRbMain = (RadioButton) findViewById(R.id.rb_main);
         mRbFind = (RadioButton) findViewById(R.id.rb_find);
         mRbMine = (RadioButton) findViewById(R.id.rb_mine);
