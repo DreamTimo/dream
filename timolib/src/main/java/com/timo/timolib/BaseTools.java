@@ -7,6 +7,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -37,6 +39,7 @@ import com.timo.timolib.tools.glide.GlideImageView;
 import com.timo.timolib.tools.glide.progress.CircleProgressView;
 import com.timo.timolib.tools.glide.progress.OnGlideImageViewListener;
 import com.timo.timolib.tools.logger.Logger;
+import com.timo.timolib.tools.rx.RxBus;
 import com.timo.timolib.tools.service_bg.DaemonEnv;
 import com.timo.timolib.tools.service_bg.IntentWrapper;
 import com.timo.timolib.tools.updata_app.UpdateAppHttpManager;
@@ -88,6 +91,14 @@ public class BaseTools {
         Logger.json(new Gson().toJson(bean));
     }
 
+    public static void postMsg(@NonNull Object tag, @NonNull Object msg) {
+        RxBus.getInstance().post(tag, msg);
+    }
+
+    public static void log(String log) {
+        Logger.log(Logger.ERROR, Timo_BaseConstancts.TAG, log, null);
+    }
+
     public static void logJson(String json) {
         Logger.json(json);
     }
@@ -101,6 +112,10 @@ public class BaseTools {
         IntentWrapper.whiteListMatters(warningActivity, "消息提醒!");
         BgService.sShouldStopService = false;
         DaemonEnv.startServiceMayBind(BgService.class);
+    }
+
+    public static Handler getHandler() {
+        return Timo_Application.appHandler;
     }
 
     /**

@@ -31,8 +31,6 @@ import com.timo.timolib.tools.utils.PermissionUtils;
 import java.io.Serializable;
 import java.util.List;
 
-import butterknife.ButterKnife;
-
 /**
  * activity基类的参数、方法
  */
@@ -48,7 +46,6 @@ public abstract class SuperActivity extends FragmentActivity {
 //        ChangeModeController.getInstance().init(this, R.attr.class);
         super.onCreate(savedInstanceState);
         setContentView(getContentResId());
-        ButterKnife.bind(this);
         setTitle();
         initEvent(savedInstanceState);
     }

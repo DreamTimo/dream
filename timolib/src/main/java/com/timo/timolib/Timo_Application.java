@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.Message;
 import android.support.multidex.MultiDex;
 
 import com.timo.timolib.tools.logger.AndroidLogAdapter;
@@ -41,6 +43,8 @@ public class Timo_Application extends Application {
         initOkHttp();
         initLog();
     }
+
+    public static Handler appHandler = new Handler();
 
     private void initLog() {
         Logger.addLogAdapter(new AndroidLogAdapter());

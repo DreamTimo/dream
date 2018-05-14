@@ -8,36 +8,26 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.timo.gamelife.R;
-import com.timo.gamelife.recommend.RecommendFragment;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.base.base_fragment.FragmentFactory;
 import com.timo.gamelife.fragment.HomeFragment;
 import com.timo.gamelife.fragment.MineFragment;
 import com.timo.gamelife.fragment.DreamFragment;
 import com.timo.timolib.base.base_activity.BaseActivity;
-import com.timo.timolib.tools.daynightmodeutils.ChangeModeController;
 import com.timo.timolib.tools.utils.PermissionUtils;
 import com.timo.timolib.view.CommonWebView;
 
-import butterknife.BindView;
-
 public class MainActivity extends BaseActivity {
-    @BindView(R.id.rb_main)
     RadioButton mRbMain;
-    @BindView(R.id.rb_find)
     RadioButton mRbFind;
-    @BindView(R.id.rb_mine)
     RadioButton mRbMine;
-    @BindView(R.id.rg_bottom)
     RadioGroup mRgBottom;
+    CommonWebView mWebview;
     private Class[] fragments = new Class[]{
-            RecommendFragment.class,
             HomeFragment.class,
             DreamFragment.class,
             MineFragment.class,
     };
-    @BindView(R.id.webview)
-    CommonWebView mWebview;
 
     @Override
     protected int getContentResId() {
@@ -51,6 +41,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initEvent(Bundle savedInstanceState) {
+        mRbMain = (RadioButton) findViewById(R.id.rb_main);
+        mRbFind = (RadioButton) findViewById(R.id.rb_find);
+        mRbMine = (RadioButton) findViewById(R.id.rb_mine);
+        mRgBottom = (RadioGroup) findViewById(R.id.rg_bottom);
+        mWebview = (CommonWebView) findViewById(R.id.webview);
         mRgBottom.setOnCheckedChangeListener(new MyCheckChangeListener());
         showFragment(1);
         PermissionUtils.getInstance().applyPermission(this);
@@ -59,9 +54,7 @@ public class MainActivity extends BaseActivity {
     class MyCheckChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            if (checkedId == R.id.rb_recommend) {
-//                showFragment(0);
-            } else if (checkedId == R.id.rb_main) {
+            if (checkedId == R.id.rb_main) {
                 showFragment(1);
             } else if (checkedId == R.id.rb_find) {
                 showFragment(2);

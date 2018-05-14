@@ -3,6 +3,8 @@ package com.timo.timolib.tools.utils;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import com.timo.timolib.base.DialogListener;
 
 public class DialogUtils {
     private static DialogUtils instance;
+    private View mView;
 
     private DialogUtils() {
     }
@@ -38,6 +41,22 @@ public class DialogUtils {
         return loadingDialog;
     }
 
+    public Dialog showLoadingDialog(Context context, String loadingMsg, boolean cancelable) {
+        if (loadingDialog == null) {
+            loadingDialog = new Dialog(context, R.style.loading_dialog);
+        }
+        loadingDialog.setCancelable(cancelable);
+        if (mView != null) {
+            mView = LayoutInflater.from(context).inflate(R.layout.common_dialog_loading, null);
+        }
+        loadingDialog.setContentView(mView);
+        if (!TextUtils.isEmpty(loadingMsg)) {
+            TextView textView = (TextView) mView.findViewById(R.id.tipTextView);
+            textView.setText(loadingMsg);
+        }
+        loadingDialog.show();
+        return loadingDialog;
+    }
 
     /**
      * 确认、取消  --选择框
@@ -45,7 +64,7 @@ public class DialogUtils {
 
     public void showTwoChoiceDialog(Context context, String description, final DialogListener listener) {
         try {
-            final AlertDialog ad = new AlertDialog.Builder(context,R.style.loading_dialog).create();
+            final AlertDialog ad = new AlertDialog.Builder(context, R.style.loading_dialog).create();
             ad.show();
             Window window = ad.getWindow();
             window.setContentView(R.layout.dialog_two_choice);
@@ -71,6 +90,12 @@ public class DialogUtils {
             });
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void cancelLoadingDialog() {
+        if (loadingDialog != null) {
+            loadingDialog.cancel();
         }
     }
 }

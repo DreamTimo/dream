@@ -1,6 +1,5 @@
 package com.timo.gamelife.activity.kotlinmain;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,13 +25,13 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
     private int[] mIconSelectIds = {R.mipmap.icon_home_checked, R.mipmap.icon_dream_checked, R.mipmap.icon_mine_checked};
     private int[] mIconUnselectIds = {R.mipmap.icon_home_no_check, R.mipmap.icon_dream_no_check, R.mipmap.icon_mine_no_check};
 
-
     @Override
     public void initTop(CommonTabLayout mTabLayout) {
         BaseTools.setNavigation(mTabLayout, mTitles, mIconUnselectIds, mIconSelectIds, new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
                 mView.showFragment(position);
+                BaseTools.postMsg(Timo_BaseConstancts.TAG, false);
             }
 
             @Override
@@ -59,7 +58,6 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
             mHomeFragment = new HomeFragment();
             mDreamFragment = new DreamFragment();
             mMineFragment = new MineFragment();
-
             transaction.add(replaceId, mHomeFragment, BaseConstances.homeFragment);
             transaction.add(replaceId, mDreamFragment, BaseConstances.dreamFragment);
             transaction.add(replaceId, mMineFragment, BaseConstances.mineFragment);

@@ -30,8 +30,8 @@ dependencies {
     //相册图片选择器
     compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.6'
     //butterknife
-    compile 'com.jakewharton:butterknife-compiler:8.+'
-    compile 'com.jakewharton:butterknife:8.+'
+//    compile 'com.jakewharton:butterknife-compiler:8.+'
+//    compile 'com.jakewharton:butterknife:8.+'
     //全景视频
     //compile 'com.google.vr:sdk-videowidget:1.70.0'
     //全景图片
@@ -41,12 +41,10 @@ dependencies {
     //分包--解决okhttp冲突
     compile 'com.android.support:multidex:1.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.+'
-    //拼音工具类
-    //compile 'com.github.promeg:tinypinyin:2.0.3'
+    compile 'io.reactivex:rxandroid:1.2.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    compile 'io.reactivex:rxandroid:1.2.0'
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
     compile 'com.github.bumptech.glide:glide:4.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'

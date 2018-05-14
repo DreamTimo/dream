@@ -30,9 +30,6 @@ import com.timo.timolib.view.TitleBar;
 import java.io.Serializable;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 
 /**
  * Created by lykj on 2017/9/10.
@@ -43,7 +40,6 @@ public abstract class BaseFragment extends Fragment {
     private Timo_Params setParams;
     private Timo_Params getParams;
     private TitleBar baseTitleBar;
-    private Unbinder unbinder;
     private String super_phone;
 
     public void startActivity(Class<?> cls) {
@@ -58,9 +54,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getContentResId(), container, false);
-        unbinder = ButterKnife.bind(this, view);
         return view;
-
     }
 
     @Override
@@ -107,14 +101,6 @@ public abstract class BaseFragment extends Fragment {
 
     public MyHttpParams getHttpParams() {
         return new MyHttpParams();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if (unbinder != null) {
-            unbinder.unbind();
-        }
     }
 
     public void startActivityNoFinish(Class<?> cls) {

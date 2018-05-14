@@ -10,10 +10,6 @@ import com.timo.timolib.BaseTools;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.TitleBar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-
 /**
  * MVPPlugin
  * 邮箱 784787081@qq.com
@@ -21,9 +17,7 @@ import butterknife.ButterKnife;
 
 public class ProjectWebActivity extends MVPBaseActivity<ProjectWebContract.View, ProjectWebPresenter> implements ProjectWebContract.View {
 
-    @BindView(R.id.webview)
     CommonWebView mWebview;
-    @BindView(R.id.title)
     TitleBar mTitle;
 
     @Override
@@ -38,6 +32,8 @@ public class ProjectWebActivity extends MVPBaseActivity<ProjectWebContract.View,
 
     @Override
     protected void initEvent(Bundle savedInstanceState) {
+        mWebview= (CommonWebView) findViewById(R.id.webview);
+        mTitle= (TitleBar) findViewById(R.id.title);
         BaseTools.setTitleBar(mTitle, getString(R.string.title_project), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
