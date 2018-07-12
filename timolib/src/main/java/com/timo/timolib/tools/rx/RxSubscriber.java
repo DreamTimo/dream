@@ -32,13 +32,13 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onCompleted() {
-        if (showDialog)
+        if (showDialog) {
             DialogUtils.getInstance().cancelLoadingDialog();
+        }
     }
 
     @Override
     public void onStart() {
-        super.onStart();
         if (showDialog) {
             try {
                 DialogUtils.getInstance().showLoadingDialog(mContext, msg, false);

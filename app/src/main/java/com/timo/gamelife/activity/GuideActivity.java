@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.timo.gamelife.R;
+import com.timo.gamelife.activity.kotlinmain.KotlinMainActivity;
 import com.timo.timolib.base.base_manager.AppInfo;
 import com.timo.timolib.base.base_activity.BaseActivity;
 
@@ -209,7 +210,7 @@ public class GuideActivity extends BaseActivity {
     }
 
     public void goToMain() {
-        startActivityAddFinish(MainActivity.class);
+        startActivityAddFinish(KotlinMainActivity.class);
     }
 
 }

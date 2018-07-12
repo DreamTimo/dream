@@ -26,6 +26,9 @@ public abstract class MVPBaseActivity<V extends BaseView, T extends BasePresente
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.onStop();
+        }
         if (mPresenter != null)
             mPresenter.detachView();
     }
@@ -48,13 +51,5 @@ public abstract class MVPBaseActivity<V extends BaseView, T extends BasePresente
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mPresenter != null) {
-            mPresenter.onStop();
-        }
     }
 }

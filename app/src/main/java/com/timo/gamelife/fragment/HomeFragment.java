@@ -1,11 +1,7 @@
 package com.timo.gamelife.fragment;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;

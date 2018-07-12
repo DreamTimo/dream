@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -51,6 +52,12 @@ import com.timo.timolib.tools.utils.math.MathUtils;
 import com.timo.timolib.view.CommonWebView;
 import com.timo.timolib.view.TitleBar;
 import com.timo.timolib.view.WaveView;
+import com.timo.timolib.view.banner.Banner;
+import com.timo.timolib.view.banner.internal.BannerData;
+import com.timo.timolib.view.banner.internal.BaseBannerAdapter;
+import com.timo.timolib.view.banner.internal.ItemData;
+import com.timo.timolib.view.banner.pagerstyle.BasePageTransformer;
+import com.timo.timolib.view.banner.pagerstyle.ScaleInTransformer;
 import com.timo.timolib.view.tablayout.CommonTabLayout;
 import com.timo.timolib.view.tablayout.TabEntity;
 import com.timo.timolib.view.tablayout.listener.CustomTabEntity;
@@ -198,6 +205,42 @@ public class BaseTools {
      */
     public static void showPictureSelector(Activity activity) {
         showPictureSelector(activity, 1, 1, true, true);
+    }
+
+    /**
+     * 设置轮播图信息
+     */
+    public static void setBanner(Banner banner, List<String> data, BasePageTransformer transformer, BaseBannerAdapter.OnItemClickListener onItemClickListener) {
+        final List<ItemData> dataList = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            ItemData itemData = new ItemData();
+            itemData.setImgUrl(data.get(i));
+            dataList.add(itemData);
+        }
+        BannerData bannerData = new BannerData();
+        bannerData.setDatas(dataList);
+        if (transformer != null) {
+            banner.setData(bannerData, transformer);
+        } else {
+            banner.setData(bannerData);
+        }
+        if (onItemClickListener != null) {
+            banner.setOnClickListener(onItemClickListener);
+        }
+    }
+
+    /**
+     * 设置轮播图信息
+     */
+    public static void setBanner(Banner banner, List<String> data) {
+        setBanner(banner, data, null, null);
+    }
+
+    /**
+     * 设置轮播图信息
+     */
+    public static void setBanner(Banner banner, List<String> data, BasePageTransformer transformer) {
+        setBanner(banner, data, transformer, null);
     }
 
     /**

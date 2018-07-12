@@ -1,4 +1,4 @@
-package com.timo.gamelife.activity;
+package com.timo.gamelife;
 
 import com.timo.timolib.network.basebean.BaseBean;
 
