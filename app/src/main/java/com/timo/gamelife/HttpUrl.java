@@ -5,6 +5,5 @@ package com.timo.gamelife;
  */
 
 public interface HttpUrl {
-    String baseUrl = "https://api.douban.com/v2/";
-    String githubData="https://api.github.com/";
+    String BASE_URL = "http://111.207.104.159:8088";
 }

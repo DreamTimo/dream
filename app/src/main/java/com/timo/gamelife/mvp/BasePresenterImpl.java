@@ -1,7 +1,5 @@
 package com.timo.gamelife.mvp;
 
-import com.timo.gamelife.retrofit.RetrofitManager;
-
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -15,15 +13,11 @@ import rx.subscriptions.CompositeSubscription;
 
 public class BasePresenterImpl<V extends BaseView> implements BasePresenter<V> {
     protected V mView;
-    protected RetrofitManager manager;
     protected CompositeSubscription mCompositeSubscription;
 
     @Override
     public void attachView(V view) {
         mView = view;
-        if (manager == null) {
-            manager = new RetrofitManager(mView.getContext());
-        }
         if (mCompositeSubscription == null) {
             mCompositeSubscription = new CompositeSubscription();
         }

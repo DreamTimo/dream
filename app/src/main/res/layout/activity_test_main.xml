@@ -11,13 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="100">
+        <com.timo.timolib.view.CommonWebView
+            android:id="@+id/test_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+        />
         <FrameLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/dayNightBackground"
-            app:dayNightBackgroundAttr="dayNightBackground"/>
+            android:background="@color/transparent"
+            />
+        <!--android:background="?attr/dayNightBackground"-->
+        <!--app:dayNightBackgroundAttr="dayNightBackground"-->
         <FrameLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_centerInParent="true"

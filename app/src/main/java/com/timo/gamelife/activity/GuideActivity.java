@@ -1,6 +1,5 @@
 package com.timo.gamelife.activity;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
@@ -17,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.timo.gamelife.R;
-import com.timo.timolib.base.AppInfo;
+import com.timo.timolib.base.base_manager.AppInfo;
 import com.timo.timolib.base.base_activity.BaseActivity;
 
 import java.util.ArrayList;
@@ -53,11 +52,6 @@ public class GuideActivity extends BaseActivity {
         } else {
             return R.layout.activity_welcome;
         }
-    }
-
-    @Override
-    protected String setTitleName() {
-        return null;
     }
 
     @Override

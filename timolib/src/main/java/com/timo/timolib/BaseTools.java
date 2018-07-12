@@ -11,7 +11,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,7 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +31,7 @@ import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.timo.timolib.base.DialogListener;
-import com.timo.timolib.base.base_fragment.FragmentFactory;
+import com.timo.timolib.base.base_dialog.DialogListener;
 import com.timo.timolib.tools.glide.GlideImageView;
 import com.timo.timolib.tools.glide.progress.CircleProgressView;
 import com.timo.timolib.tools.glide.progress.OnGlideImageViewListener;
@@ -76,13 +73,13 @@ public class BaseTools {
     }
 
     public static void e(String msg) {
-        if (Timo_BaseConfig.log) {
-            Log.e(Timo_BaseConfig.log_tag, msg);
+        if (BaseConfig.log) {
+            Log.e(BaseConfig.log_tag, msg);
         }
     }
 
     public static void printErrorMessage(Exception e) {
-        if (Timo_BaseConfig.log) {
+        if (BaseConfig.log) {
             e.printStackTrace();
         }
     }
@@ -96,7 +93,7 @@ public class BaseTools {
     }
 
     public static void log(String log) {
-        Logger.log(Logger.ERROR, Timo_BaseConstancts.TAG, log, null);
+        Logger.log(Logger.ERROR, BaseConstancts.TAG, log, null);
     }
 
     public static void logJson(String json) {
@@ -115,7 +112,7 @@ public class BaseTools {
     }
 
     public static Handler getHandler() {
-        return Timo_Application.appHandler;
+        return BaseApplication.appHandler;
     }
 
     /**
@@ -146,6 +143,9 @@ public class BaseTools {
     }
 
     public static void loadWeb(CommonWebView webView, String url) {
+        if (webView == null || TextUtils.isEmpty(url)) {
+            return;
+        }
         webView.setIsShowLoading(false);
         webView.load(url);
     }
@@ -201,7 +201,7 @@ public class BaseTools {
     }
 
     /**
-     * 选择图片
+     * 设置导航
      */
     public static void setNavigation(CommonTabLayout mTabLayout, String[] titles, int[] noSelectPic, int[] selectedPic, OnTabSelectListener listener) {
         ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
@@ -273,7 +273,7 @@ public class BaseTools {
      * @param location 默认为1；1:左 2:右 3:上 4:下
      */
     public static void setTextViewDrawable(int resourceId, TextView view, int location) {
-        Drawable drawable = Timo_Application.getInstance().getContext().getResources().getDrawable(resourceId);
+        Drawable drawable = BaseApplication.getInstance().getContext().getResources().getDrawable(resourceId);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         if (location == 1) {
             view.setCompoundDrawables(drawable, null, null, null);
@@ -317,7 +317,7 @@ public class BaseTools {
      * 获取Data时间
      */
     public static Date getData(String str) {
-        return getData(str, Timo_Application.getInstance().getString(R.string.data_format));
+        return getData(str, BaseApplication.getInstance().getString(R.string.data_format));
     }
 
     public static Date getData(String str, String formatString) {
@@ -373,8 +373,8 @@ public class BaseTools {
      * Toast调用
      */
     public static void showToast(int resourceId) {
-        if (isEmpty(Timo_Application.getInstance().getString(resourceId))) return;
-        showToast(Timo_Application.getInstance().getString(resourceId));
+        if (isEmpty(BaseApplication.getInstance().getString(resourceId))) return;
+        showToast(BaseApplication.getInstance().getString(resourceId));
     }
 
     /**
@@ -425,7 +425,7 @@ public class BaseTools {
     }
 
     public static String getTime(String str) {
-        return getTime(str, Timo_Application.getInstance().getString(R.string.data_format));
+        return getTime(str, BaseApplication.getInstance().getString(R.string.data_format));
     }
 
     /**
@@ -438,7 +438,7 @@ public class BaseTools {
     }
 
     public static String getTime(long time) {
-        return getTime(time, Timo_Application.getInstance().getString(R.string.data_format));
+        return getTime(time, BaseApplication.getInstance().getString(R.string.data_format));
     }
 
     /**
@@ -451,7 +451,7 @@ public class BaseTools {
     }
 
     public static String getTime(Date date) {
-        return getTime(date, Timo_Application.getInstance().getString(R.string.data_format));
+        return getTime(date, BaseApplication.getInstance().getString(R.string.data_format));
     }
 
     /**
@@ -635,7 +635,7 @@ public class BaseTools {
         imageView.setPressedModeEnabled(pressedModeEnabled);
         imageView.setPressedBorderWidth(borderWidth);
         imageView.setPressedBorderColor(pressBorderColor);
-        imageView.setPressedMaskColor(Timo_BaseConstancts.COLOR_PRESS_MASK);
+        imageView.setPressedMaskColor(BaseConstancts.COLOR_PRESS_MASK);
         if (listener != null) {
             imageView.setOnClickListener(listener);
         }
@@ -685,7 +685,7 @@ public class BaseTools {
      * 获取mate信息
      */
     public static String getMeta(String name) {
-        final Context context = Timo_Application.getInstance().getContext();
+        final Context context = BaseApplication.getInstance().getContext();
         String str = "";
 
         ApplicationInfo ai = null;

@@ -1,6 +1,6 @@
 package com.timo.timolib.base.base_fragment;
 
-import com.timo.timolib.base.AppManager;
+import com.timo.timolib.base.base_manager.AppManager;
 
 /**
  * Created by 蔡永汪 on 2017/10/31.

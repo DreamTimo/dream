@@ -5,14 +5,14 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 import com.timo.timolib.view.ninegridview.NineGridView;
 
 /**
  * Created by 蔡永汪 on 2017/11/8.
  */
 
-public class App extends Timo_Application {
+public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();

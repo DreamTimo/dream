@@ -5,7 +5,7 @@ import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
 import android.util.SparseLongArray;
 
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
@@ -34,7 +34,7 @@ public class MathUtils {
      * 将px值转换为dip或dp值，保证尺寸大小不变
      */
     public int px2dp(float pxValue) {
-        final float fontScale = Timo_Application.getInstance().getContext().getResources().getDisplayMetrics().density;
+        final float fontScale = BaseApplication.getInstance().getContext().getResources().getDisplayMetrics().density;
         return (int) (pxValue / fontScale + 0.5f);
     }
 
@@ -42,7 +42,7 @@ public class MathUtils {
      * 将dip或dp值转换为px值，保证尺寸大小不变
      */
     public int dp2px(float dipValue) {
-        final float scale = Timo_Application.getInstance().getContext().getResources().getDisplayMetrics().density;
+        final float scale = BaseApplication.getInstance().getContext().getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
 
@@ -50,7 +50,7 @@ public class MathUtils {
      * 将px值转换为sp值，保证文字大小不变
      */
     public int px2sp(float pxValue) {
-        final float fontScale = Timo_Application.getInstance().getContext().getResources().getDisplayMetrics().density;
+        final float fontScale = BaseApplication.getInstance().getContext().getResources().getDisplayMetrics().density;
         return (int) (pxValue / fontScale + 0.5f);
     }
 
@@ -58,7 +58,7 @@ public class MathUtils {
      * 将sp值转换为px值，保证文字大小不变
      */
     public int sp2px(float spValue) {
-        final float fontScale = Timo_Application.getInstance().getContext().getResources().getDisplayMetrics().density;
+        final float fontScale = BaseApplication.getInstance().getContext().getResources().getDisplayMetrics().density;
         return (int) (spValue * fontScale + 0.5f);
     }
 

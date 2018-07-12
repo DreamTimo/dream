@@ -31,7 +31,7 @@ import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
 
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 
 import static android.graphics.BlurMaskFilter.Blur;
 
@@ -510,7 +510,7 @@ public class SpannableStringUtils {
             }
             if (imageIsBitmap || imageIsDrawable || imageIsUri || imageIsResourceId) {
                 if (imageIsBitmap) {
-                    mBuilder.setSpan(new ImageSpan(Timo_Application.getInstance().getContext(), bitmap), start, end, flag);
+                    mBuilder.setSpan(new ImageSpan(BaseApplication.getInstance().getContext(), bitmap), start, end, flag);
                     bitmap = null;
                     imageIsBitmap = false;
                 } else if (imageIsDrawable) {
@@ -518,11 +518,11 @@ public class SpannableStringUtils {
                     drawable = null;
                     imageIsDrawable = false;
                 } else if (imageIsUri) {
-                    mBuilder.setSpan(new ImageSpan(Timo_Application.getInstance().getContext(), uri), start, end, flag);
+                    mBuilder.setSpan(new ImageSpan(BaseApplication.getInstance().getContext(), uri), start, end, flag);
                     uri = null;
                     imageIsUri = false;
                 } else {
-                    mBuilder.setSpan(new ImageSpan(Timo_Application.getInstance().getContext(), resourceId), start, end, flag);
+                    mBuilder.setSpan(new ImageSpan(BaseApplication.getInstance().getContext(), resourceId), start, end, flag);
                     resourceId = 0;
                     imageIsResourceId = false;
                 }

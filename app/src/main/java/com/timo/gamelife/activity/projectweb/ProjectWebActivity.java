@@ -26,11 +26,6 @@ public class ProjectWebActivity extends MVPBaseActivity<ProjectWebContract.View,
     }
 
     @Override
-    protected String setTitleName() {
-        return getString(R.string.title_project);
-    }
-
-    @Override
     protected void initEvent() {
         mWebview= (CommonWebView) findViewById(R.id.webview);
         mTitle= (TitleBar) findViewById(R.id.title);

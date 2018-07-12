@@ -1,6 +1,4 @@
 package com.timo.gamelife.activity;
-
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,11 +30,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int getContentResId() {
         return R.layout.activity_main;
-    }
-
-    @Override
-    protected String setTitleName() {
-        return "梦之启航";
     }
 
     @Override
@@ -87,9 +80,6 @@ public class MainActivity extends BaseActivity {
         ft.commitAllowingStateLoss();
         mCurrentPos = i;
         ((RadioButton) mRgBottom.getChildAt(mCurrentPos)).setChecked(true);
-//        if (i == 0) {
-//            BaseTools.loadWeb(mWebview, "file:///android_asset/sakura.html");
-//        } else
         if (i == 1) {
             BaseTools.loadWeb(mWebview, "file:///android_asset/snow.html");
         } else if (i == 2) {

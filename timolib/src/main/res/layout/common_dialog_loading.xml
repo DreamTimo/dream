@@ -4,7 +4,7 @@
     android:id="@+id/dialog_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/loading_bg_color">
+    android:background="@color/transparent">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

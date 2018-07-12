@@ -12,7 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 
 /**
  * 此类主要是用来放一些系统过时方法的处理
@@ -48,7 +48,7 @@ public class XOutdatedUtils {
      * @return
      */
     public Drawable getDrawable(@DrawableRes int id) {
-        return ContextCompat.getDrawable(Timo_Application.getInstance().getContext(), id);
+        return ContextCompat.getDrawable(BaseApplication.getInstance().getContext(), id);
     }
 
     /**
@@ -60,7 +60,7 @@ public class XOutdatedUtils {
      */
     public Drawable getDrawable(@DrawableRes int id,
                                        @Nullable Resources.Theme theme) {
-        return ResourcesCompat.getDrawable(Timo_Application.getInstance().getResources(), id, theme);
+        return ResourcesCompat.getDrawable(BaseApplication.getInstance().getResources(), id, theme);
     }
 
     /**
@@ -70,7 +70,7 @@ public class XOutdatedUtils {
      * @return
      */
     public int getColor(@ColorRes int id) {
-        return ContextCompat.getColor(Timo_Application.getInstance().getContext(), id);
+        return ContextCompat.getColor(BaseApplication.getInstance().getContext(), id);
     }
 
     /**
@@ -81,7 +81,7 @@ public class XOutdatedUtils {
      * @return
      */
     public int getColor(@ColorRes int id, @Nullable Resources.Theme theme) {
-        return ResourcesCompat.getColor(Timo_Application.getInstance().getResources(), id, theme);
+        return ResourcesCompat.getColor(BaseApplication.getInstance().getResources(), id, theme);
     }
 
     /**
@@ -91,7 +91,7 @@ public class XOutdatedUtils {
      * @return
      */
     public ColorStateList getColorStateList(@ColorRes int id) {
-        return ContextCompat.getColorStateList(Timo_Application.getInstance().getContext(), id);
+        return ContextCompat.getColorStateList(BaseApplication.getInstance().getContext(), id);
     }
 
     /**
@@ -102,6 +102,6 @@ public class XOutdatedUtils {
      * @return
      */
     public ColorStateList getColorStateList(@ColorRes int id, @Nullable Resources.Theme theme) {
-        return ResourcesCompat.getColorStateList(Timo_Application.getInstance().getResources(), id, theme);
+        return ResourcesCompat.getColorStateList(BaseApplication.getInstance().getResources(), id, theme);
     }
 }

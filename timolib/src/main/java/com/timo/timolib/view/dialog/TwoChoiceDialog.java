@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.timo.timolib.R;
-import com.timo.timolib.base.BaseBottomDialog;
+import com.timo.timolib.base.base_dialog.BaseBottomDialog;
 
 /**
  * Created by 蔡永汪 on 2017/8/25.

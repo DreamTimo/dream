@@ -14,8 +14,6 @@ import com.timo.timolib.view.tablayout.CommonTabLayout;
 public class KotlinMainContract {
     public interface View extends BaseView {
         void showFragment(int position);
-
-        void initWave();
     }
 
     public interface Presenter extends BasePresenter<View> {

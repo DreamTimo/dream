@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.timo.timolib.Timo_BaseConstancts;
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseConstancts;
+import com.timo.timolib.BaseApplication;
 import com.timo.timolib.R;
 
 /**
@@ -23,7 +23,7 @@ import com.timo.timolib.R;
  */
 public class ToastUtils {
     private ToastUtils() {}
-    private Context context = Timo_Application.getInstance().getContext();
+    private Context context = BaseApplication.getInstance().getContext();
     private static ToastUtils instance;
     public static ToastUtils getInstance(){
         if (instance ==null){
@@ -46,7 +46,7 @@ public class ToastUtils {
 
     public Toast normal( @NonNull String message, int duration,
                                             Drawable icon) {
-        return custom( message, icon , Timo_BaseConstancts.COLOR_NORMAL, duration);
+        return custom( message, icon , BaseConstancts.COLOR_NORMAL, duration);
     }
 
     public Toast warning( @NonNull String message) {
@@ -62,7 +62,7 @@ public class ToastUtils {
         if (withIcon){
             icon= XOutdatedUtils.getInstance().getDrawable( R.drawable.toast_warning);
         }
-        return custom( message,icon, Timo_BaseConstancts.COLOR_WARNING, duration);
+        return custom( message,icon, BaseConstancts.COLOR_WARNING, duration);
     }
 
     public Toast info( @NonNull String message) {
@@ -78,14 +78,14 @@ public class ToastUtils {
         if (withIcon){
             icon=XOutdatedUtils.getInstance().getDrawable( R.drawable.toast_info);
         }
-        return custom( message,icon, Timo_BaseConstancts.COLOR_INFO, duration);
+        return custom( message,icon, BaseConstancts.COLOR_INFO, duration);
     }
     public Toast info( @NonNull String message, int duration, boolean withIcon,boolean newToast) {
         Drawable icon=null;
         if (withIcon){
             icon=XOutdatedUtils.getInstance().getDrawable( R.drawable.toast_info);
         }
-        return custom( message,icon, Timo_BaseConstancts.COLOR_INFO, duration,newToast);
+        return custom( message,icon, BaseConstancts.COLOR_INFO, duration,newToast);
     }
     public Toast success( @NonNull String message) {
         return success( message, Toast.LENGTH_SHORT, true);
@@ -100,14 +100,14 @@ public class ToastUtils {
         if (withIcon){
             icon=XOutdatedUtils.getInstance().getDrawable( R.drawable.toast_success);
         }
-        return custom( message,icon, Timo_BaseConstancts.COLOR_SUCCESS, duration);
+        return custom( message,icon, BaseConstancts.COLOR_SUCCESS, duration);
     }
     public Toast success( @NonNull String message, int duration, boolean withIcon,boolean newToast) {
         Drawable icon=null;
         if (withIcon){
             icon=XOutdatedUtils.getInstance().getDrawable( R.drawable.toast_success);
         }
-        return custom( message,icon, Timo_BaseConstancts.COLOR_SUCCESS, duration,newToast);
+        return custom( message,icon, BaseConstancts.COLOR_SUCCESS, duration,newToast);
     }
     public Toast error( @NonNull String message) {
         return error( message, Toast.LENGTH_SHORT, true);
@@ -122,39 +122,39 @@ public class ToastUtils {
         if (withIcon){
             icon=XOutdatedUtils.getInstance().getDrawable( R.drawable.toast_error);
         }
-        return custom( message,icon, Timo_BaseConstancts.COLOR_ERROR, duration);
+        return custom( message,icon, BaseConstancts.COLOR_ERROR, duration);
     }
     public Toast error( @NonNull String message, int duration, boolean withIcon,boolean newToast) {
         Drawable icon=null;
         if (withIcon){
             icon=XOutdatedUtils.getInstance().getDrawable( R.drawable.toast_error);
         }
-        return custom( message,icon, Timo_BaseConstancts.COLOR_ERROR, duration,newToast);
+        return custom( message,icon, BaseConstancts.COLOR_ERROR, duration,newToast);
     }
 
     public Toast custom(@NonNull String message, @ColorInt int tintColor) {
-        return custom( message, null, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT);
+        return custom( message, null, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT);
     }
     public Toast custom(@NonNull String message, @ColorInt int tintColor,boolean newToast) {
-        return custom( message, null, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT,newToast);
+        return custom( message, null, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT,newToast);
     }
     public Toast custom( @NonNull String message, Drawable icon, @ColorInt int tintColor) {
-        return custom( message, icon, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT);
+        return custom( message, icon, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT);
     }
     public Toast custom( @NonNull String message, Drawable icon, @ColorInt int tintColor,boolean newToast) {
-        return custom( message, icon, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT,newToast);
+        return custom( message, icon, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,Toast.LENGTH_SHORT,newToast);
     }
     public Toast custom(@NonNull String message, @ColorInt int tintColor,int duration) {
-        return custom( message, null, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration);
+        return custom( message, null, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration);
     }
     public Toast custom(@NonNull String message, @ColorInt int tintColor,int duration,boolean newToast) {
-        return custom( message, null, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration,newToast);
+        return custom( message, null, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration,newToast);
     }
     public Toast custom( @NonNull String message, Drawable icon, @ColorInt int tintColor,int duration) {
-        return custom( message, icon, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration);
+        return custom( message, icon, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration);
     }
     public Toast custom( @NonNull String message, Drawable icon, @ColorInt int tintColor,int duration,boolean newToast) {
-        return custom( message, icon, Timo_BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration,newToast);
+        return custom( message, icon, BaseConstancts.COLOR_DEFAULT_TEXT, tintColor,duration,newToast);
     }
     public Toast custom( @NonNull String message, @DrawableRes int iconRes, @ColorInt int textColor, @ColorInt int tintColor, int duration) {
         return custom( message, XOutdatedUtils.getInstance().getDrawable( iconRes), textColor,tintColor, duration);

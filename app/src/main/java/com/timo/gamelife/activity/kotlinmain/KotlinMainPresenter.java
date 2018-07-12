@@ -1,17 +1,20 @@
 package com.timo.gamelife.activity.kotlinmain;
 
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.timo.gamelife.BaseConstances;
 import com.timo.gamelife.R;
+import com.timo.gamelife.ServiceApi;
+import com.timo.gamelife.bean.ApiShowLinkman;
 import com.timo.gamelife.fragment.DreamFragment;
 import com.timo.gamelife.fragment.HomeFragment;
 import com.timo.gamelife.fragment.MineFragment;
 import com.timo.gamelife.mvp.BasePresenterImpl;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.Timo_BaseConstancts;
+import com.timo.timolib.BaseConstancts;
+import com.timo.timolib.network.Http;
+import com.timo.timolib.tools.rx.RxSubscriber;
 import com.timo.timolib.view.tablayout.CommonTabLayout;
 import com.timo.timolib.view.tablayout.listener.OnTabSelectListener;
 
@@ -31,7 +34,7 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
             @Override
             public void onTabSelect(int position) {
                 mView.showFragment(position);
-                BaseTools.postMsg(Timo_BaseConstancts.TAG, false);
+                BaseTools.postMsg(BaseConstancts.TAG, false);
             }
 
             @Override
@@ -62,6 +65,12 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
 
     @Override
     public void showFragment(int position, FragmentManager fragmentManager) {
+        addSubscription(Http.getGsonApi(mView.getContext(), ServiceApi.class).showLinkman("c8192b9d81054e5f820ba9b5055f217a"), new RxSubscriber<ApiShowLinkman>(mView.getContext()) {
+            @Override
+            protected void _onNext(ApiShowLinkman o) {
+                BaseTools.showToast(o.getReturnData().getResult().get(0).getLinkmanId());
+            }
+        });
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (position) {
             //首页

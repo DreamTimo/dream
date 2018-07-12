@@ -31,16 +31,6 @@ public class HomeFragment extends BaseFragment {
     TitleBar mWebTitle;
 
     @Override
-    protected String setTitleName() {
-        return getString(R.string.main_home);
-    }
-
-    @Override
-    protected void setTitle(View view) {
-        super.setTitle(view);
-    }
-
-    @Override
     protected int getContentResId() {
         return R.layout.fragment_dream;
     }

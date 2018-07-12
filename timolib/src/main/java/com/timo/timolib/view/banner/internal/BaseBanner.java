@@ -20,70 +20,114 @@ import com.timo.timolib.view.banner.pagerstyle.BasePageTransformer;
 
 /**
  * 版权所有：XXX有限公司
- *
+ * <p>
  * BaseLoopView
  *
  * @author zhou.wenkai ,Created on 2015-1-14 19:30:18
  * @author mender，Modified Date Modify Content:
- * Major Function：<b>自定义控件可以自动跳动的ViewPager</b>
- *
- * 注:如果您修改了本类请填写以下内容作为记录，如非本人操作劳烦通知，谢谢！！！
+ *         Major Function：<b>自定义控件可以自动跳动的ViewPager</b>
+ *         <p>
+ *         注:如果您修改了本类请填写以下内容作为记录，如非本人操作劳烦通知，谢谢！！！
  */
 public abstract class BaseBanner extends RelativeLayout {
 
-    private int paddingVertical=10;
-    private int paddingHorizontial =30;
-    private int pageMargin=3;
+    private int paddingVertical = 10;
+    private int paddingHorizontial = 30;
+    private int pageMargin = 3;
 
-    /** ViewPager */
+    /**
+     * ViewPager
+     */
     public ViewPager mViewPager;
-    /** 设置的自定义布局id */
+    /**
+     * 设置的自定义布局id
+     */
     protected int mLoopLayoutId;
-    /** ViewPager数据适配器 */
+    /**
+     * ViewPager数据适配器
+     */
     private BaseBannerAdapter adapter;
-    /** 底部指示点父控件 */
+    /**
+     * 底部指示点父控件
+     */
     protected LinearLayout dotsView;
-  
-    /** 指示点的位置 */
+
+    /**
+     * 指示点的位置
+     */
     protected int currentPosition = -1;
-    /** 指示点距离 */
+    /**
+     * 指示点距离
+     */
     protected float mDotMargin;
-    /** 自动跳转的时间间隔 */
+    /**
+     * 自动跳转的时间间隔
+     */
     protected int period;
-    /** 指示点选择器 */
+    /**
+     * 指示点选择器
+     */
     protected int mDotSelector;
-    /** 默认图片 */
+    /**
+     * 默认图片
+     */
     protected int mDefaultImgId;
-    /** 是否自动跳转 */
+    /**
+     * 是否自动跳转
+     */
     private boolean autoLoop = false;
 
-    /** 触摸时是否停止自动跳转 */
+    /**
+     * 触摸时是否停止自动跳转
+     */
     private boolean stopScrollWhenTouch = true;
-    /** 当前状态是否是由于触摸而停止 */
+    /**
+     * 当前状态是否是由于触摸而停止
+     */
     private boolean isStoppedByTouch = false;
-    /** 当前状态是否是由于不可见而停止 */
+    /**
+     * 当前状态是否是由于不可见而停止
+     */
     private boolean isStoppedByInvisible = false;
-    /** 当前状态是否为自动跳转 */
+    /**
+     * 当前状态是否为自动跳转
+     */
     private boolean isAutoScroll = true;
 
-    /** 自动跳转的方向为自右向左 */
+    /**
+     * 自动跳转的方向为自右向左
+     */
     public static final int LEFT = 0;
-    /** 自动跳转的方向为自左向右 */
+    /**
+     * 自动跳转的方向为自左向右
+     */
     public static final int RIGHT = 1;
-    /** 自动跳转方向,默认自左向右 */
+    /**
+     * 自动跳转方向,默认自左向右
+     */
     protected int direction = RIGHT;
 
-    /** 数据实体对象 */
+    /**
+     * 数据实体对象
+     */
     protected BannerData mLoopData;
 
     private Handler mHandler;
-    /** 条目点击的接口回调 */
+    /**
+     * 条目点击的接口回调
+     */
     protected BaseBannerAdapter.OnItemClickListener mOnItemClickListener;
-    /** 自动跳转状态的接口回调 */
+    /**
+     * 自动跳转状态的接口回调
+     */
     protected OnBannerListener mOnLoopListener;
-    /** 轮播图跳转的接口回调 */
+    /**
+     * 轮播图跳转的接口回调
+     */
     protected OnBannerChangeListener mOnBannerChangeListener;
-    /** 滑动控制器 */
+    /**
+     * 滑动控制器
+     */
     private BannerScroller mScroller;
 
     private float mDownX;
@@ -179,7 +223,6 @@ public abstract class BaseBanner extends RelativeLayout {
 
     /**
      * 获取封装数据
-     *
      */
     public BannerData getLoopData() {
         return mLoopData;
@@ -187,7 +230,6 @@ public abstract class BaseBanner extends RelativeLayout {
 
     /**
      * 获取当前指示位置
-     *
      */
     public int getCurrentPosition() {
         return currentPosition;
@@ -197,7 +239,7 @@ public abstract class BaseBanner extends RelativeLayout {
      * @param loopData 设置数据,默认轮播间隔3秒
      */
     public void setData(BannerData loopData) {
-        if (null == loopData||loopData.getDatas().size()==0) return;
+        if (null == loopData || loopData.getDatas().size() == 0) return;
         stopAutoLoop();
         removeAllViews();
         initRealView();
@@ -209,13 +251,15 @@ public abstract class BaseBanner extends RelativeLayout {
         setScrollDuration(1000);
         setPeriod(3000);
     }
+
     /**
      * 设置数据
-     * @param loopData  数据
-     * @param period 轮播间隔/单位秒
+     *
+     * @param loopData 数据
+     * @param period   轮播间隔/单位秒
      */
     public void setData(BannerData loopData, int period) {
-        if (null == loopData||loopData.getDatas().size()==0) return;
+        if (null == loopData || loopData.getDatas().size() == 0) return;
         stopAutoLoop();
         removeAllViews();
         initRealView();
@@ -225,7 +269,7 @@ public abstract class BaseBanner extends RelativeLayout {
         invalidate();
         startAutoLoop();
         setScrollDuration(1000);
-        setPeriod(period*1000);
+        setPeriod(period * 1000);
 
     }
 
@@ -234,7 +278,7 @@ public abstract class BaseBanner extends RelativeLayout {
      * 设置样式
      */
     public void setData(BannerData loopData, BasePageTransformer transformer) {
-        if (null == loopData||transformer==null) return;
+        if (null == loopData || transformer == null) return;
         stopAutoLoop();
         removeAllViews();
         initRealView();
@@ -259,7 +303,7 @@ public abstract class BaseBanner extends RelativeLayout {
         int startPosition = Integer.MAX_VALUE / 2 - Integer.MAX_VALUE / 2 % mLoopData.getDatas().size();
         mViewPager.setCurrentItem(startPosition, false);      // 设置当前显示的位置
         if (mHandler == null) {
-            mHandler = new BannerHandler(this, (Activity)getContext());
+            mHandler = new BannerHandler(this, (Activity) getContext());
         }
         if (autoLoop) {
             startAutoLoop();
@@ -269,21 +313,24 @@ public abstract class BaseBanner extends RelativeLayout {
     /**
      * @param paddingVertical 设置上下距离
      */
-    public void setPaddingVertical(int paddingVertical){
-        this.paddingVertical =paddingVertical;
+    public void setPaddingVertical(int paddingVertical) {
+        this.paddingVertical = paddingVertical;
     }
+
     /**
      * @param paddingHorizontial 设置左右距离
      */
-    public void setPaddingHorizontial(int paddingHorizontial){
-        this.paddingHorizontial =paddingHorizontial;
+    public void setPaddingHorizontial(int paddingHorizontial) {
+        this.paddingHorizontial = paddingHorizontial;
     }
+
     /**
      * @param pageMargin 设置页面距离
      */
-    public void setPageMargin(int pageMargin){
-        this.pageMargin =pageMargin;
+    public void setPageMargin(int pageMargin) {
+        this.pageMargin = pageMargin;
     }
+
     /**
      * 设置背景图/缩略图
      */
@@ -297,20 +344,21 @@ public abstract class BaseBanner extends RelativeLayout {
         int startPosition = Integer.MAX_VALUE / 2 - Integer.MAX_VALUE / 2 % mLoopData.getDatas().size();
         mViewPager.setCurrentItem(startPosition, false);      // 设置当前显示的位置
         mViewPager.setClipChildren(false);
-        mViewPager.setPageTransformer(true,transformer);
-        LayoutParams params =new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        mViewPager.setPageTransformer(true, transformer);
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         params.setMargins(BaseTools.dp2px(paddingHorizontial), BaseTools.dp2px(paddingVertical), BaseTools.dp2px(paddingHorizontial), BaseTools.dp2px(paddingVertical));
-        params.alignWithParent =true;
+        params.alignWithParent = true;
         mViewPager.setLayoutParams(params);
         mViewPager.setPageMargin(BaseTools.dp2px(pageMargin));
         mViewPager.setOffscreenPageLimit(3);//缓存
         if (mHandler == null) {
-            mHandler = new BannerHandler(this, (Activity)getContext());
+            mHandler = new BannerHandler(this, (Activity) getContext());
         }
         if (autoLoop) {
             startAutoLoop();
         }
     }
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
 
@@ -321,7 +369,7 @@ public abstract class BaseBanner extends RelativeLayout {
                 mDownY = ev.getY();
                 break;
             case MotionEvent.ACTION_MOVE:
-                if(Math.abs(ev.getY() - mDownY) > Math.abs(ev.getX() - mDownX)) {
+                if (Math.abs(ev.getY() - mDownY) > Math.abs(ev.getX() - mDownX)) {
                     getParent().requestDisallowInterceptTouchEvent(false);
                 } else {
                     getParent().requestDisallowInterceptTouchEvent(true);
@@ -346,17 +394,17 @@ public abstract class BaseBanner extends RelativeLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
 
-        if(stopScrollWhenTouch) {
+        if (stopScrollWhenTouch) {
             switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    if(isAutoScroll) {
+                    if (isAutoScroll) {
                         stopAutoLoop();
                         isStoppedByTouch = true;
                     }
                     break;
                 case MotionEvent.ACTION_UP:
                 case MotionEvent.ACTION_CANCEL:
-                    if(isStoppedByTouch) {
+                    if (isStoppedByTouch) {
                         startAutoLoop(period);
                         isStoppedByTouch = false;
                     }
@@ -373,14 +421,14 @@ public abstract class BaseBanner extends RelativeLayout {
         // 当不可见的时候停止自动跳转
         switch (visibility) {
             case VISIBLE:
-                if(isStoppedByInvisible) {
+                if (isStoppedByInvisible) {
                     startCurrentAutoLoop();
                     isStoppedByInvisible = false;
                 }
                 break;
             case INVISIBLE:
             case GONE:
-                if(isAutoScroll) {
+                if (isAutoScroll) {
                     stopAutoLoop();
                     isStoppedByInvisible = true;
                 }
@@ -433,7 +481,7 @@ public abstract class BaseBanner extends RelativeLayout {
      * 移除所有消息
      */
     public void removeAllMessages() {
-        if(null != mHandler) {
+        if (null != mHandler) {
             mHandler.removeMessages(0);
             mHandler.removeMessages(1);
         }
@@ -469,6 +517,7 @@ public abstract class BaseBanner extends RelativeLayout {
 
     /**
      * 注册点击监听的方法
+     *
      * @param l
      */
     public void setOnClickListener(BaseBannerAdapter.OnItemClickListener l) {
@@ -477,16 +526,18 @@ public abstract class BaseBanner extends RelativeLayout {
 
     /**
      * 设置跳转监听
+     *
      * @param l
      */
     public void setOnLoopListener(OnBannerListener l) {
         this.mOnLoopListener = l;
     }
+
     /**
      * 设置跳转监听
      */
     public void setOnBannerChangeListener(OnBannerChangeListener listener) {
-        this.mOnBannerChangeListener =listener;
+        this.mOnBannerChangeListener = listener;
     }
 
     /**
@@ -515,7 +566,7 @@ public abstract class BaseBanner extends RelativeLayout {
      * 释放资源
      */
     public void releaseResources() {
-        if(adapter != null) {
+        if (adapter != null) {
             adapter.releaseResources();
         }
         if (mHandler != null) {
@@ -526,7 +577,7 @@ public abstract class BaseBanner extends RelativeLayout {
 
     /**
      * OnLoopListener
-     *
+     * <p>
      * <b>定义一个接口,当Adapter被点击的时候作为回调被调用</b>
      */
     public interface OnBannerListener {
@@ -534,26 +585,27 @@ public abstract class BaseBanner extends RelativeLayout {
         /**
          * LoopView 跳转到第一个时候会被调用
          *
-         * @param realPosition	当前的绝对位置
+         * @param realPosition 当前的绝对位置
          */
         void onLoopToStart(int realPosition);
 
         /**
          * LoopView 跳转到最后一个时候会被调用
          *
-         * @param realPosition	当前的绝对位置
+         * @param realPosition 当前的绝对位置
          */
         void onLoopToEnd(int realPosition);
     }
+
     /**
      * OnLoopListener
-     *
+     * <p>
      * <b>定义一个接口,当Adapter被点击的时候作为回调被调用</b>
      */
     public interface OnBannerChangeListener {
 
         /**
-         *轮播图变化时回调
+         * 轮播图变化时回调
          */
         void onBannerChange(int position);
     }

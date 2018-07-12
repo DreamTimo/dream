@@ -8,14 +8,14 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 
 /**
  * 获取屏幕相关的辅助类
  */
 public class ScreenUtils {
     private static ScreenUtils instance;
-    private Context context = Timo_Application.getInstance().getContext();
+    private Context context = BaseApplication.getInstance().getContext();
 
     public static ScreenUtils getInstance() {
         if (instance == null){

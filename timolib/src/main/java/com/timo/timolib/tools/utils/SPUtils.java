@@ -3,8 +3,8 @@ package com.timo.timolib.tools.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.timo.timolib.Timo_BaseConstancts;
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseConstancts;
+import com.timo.timolib.BaseApplication;
 
 import java.util.Map;
 
@@ -30,7 +30,7 @@ public class SPUtils {
     public void save(String key, Object object) {
 
         String type = object.getClass().getSimpleName();
-        SharedPreferences sp = Timo_Application.getInstance().getContext().getSharedPreferences(Timo_BaseConstancts.BASE_SHARE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = BaseApplication.getInstance().getContext().getSharedPreferences(BaseConstancts.BASE_SHARE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
         if ("String".equals(type)) {
@@ -54,7 +54,7 @@ public class SPUtils {
     public Object get(String key, Object defaultObject) {
         if (defaultObject != null) {
             String type = defaultObject.getClass().getSimpleName();
-            SharedPreferences sp = Timo_Application.getInstance().getContext().getSharedPreferences(Timo_BaseConstancts.BASE_SHARE_NAME, Context.MODE_PRIVATE);
+            SharedPreferences sp = BaseApplication.getInstance().getContext().getSharedPreferences(BaseConstancts.BASE_SHARE_NAME, Context.MODE_PRIVATE);
 
             if ("String".equals(type)) {
                 return sp.getString(key, (String) defaultObject);
@@ -72,7 +72,7 @@ public class SPUtils {
     }
 
     public void destroyParam() {
-        SharedPreferences sp = Timo_Application.getInstance().getContext().getSharedPreferences(Timo_BaseConstancts.BASE_SHARE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = BaseApplication.getInstance().getContext().getSharedPreferences(BaseConstancts.BASE_SHARE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
         editor.commit();
@@ -81,7 +81,7 @@ public class SPUtils {
      * 移除某个key值已经对应的值
      */
     public void remove(String key) {
-        SharedPreferences sp = Timo_Application.getInstance().getContext().getSharedPreferences(Timo_BaseConstancts.BASE_SHARE_NAME,
+        SharedPreferences sp = BaseApplication.getInstance().getContext().getSharedPreferences(BaseConstancts.BASE_SHARE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);
@@ -91,7 +91,7 @@ public class SPUtils {
      * 返回所有的键值对
      */
     public Map<String, ?> getAll() {
-        SharedPreferences sp = Timo_Application.getInstance().getContext().getSharedPreferences(Timo_BaseConstancts.BASE_SHARE_NAME,
+        SharedPreferences sp = BaseApplication.getInstance().getContext().getSharedPreferences(BaseConstancts.BASE_SHARE_NAME,
                 Context.MODE_PRIVATE);
         return sp.getAll();
     }
@@ -99,7 +99,7 @@ public class SPUtils {
      * 查询某个key是否已经存在
      */
     public static boolean isExist(String key) {
-        SharedPreferences sp = Timo_Application.getInstance().getContext().getSharedPreferences(Timo_BaseConstancts.BASE_SHARE_NAME,
+        SharedPreferences sp = BaseApplication.getInstance().getContext().getSharedPreferences(BaseConstancts.BASE_SHARE_NAME,
                 Context.MODE_PRIVATE);
         return sp.contains(key);
     }
@@ -109,7 +109,7 @@ public class SPUtils {
      *
      */
     public static void clearAll() {
-        SharedPreferences sp = Timo_Application.getInstance().getContext().getSharedPreferences(Timo_BaseConstancts.BASE_SHARE_NAME,
+        SharedPreferences sp = BaseApplication.getInstance().getContext().getSharedPreferences(BaseConstancts.BASE_SHARE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();

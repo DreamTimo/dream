@@ -11,7 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -71,7 +71,7 @@ public final class PermissionUtils {
     public String[] checkPermission() {
         List<String> data = new ArrayList<>();//存储未申请的权限
         for (String permission : permissions) {
-            int checkSelfPermission = ContextCompat.checkSelfPermission(Timo_Application.getInstance().getContext(), permission);
+            int checkSelfPermission = ContextCompat.checkSelfPermission(BaseApplication.getInstance().getContext(), permission);
             if (checkSelfPermission != PackageManager.PERMISSION_GRANTED) {//未申请
                 data.add(permission);
             }
@@ -88,7 +88,7 @@ public final class PermissionUtils {
     public String[] checkLocationPermission() {
         List<String> data = new ArrayList<>();//存储未申请的权限
         for (String permission : locationPermission) {
-            int checkSelfPermission = ContextCompat.checkSelfPermission(Timo_Application.getInstance().getContext(), permission);
+            int checkSelfPermission = ContextCompat.checkSelfPermission(BaseApplication.getInstance().getContext(), permission);
             if (checkSelfPermission != PackageManager.PERMISSION_GRANTED) {//未申请
                 data.add(permission);
             }
@@ -114,7 +114,7 @@ public final class PermissionUtils {
     public String[] checkCallPhonePermission() {
         List<String> data = new ArrayList<>();//存储未申请的权限
         for (String permission : callPhonePermissions) {
-            int checkSelfPermission = ContextCompat.checkSelfPermission(Timo_Application.getInstance().getContext(), permission);
+            int checkSelfPermission = ContextCompat.checkSelfPermission(BaseApplication.getInstance().getContext(), permission);
             if (checkSelfPermission != PackageManager.PERMISSION_GRANTED) {//未申请
                 data.add(permission);
             }
@@ -141,9 +141,9 @@ public final class PermissionUtils {
 
     @SuppressLint("NewApi")
     public boolean isNotificationEnabled() {
-        AppOpsManager mAppOps = (AppOpsManager) Timo_Application.getInstance().getContext().getSystemService(Context.APP_OPS_SERVICE);
-        ApplicationInfo appInfo = Timo_Application.getInstance().getContext().getApplicationInfo();
-        String pkg = Timo_Application.getInstance().getContext().getApplicationContext().getPackageName();
+        AppOpsManager mAppOps = (AppOpsManager) BaseApplication.getInstance().getContext().getSystemService(Context.APP_OPS_SERVICE);
+        ApplicationInfo appInfo = BaseApplication.getInstance().getContext().getApplicationInfo();
+        String pkg = BaseApplication.getInstance().getContext().getApplicationContext().getPackageName();
         int uid = appInfo.uid;
 
         Class appOpsClass = null;

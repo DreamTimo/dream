@@ -3,6 +3,7 @@ package com.timo.gamelife.fragment;
 import android.view.View;
 
 import com.timo.gamelife.R;
+import com.timo.timolib.BaseTools;
 import com.timo.timolib.base.base_fragment.BaseFragment;
 
 /**
@@ -10,11 +11,6 @@ import com.timo.timolib.base.base_fragment.BaseFragment;
  */
 
 public class DreamFragment extends BaseFragment {
-
-    @Override
-    protected String setTitleName() {
-        return getString(R.string.mian_dream);
-    }
 
     @Override
     protected int getContentResId() {

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,7 +24,7 @@ public class NetUtil {
 
     public boolean checkNet(Context context) {
         // 获取手机所以连接管理对象（包括wi-fi，net等连接的管理）
-        context = Timo_Application.getInstance().getContext();
+        context = BaseApplication.getInstance().getContext();
         if (context != null) {
             ConnectivityManager conn = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             if (conn != null) {

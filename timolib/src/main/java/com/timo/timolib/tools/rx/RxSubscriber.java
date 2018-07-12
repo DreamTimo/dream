@@ -1,48 +1,20 @@
 package com.timo.timolib.tools.rx;
+
 import android.content.Context;
 
+import com.timo.timolib.BaseTools;
 import com.timo.timolib.R;
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 import com.timo.timolib.tools.utils.DialogUtils;
 import com.timo.timolib.tools.utils.NetUtil;
 
 import rx.Subscriber;
 
-/**
- * des:订阅封装
- * Created by xsf
- * on 2016.09.10:16
- */
-
-/********************使用例子********************/
-/*_apiService.login(mobile, verifyCode)
-        .//省略
-        .subscribe(new RxSubscriber<User user>(mContext,false) {
-@Override
-public void _onNext(User user) {
-        // 处理user
-        }
-
-@Override
-public void _onError(String msg) {
-        ToastUtil.showShort(mActivity, msg);
-        });*/
 public abstract class RxSubscriber<T> extends Subscriber<T> {
 
     private Context mContext;
     private String msg;
     private boolean showDialog = true;
-
-    /**
-     * 是否显示浮动dialog
-     */
-    public void showDialog() {
-        this.showDialog = true;
-    }
-
-    public void hideDialog() {
-        this.showDialog = true;
-    }
 
     public RxSubscriber(Context context, String msg, boolean showDialog) {
         this.mContext = context;
@@ -51,11 +23,11 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     }
 
     public RxSubscriber(Context context) {
-        this(context, Timo_Application.getInstance().getContext().getString(R.string.loading), true);
+        this(context, BaseApplication.getInstance().getContext().getString(R.string.loading), true);
     }
 
     public RxSubscriber(Context context, boolean showDialog) {
-        this(context, Timo_Application.getInstance().getContext().getString(R.string.loading), showDialog);
+        this(context, BaseApplication.getInstance().getContext().getString(R.string.loading), showDialog);
     }
 
     @Override
@@ -87,22 +59,17 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         if (showDialog)
             DialogUtils.getInstance().cancelLoadingDialog();
         e.printStackTrace();
-        //网络
-        if (!NetUtil.getInstance().isNetConnected(Timo_Application.getInstance().getContext())) {
-            _onError(Timo_Application.getInstance().getContext().getString(R.string.no_net));
-        }
-        //服务器
-        else if (e instanceof ServerException) {
-            _onError(e.getMessage());
-        }
-        //其它
-        else {
-            _onError(Timo_Application.getInstance().getContext().getString(R.string.net_error));
+        if (!NetUtil.getInstance().isNetConnected(BaseApplication.getInstance().getContext())) {
+            _onError(BaseApplication.getInstance().getContext().getString(R.string.no_net));
+        } else {
+            _onError(BaseApplication.getInstance().getContext().getString(R.string.net_error));
         }
     }
 
     protected abstract void _onNext(T t);
 
-    protected abstract void _onError(String message);
+    protected void _onError(String message) {
+        BaseTools.showToast(message);
+    }
 
 }

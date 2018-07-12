@@ -11,11 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.timo.timolib.R;
-import com.timo.timolib.base.DialogListener;
+import com.timo.timolib.base.base_dialog.DialogListener;
 
 public class DialogUtils {
     private static DialogUtils instance;
-    private View mView;
 
     private DialogUtils() {
     }
@@ -46,9 +45,7 @@ public class DialogUtils {
             loadingDialog = new Dialog(context, R.style.loading_dialog);
         }
         loadingDialog.setCancelable(cancelable);
-        if (mView != null) {
-            mView = LayoutInflater.from(context).inflate(R.layout.common_dialog_loading, null);
-        }
+        View mView = LayoutInflater.from(context).inflate(R.layout.common_dialog_loading, null);
         loadingDialog.setContentView(mView);
         if (!TextUtils.isEmpty(loadingMsg)) {
             TextView textView = (TextView) mView.findViewById(R.id.tipTextView);
@@ -96,6 +93,7 @@ public class DialogUtils {
     public void cancelLoadingDialog() {
         if (loadingDialog != null) {
             loadingDialog.cancel();
+            loadingDialog = null;
         }
     }
 }

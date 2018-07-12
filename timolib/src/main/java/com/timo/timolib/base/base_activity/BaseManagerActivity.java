@@ -1,5 +1,5 @@
 package com.timo.timolib.base.base_activity;
-import com.timo.timolib.base.AppManager;
+import com.timo.timolib.base.base_manager.AppManager;
 
 /**
  * activity管理

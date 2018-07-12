@@ -1,11 +1,11 @@
 package com.timo.timolib.tools.utils.math;
 
-import com.timo.timolib.http.BaseBean;
+import java.io.Serializable;
 
 /**
  * 时间差计算结果封装类
  */
-public class DateDifference extends BaseBean {
+public class DateDifference implements Serializable {
     private long millisecond;
     private long second;
     private long minute;

@@ -13,7 +13,6 @@
         android:background="@color/transparent"/>
 
     <com.timo.timolib.view.banner.Banner
-
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="180dp"/>

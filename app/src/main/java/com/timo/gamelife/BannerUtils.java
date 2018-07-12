@@ -3,12 +3,11 @@ package com.timo.gamelife;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
-
-import com.timo.timolib.tools.utils.BaseUtils;
 import com.timo.timolib.view.banner.Banner;
 import com.timo.timolib.view.banner.internal.BannerData;
 import com.timo.timolib.view.banner.internal.BaseBannerAdapter;
 import com.timo.timolib.view.banner.internal.ItemData;
+import com.timo.timolib.view.banner.pagerstyle.ScaleInTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +16,9 @@ import java.util.List;
  * Created by 蔡永汪 on 2017/7/22.
  */
 
-public class BannerUtils extends BaseUtils {
-    private BannerUtils() {}
+public class BannerUtils {
+    private BannerUtils() {
+    }
 
     private static BannerUtils instance;
 
@@ -41,7 +41,7 @@ public class BannerUtils extends BaseUtils {
         }
         BannerData bannerData = new BannerData();
         bannerData.setDatas(dataList);
-        banner.setData(bannerData);
+        banner.setData(bannerData, new ScaleInTransformer());
         banner.setOnClickListener(new BaseBannerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(PagerAdapter parent, View view, int position, int realPosition) {

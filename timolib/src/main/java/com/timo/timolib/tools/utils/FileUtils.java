@@ -5,9 +5,9 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
-import com.timo.timolib.base.AppInfo;
+import com.timo.timolib.base.base_manager.AppInfo;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.Timo_Application;
+import com.timo.timolib.BaseApplication;
 import com.timo.timolib.R;
 
 import java.io.File;
@@ -175,7 +175,7 @@ public class FileUtils {
 
 	/** 获取应用的cache目录 */
 	public String getCachePath() {
-		File f = Timo_Application.getInstance().getContext().getCacheDir();
+		File f = BaseApplication.getInstance().getContext().getCacheDir();
 		if (null == f) {
 			return null;
 		} else {

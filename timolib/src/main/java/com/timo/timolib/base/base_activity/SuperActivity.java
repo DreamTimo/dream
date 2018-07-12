@@ -8,21 +8,21 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
+import android.view.View;
 
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.timo.timolib.Timo_BaseConfig;
+import com.timo.timolib.BaseConfig;
 import com.timo.timolib.R;
-import com.timo.timolib.Timo_BaseConstancts;
+import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.Timo_Application;
-import com.timo.timolib.Timo_Params;
+import com.timo.timolib.BaseApplication;
 import com.timo.timolib.tools.camera.CameraActivity;
-import com.timo.timolib.tools.daynightmodeutils.ChangeModeController;
 import com.timo.timolib.view.TitleBar;
 import com.timo.timolib.view.search.SearchFragment;
 import com.timo.timolib.view.search.custom.OnSearchClickListener;
@@ -36,8 +36,6 @@ import java.util.List;
  */
 
 public abstract class SuperActivity extends FragmentActivity {
-    private Timo_Params getParams;
-    private Timo_Params setParams;
     private TitleBar baseTitleBar;
 
     @Override
@@ -46,83 +44,36 @@ public abstract class SuperActivity extends FragmentActivity {
 //        ChangeModeController.getInstance().init(this, R.attr.class);
         super.onCreate(savedInstanceState);
         setContentView(getContentResId());
-        setTitle();
         initEvent();
         initEvent(savedInstanceState);
     }
 
-
     protected abstract int getContentResId();
-
-    protected void setTitle() {
-        if (findViewById(R.id.title) != null && BaseTools.isNotEmpty(setTitleName())) {
-            baseTitleBar = (TitleBar) findViewById(R.id.title);
-            BaseTools.setTitleBar(baseTitleBar, setTitleName());
-        }
-    }
-
-    protected abstract String setTitleName();
 
     protected abstract void initEvent();
 
-    protected void initEvent(Bundle savedInstanceState) {}
+    protected void initEvent(Bundle savedInstanceState) {
+    }
 
     public void startActivityNoFinish(Class<?> cls) {
-        if (setParams == null) {
-            startActivity(new Intent(Timo_Application.getInstance().getContext(), cls));
-        } else {
-            startActivity(new Intent(Timo_Application.getInstance().getContext(), cls).putExtra(Timo_BaseConstancts.BASE_PARAM, setParams));
-        }
+        startActivity(new Intent(BaseApplication.getInstance().getContext(), cls));
     }
 
     public void startActivityAddFinish(Class<?> cls) {
-        if (setParams == null) {
-            startActivity(new Intent(this, cls));
-            finish();
-        } else {
-            startActivity(new Intent(this, cls).putExtra(Timo_BaseConstancts.BASE_PARAM, setParams));
-            finish();
-        }
+        startActivity(new Intent(this, cls));
+        finish();
     }
 
     public void setMyResult(Serializable object) {
-        setResult(RESULT_OK, new Intent().putExtra(Timo_BaseConstancts.BASE_PARAM, object));
+        setResult(RESULT_OK, new Intent().putExtra(BaseConstancts.BASE_PARAM, object));
     }
 
     public void startActivityForMyResult(Class<?> cls, int code) {
-        if (setParams == null) {
-            startActivityForResult(new Intent(Timo_Application.getInstance().getContext(), cls), code);
-        } else {
-            startActivityForResult(new Intent(Timo_Application.getInstance().getContext(), cls).putExtra(Timo_BaseConstancts.BASE_PARAM, setParams), code);
-        }
-    }
-
-    public Timo_Params getParams() {
-        if (getIntent().getSerializableExtra(Timo_BaseConstancts.BASE_PARAM) != null) {
-            getParams = (Timo_Params) getIntent().getSerializableExtra(Timo_BaseConstancts.BASE_PARAM);
-        } else {
-            getParams = new Timo_Params();
-        }
-        return getParams;
-    }
-
-    public Timo_Params setParams() {
-        if (setParams == null) {
-            setParams = new Timo_Params();
-        }
-        return setParams;
-    }
-
-
-    public Timo_Params getMyParamResult(Intent data) {
-        if (data.getSerializableExtra(Timo_BaseConstancts.BASE_PARAM) != null) {
-            return (Timo_Params) data.getSerializableExtra(Timo_BaseConstancts.BASE_PARAM);
-        }
-        return null;
+        startActivityForResult(new Intent(BaseApplication.getInstance().getContext(), cls), code);
     }
 
     public Serializable getMyResult(Intent data) {
-        return data.getSerializableExtra(Timo_BaseConstancts.BASE_PARAM);
+        return data.getSerializableExtra(BaseConstancts.BASE_PARAM);
     }
 
     /**
@@ -146,11 +97,11 @@ public abstract class SuperActivity extends FragmentActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && isMain()) {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                if (Timo_BaseConfig.exit_to_back) {
+                if (BaseConfig.exit_to_back) {
                     moveTaskToBack(false);
                     return true;
                 } else {
-                    if ((System.currentTimeMillis() - mExitTime) > Timo_BaseConfig.exit_time) {
+                    if ((System.currentTimeMillis() - mExitTime) > BaseConfig.exit_time) {
                         BaseTools.showToast(getString(R.string.hint_exit));
                         mExitTime = System.currentTimeMillis();
                     } else {
@@ -196,10 +147,10 @@ public abstract class SuperActivity extends FragmentActivity {
                 ActivityCompat.requestPermissions(this, new String[]{
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.RECORD_AUDIO,
-                        Manifest.permission.CAMERA}, Timo_BaseConstancts.get_camera_permission_request);
+                        Manifest.permission.CAMERA}, BaseConstancts.get_camera_permission_request);
             }
         } else {
-            startActivityForResult(new Intent(this, CameraActivity.class), Timo_BaseConstancts.cameraRequestCode);
+            startActivityForResult(new Intent(this, CameraActivity.class), BaseConstancts.cameraRequestCode);
         }
     }
 
@@ -219,7 +170,7 @@ public abstract class SuperActivity extends FragmentActivity {
             }
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + super_phone));
             startActivity(intent);
-        } else if (requestCode == Timo_BaseConstancts.get_camera_permission_request) {
+        } else if (requestCode == BaseConstancts.get_camera_permission_request) {
             int size = 0;
             if (grantResults.length >= 1) {
                 int writeResult = grantResults[0];
@@ -252,7 +203,7 @@ public abstract class SuperActivity extends FragmentActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Timo_BaseConstancts.cameraRequestCode) {
+        if (requestCode == BaseConstancts.cameraRequestCode) {
             String cameraPicture = BaseTools.getCameraPicture(resultCode, data);
         } else if (requestCode == PictureConfig.CHOOSE_REQUEST && resultCode == RESULT_OK) {
             // 图片选择结果回调
