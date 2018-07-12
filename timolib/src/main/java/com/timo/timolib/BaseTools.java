@@ -9,11 +9,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -39,7 +36,6 @@ import com.timo.timolib.tools.glide.GlideImageView;
 import com.timo.timolib.tools.glide.progress.CircleProgressView;
 import com.timo.timolib.tools.glide.progress.OnGlideImageViewListener;
 import com.timo.timolib.tools.logger.Logger;
-import com.timo.timolib.tools.rx.RxBus;
 import com.timo.timolib.tools.service_bg.DaemonEnv;
 import com.timo.timolib.tools.service_bg.IntentWrapper;
 import com.timo.timolib.tools.updata_app.UpdateAppHttpManager;
@@ -57,7 +53,6 @@ import com.timo.timolib.view.banner.internal.BannerData;
 import com.timo.timolib.view.banner.internal.BaseBannerAdapter;
 import com.timo.timolib.view.banner.internal.ItemData;
 import com.timo.timolib.view.banner.pagerstyle.BasePageTransformer;
-import com.timo.timolib.view.banner.pagerstyle.ScaleInTransformer;
 import com.timo.timolib.view.tablayout.CommonTabLayout;
 import com.timo.timolib.view.tablayout.TabEntity;
 import com.timo.timolib.view.tablayout.listener.CustomTabEntity;
@@ -88,6 +83,11 @@ public class BaseTools {
     }
 
     public static void e(Exception e) {
+        if (BaseConstancts.log) {
+            e.printStackTrace();
+        }
+    }
+    public static void e(Throwable e) {
         if (BaseConstancts.log) {
             e.printStackTrace();
         }

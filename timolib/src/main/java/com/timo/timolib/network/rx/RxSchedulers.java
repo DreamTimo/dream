@@ -1,4 +1,4 @@
-package com.timo.timolib.tools.rx;
+package com.timo.timolib.network.rx;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

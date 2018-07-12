@@ -1,4 +1,4 @@
-package com.timo.timolib.tools.rx;
+package com.timo.timolib.network.rx;
 
 import android.content.Context;
 
@@ -10,23 +10,23 @@ import com.timo.timolib.tools.utils.NetUtil;
 
 import rx.Subscriber;
 
-public abstract class RxSubscriber<T> extends Subscriber<T> {
+public abstract class MySubscriber<T> extends Subscriber<T> {
 
     private Context mContext;
     private String msg;
     private boolean showDialog = true;
 
-    public RxSubscriber(Context context, String msg, boolean showDialog) {
+    public MySubscriber(Context context, String msg, boolean showDialog) {
         this.mContext = context;
         this.msg = msg;
         this.showDialog = showDialog;
     }
 
-    public RxSubscriber(Context context) {
+    public MySubscriber(Context context) {
         this(context, BaseApplication.getInstance().getContext().getString(R.string.loading), true);
     }
 
-    public RxSubscriber(Context context, boolean showDialog) {
+    public MySubscriber(Context context, boolean showDialog) {
         this(context, BaseApplication.getInstance().getContext().getString(R.string.loading), showDialog);
     }
 
@@ -56,9 +56,10 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {
-        if (showDialog)
+        if (showDialog) {
             DialogUtils.getInstance().cancelLoadingDialog();
-        e.printStackTrace();
+        }
+        BaseTools.e(e);
         if (!NetUtil.getInstance().isNetConnected(BaseApplication.getInstance().getContext())) {
             _onError(BaseApplication.getInstance().getContext().getString(R.string.no_net));
         } else {

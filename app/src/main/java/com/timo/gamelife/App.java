@@ -19,7 +19,6 @@ public class App extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         Http.init("http://111.207.104.159:8088");
-        AppInfo.init(true, "timolog", true, 1000);
         NineGridView.setImageLoader(new PicassoImageLoader());
     }
 

@@ -6,8 +6,7 @@ import com.timo.gamelife.R
 
 import com.timo.gamelife.mvp.MVPBaseActivity
 import com.timo.timolib.BaseTools
-import com.timo.timolib.BaseConstancts
-import com.timo.timolib.tools.rx.RxManager
+import com.timo.timolib.network.rx.RxManager
 import kotlinx.android.synthetic.main.activity_test_main.*
 
 /**

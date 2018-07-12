@@ -1,4 +1,4 @@
-package com.timo.timolib.tools.rx;
+package com.timo.timolib.network.rx;
 
 import java.util.HashMap;
 import java.util.Map;

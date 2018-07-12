@@ -6,7 +6,13 @@
               android:layout_height="match_parent"
               android:background="@color/transparent"
               android:orientation="vertical">
-    <include layout="@layout/title"/>
+    <com.timo.timolib.view.TitleBar
+        android:id="@+id/title_dream"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"/>
+    <View
+        style="@style/line"/>
     <!--<RelativeLayout-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content">-->

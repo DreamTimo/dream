@@ -1,8 +1,6 @@
-package com.timo.timolib.tools.rx;
+package com.timo.timolib.network.rx;
 
 import android.support.annotation.NonNull;
-
-import com.timo.timolib.BaseTools;
 
 import java.util.ArrayList;
 import java.util.Collection;
