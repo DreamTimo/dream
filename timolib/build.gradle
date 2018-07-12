@@ -37,7 +37,6 @@ dependencies {
     //全景图片
     //compile 'com.google.vr:sdk-panowidget:1.70.0'
     //网络框架
-    compile 'com.zhy:okhttputils:2.6.2'
     //分包--解决okhttp冲突
     compile 'com.android.support:multidex:1.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.+'

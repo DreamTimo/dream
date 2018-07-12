@@ -1,7 +1,11 @@
 package com.timo.timolib.network;
 
 import android.content.Context;
+import android.text.TextUtils;
 
+import com.timo.timolib.BaseConstancts;
+import com.timo.timolib.BaseTools;
+import com.timo.timolib.R;
 import com.timo.timolib.network.base.CaheInterceptor;
 import com.timo.timolib.network.base.NovateCookieManger;
 
@@ -24,7 +28,17 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class Http {
     private static volatile Retrofit retrofit_string;
     private static volatile Retrofit retrofit_gson;
-    private static OkHttpClient client;
+    private static OkHttpClient httpClient;
+    private static String baseUrl;
+
+    public static void init(String url, OkHttpClient client) {
+        baseUrl = url;
+        httpClient = client;
+    }
+
+    public static void init(String url) {
+        init(url, null);
+    }
 
     /**
      * 获取Gson类型数据
@@ -33,19 +47,23 @@ public class Http {
      * @return
      */
     public static <T> T getGsonApi(Context context, Class<T> service) {
+        if (TextUtils.isEmpty(baseUrl)) {
+            BaseTools.showToast(context.getString(R.string.http_error_not_init));
+            return null;
+        }
         if (retrofit_gson == null) {
             synchronized (Http.class) {
                 if (retrofit_gson == null) {
-                    if (client == null) {
-                        client = getUnsafeOkHttpClient();
+                    if (httpClient == null) {
+                        httpClient = getUnsafeOkHttpClient();
                     }
-                    retrofit_gson = new Retrofit.Builder().baseUrl("http://111.207.104.159:8088")
-                            .client(client)
+                    retrofit_gson = new Retrofit.Builder().baseUrl(baseUrl)
+                            .client(httpClient)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .client(new OkHttpClient.Builder()
                                     .cookieJar(new NovateCookieManger(context))
-                                    .cache(new Cache(new File(context.getExternalCacheDir(), "test_cache"), 10 * 1024 * 1024))
+                                    .cache(new Cache(new File(context.getExternalCacheDir(), BaseConstancts.http_cache), 10 * 1024 * 1024))
                                     .addInterceptor(new CaheInterceptor(context))
                                     .addNetworkInterceptor(new CaheInterceptor(context))
                                     .connectTimeout(30, TimeUnit.SECONDS)
@@ -64,19 +82,23 @@ public class Http {
      * @return
      */
     public static <T> T getStringApi(Context context, Class<T> service) {
+        if (TextUtils.isEmpty(baseUrl)) {
+            BaseTools.showToast(context.getString(R.string.http_error_not_init));
+            return null;
+        }
         if (retrofit_string == null) {
             synchronized (Http.class) {
                 if (retrofit_string == null) {
-                    if (client == null) {
-                        client = getUnsafeOkHttpClient();
+                    if (httpClient == null) {
+                        httpClient = getUnsafeOkHttpClient();
                     }
-                    retrofit_string = new Retrofit.Builder().baseUrl("http://111.207.104.159:8088")
-                            .client(client)
+                    retrofit_string = new Retrofit.Builder().baseUrl(baseUrl)
+                            .client(httpClient)
                             .addConverterFactory(ScalarsConverterFactory.create())
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .client(new OkHttpClient.Builder()
                                     .cookieJar(new NovateCookieManger(context))
-                                    .cache(new Cache(new File(context.getExternalCacheDir(), "test_cache"), 10 * 1024 * 1024))
+                                    .cache(new Cache(new File(context.getExternalCacheDir(), BaseConstancts.http_cache), 10 * 1024 * 1024))
                                     .addInterceptor(new CaheInterceptor(context))
                                     .addNetworkInterceptor(new CaheInterceptor(context))
                                     .connectTimeout(30, TimeUnit.SECONDS)

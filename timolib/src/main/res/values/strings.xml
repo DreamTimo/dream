@@ -3,10 +3,7 @@
     <string name="confirm">确认</string>
     <string name="delete">删除</string>
     <string name="cancel">取消</string>
-    <string name="error_net">请检查网络...</string>
-    <string name="select_data">选择日期</string>
     <string name="data_format">yyyy-MM-dd</string>
-    <string name="data_format_no_year">MM月dd日</string>
     <string name="select">%1$s/%2$s</string>
 
     <string name="xloading_dialog_message">正在加载中</string>
@@ -21,6 +18,7 @@
 
 
     <string name="net_error">网络访问错误，请稍后再试</string>
+    <string name="http_error_not_init">未初始化</string>
     <string name="empty">还没有数据哦</string>
     <string name="loading">数据加载中...</string>
     <string name="reload">重新尝试</string>

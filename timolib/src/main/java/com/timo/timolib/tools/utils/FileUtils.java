@@ -213,7 +213,7 @@ public class FileUtils {
 				return false;
 			}
 		}catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 			return false;
 		}
 		return true;
@@ -270,7 +270,7 @@ public class FileUtils {
 			File f = new File(path);
 			return f.exists() && f.canWrite();
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 			return false;
 		}
 	}
@@ -282,7 +282,7 @@ public class FileUtils {
 			Runtime runtime = Runtime.getRuntime();
 			runtime.exec(command);
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 		}
 	}
 
@@ -316,7 +316,7 @@ public class FileUtils {
 				res = true;
 			}
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 		} finally {
 			BaseTools.closeIo(fos);
 			BaseTools.closeIo(is);
@@ -355,7 +355,7 @@ public class FileUtils {
 				res = true;
 			}
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 		} finally {
 			BaseTools.closeIo(raf);
 		}
@@ -407,7 +407,7 @@ public class FileUtils {
 			fos = new FileOutputStream(f);
 			p.store(fos, comment);
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 		} finally {
 			BaseTools.closeIo(fis);
 			BaseTools.closeIo(fos);
@@ -432,7 +432,7 @@ public class FileUtils {
 			p.load(fis);
 			value = p.getProperty(key, defaultValue);
 		} catch (IOException e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 		} finally {
 			BaseTools.closeIo(fis);
 		}
@@ -461,7 +461,7 @@ public class FileUtils {
 			fos = new FileOutputStream(f);
 			p.store(fos, comment);
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 		} finally {
 			BaseTools.closeIo(fis);
 			BaseTools.closeIo(fos);
@@ -487,7 +487,7 @@ public class FileUtils {
 			p.load(fis);
 			map = new HashMap<String, String>((Map) p);// 因为properties继承了map，所以直接通过p来构造一个map
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 		} finally {
 			BaseTools.closeIo(fis);
 		}
@@ -513,7 +513,7 @@ public class FileUtils {
 				out.flush();
 			}
 		} catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 			return false;
 		} finally {
 			BaseTools.closeIo(in);
@@ -536,7 +536,7 @@ public class FileUtils {
 				return null;
 			}
 		}catch (Exception e) {
-			BaseTools.printErrorMessage(e);
+			BaseTools.e(e);
 			return null;
 		}
 		return f;
@@ -618,7 +618,7 @@ public class FileUtils {
 	            }
 	            return copyFile(new File(srcPath), new File(dir), newFileName);
 	        } catch (Exception e) {
-				BaseTools.printErrorMessage(e);
+				BaseTools.e(e);
 	            return 0;
 	        }
 
@@ -653,9 +653,9 @@ public class FileUtils {
 	                fcin.transferTo(0, fcin.size(), fcout);
 	                copySizes = size;
 	            } catch (FileNotFoundException e) {
-					BaseTools.printErrorMessage(e);
+					BaseTools.e(e);
 	            } catch (IOException e) {
-					BaseTools.printErrorMessage(e);
+					BaseTools.e(e);
 	            } finally {
 	                try {
 	                    if (fcin != null) {
@@ -665,7 +665,7 @@ public class FileUtils {
 	                        fcout.close();
 	                    }
 	                } catch (IOException e) {
-						BaseTools.printErrorMessage(e);
+						BaseTools.e(e);
 	                }
 	            }
 	        }

@@ -34,7 +34,6 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
             @Override
             public void onTabSelect(int position) {
                 mView.showFragment(position);
-                BaseTools.postMsg(BaseConstancts.TAG, false);
             }
 
             @Override
@@ -68,7 +67,7 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
         addSubscription(Http.getGsonApi(mView.getContext(), ServiceApi.class).showLinkman("c8192b9d81054e5f820ba9b5055f217a"), new RxSubscriber<ApiShowLinkman>(mView.getContext()) {
             @Override
             protected void _onNext(ApiShowLinkman o) {
-                BaseTools.showToast(o.getReturnData().getResult().get(0).getLinkmanId());
+                BaseTools.log(o);
             }
         });
         FragmentTransaction transaction = fragmentManager.beginTransaction();

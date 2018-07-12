@@ -8,27 +8,22 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
-import android.view.View;
 
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.timo.timolib.BaseConfig;
 import com.timo.timolib.R;
 import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.BaseApplication;
 import com.timo.timolib.tools.camera.CameraActivity;
-import com.timo.timolib.view.TitleBar;
 import com.timo.timolib.view.search.SearchFragment;
 import com.timo.timolib.view.search.custom.OnSearchClickListener;
 import com.timo.timolib.tools.utils.PermissionUtils;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -36,7 +31,6 @@ import java.util.List;
  */
 
 public abstract class SuperActivity extends FragmentActivity {
-    private TitleBar baseTitleBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,18 +58,6 @@ public abstract class SuperActivity extends FragmentActivity {
         finish();
     }
 
-    public void setMyResult(Serializable object) {
-        setResult(RESULT_OK, new Intent().putExtra(BaseConstancts.BASE_PARAM, object));
-    }
-
-    public void startActivityForMyResult(Class<?> cls, int code) {
-        startActivityForResult(new Intent(BaseApplication.getInstance().getContext(), cls), code);
-    }
-
-    public Serializable getMyResult(Intent data) {
-        return data.getSerializableExtra(BaseConstancts.BASE_PARAM);
-    }
-
     /**
      * 拨打电话
      */
@@ -97,13 +79,12 @@ public abstract class SuperActivity extends FragmentActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && isMain()) {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                if (BaseConfig.exit_to_back) {
-                    moveTaskToBack(false);
-                    return true;
+                if ((System.currentTimeMillis() - mExitTime) > BaseConstancts.exit_time) {
+                    BaseTools.showToast(getString(R.string.hint_exit));
+                    mExitTime = System.currentTimeMillis();
                 } else {
-                    if ((System.currentTimeMillis() - mExitTime) > BaseConfig.exit_time) {
-                        BaseTools.showToast(getString(R.string.hint_exit));
-                        mExitTime = System.currentTimeMillis();
+                    if (BaseConstancts.exit_to_back) {
+                        moveTaskToBack(false);
                     } else {
                         stopAndFinish();
                     }

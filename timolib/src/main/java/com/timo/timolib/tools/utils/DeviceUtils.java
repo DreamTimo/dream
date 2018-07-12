@@ -51,7 +51,7 @@ public class DeviceUtils {
             sFlymeVersionName = getLowerCaseName(properties, getMethod, KEY_FLYME_VERSION_NAME);
 
         } catch (Exception e) {
-            BaseTools.printErrorMessage(e);
+            BaseTools.e(e);
         } finally {
             if (fileInputStream != null) {
                 try {

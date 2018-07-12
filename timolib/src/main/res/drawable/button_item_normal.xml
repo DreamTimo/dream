@@ -1,80 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-
-
-    >
-    <!--
-     	圆角
-     	android:radius  	整型 半径
-      android:topLeftRadius  	整型 左上角半径
-      android:topRightRadius  	整型 右上角半径
-      android:bottomLeftRadius 整型 左下角半径
-      android:bottomRightRadius 整型 右下角半径
-     -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners
-        android:radius="2dp"
+        android:radius="2dp"/>
 
-        />
-
-    <!--
-       渐变色
-       android:startColor  颜色值 起始颜色
-       android:endColor    颜色值 结束颜色
-       android:centerColor 整型   渐变中间颜色，即开始颜色与结束颜色之间的颜色
-       android:angle       整型   渐变角度(PS：当angle=0时，渐变色是从左向右。 然后逆时针方向转，当angle=90时为从下往上。angle必须为45的整数倍)
-       android:type        ["linear" | "radial" | "sweep"] 渐变类型(取值：linear、radial、sweep)
-                           linear 线性渐变，这是默认设置
-                           radial 放射性渐变，以开始色为中心。
-                           sweep 扫描线式的渐变。
-      android:useLevel   ["true" | "false"] 如果要使用LevelListDrawable对象，就要设置为true。设置为true无渐变。false有渐变色
-      android:gradientRadius 整型 渐变色半径.当 android:type="radial" 时才使用。单独使用 android:type="radial"会报错。
-      android:centerX    	整型   渐变中心X点坐标的相对位置
-      android:centerY   整型   渐变中心Y点坐标的相对位置
-   -->
-
-
-    <!--
-          内边距，即内容与边的距离
-          android:left  	整型 左内边距
-          android:top   整型 上内边距
-          android:right  	整型 右内边距
-          android:bottom 整型 下内边距
-      -->
-
-
-    <!--
-       size 大小
-       android:width 整型 宽度
-       android:height 整型 高度
-    -->
     <size
         android:width="73dp"
-        android:height="25dp"
-        />
-
-    <!--
-        内部填充
-        android:color 颜色值 填充颜色
-    -->
-
-
-    <!--
-        描边
-        android:width 整型 描边的宽度
-        android:color 颜色值 描边的颜色
-        android:dashWidth 整型 表示描边的样式是虚线的宽度， 值为0时，表示为实线。值大于0则为虚线。
-        android:dashGap  	整型 表示描边为虚线时，虚线之间的间隔 即“ - - - - ”
-    -->
-    <!--<stroke-->
-        <!--android:width="0.5dp"-->
-        <!--android:color="#afaeae"-->
-        <!--/>-->
-    <!--&lt;!&ndash; 描边 &ndash;&gt;-->
+        android:height="25dp"/>
     <stroke
         android:width="0.5dp"
         android:color="#afaeae"
-        android:dashWidth="0dp"
-        android:dashGap="0dp"/>
-
-
+        android:dashGap="0dp"
+        android:dashWidth="0dp"/>
 </shape>

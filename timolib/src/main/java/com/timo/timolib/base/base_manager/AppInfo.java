@@ -33,6 +33,29 @@ public class AppInfo {
     }
 
     /**
+     * 修改log日志信息，设置是否进入后台运行
+     *
+     * @param log          是否开启log日志
+     * @param logTag       log日志的tag
+     * @param exit_to_back 是否退出到后台运行
+     * @param exit_time    主页退出时间
+     */
+    public static void init(boolean log, String logTag, boolean exit_to_back, int exit_time) {
+        BaseConstancts.log = log;
+        BaseConstancts.TAG = logTag;
+        BaseConstancts.exit_to_back = exit_to_back;
+        BaseConstancts.exit_time = exit_time;
+    }
+
+    public static void init(boolean log, String logTag) {
+        init(log, logTag, false, 2000);
+    }
+
+    public static void init(boolean log) {
+        init(log, "timo", false, 2000);
+    }
+
+    /**
      * 得到应用程序包名
      *
      * @return

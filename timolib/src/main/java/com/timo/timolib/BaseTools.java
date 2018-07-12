@@ -1,5 +1,6 @@
 package com.timo.timolib;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -73,31 +75,33 @@ public class BaseTools {
     }
 
     public static void e(String msg) {
-        if (BaseConfig.log) {
-            Log.e(BaseConfig.log_tag, msg);
+        if (BaseConstancts.log) {
+            Log.e(BaseConstancts.TAG, msg);
         }
     }
 
-    public static void printErrorMessage(Exception e) {
-        if (BaseConfig.log) {
+    public static void e(Exception e) {
+        if (BaseConstancts.log) {
             e.printStackTrace();
         }
     }
 
-    public static void logBean(Object bean) {
-        Logger.json(new Gson().toJson(bean));
-    }
-
-    public static void postMsg(@NonNull Object tag, @NonNull Object msg) {
-        RxBus.getInstance().post(tag, msg);
+    public static void log(Object bean) {
+        if (BaseConstancts.log) {
+            Logger.json(new Gson().toJson(bean));
+        }
     }
 
     public static void log(String log) {
-        Logger.log(Logger.ERROR, BaseConstancts.TAG, log, null);
+        if (BaseConstancts.log) {
+            Logger.log(Logger.ERROR, BaseConstancts.TAG, log, null);
+        }
     }
 
     public static void logJson(String json) {
-        Logger.json(json);
+        if (BaseConstancts.log) {
+            Logger.json(json);
+        }
     }
 
     public static void StartBgService() {
@@ -109,10 +113,6 @@ public class BaseTools {
         IntentWrapper.whiteListMatters(warningActivity, "消息提醒!");
         BgService.sShouldStopService = false;
         DaemonEnv.startServiceMayBind(BgService.class);
-    }
-
-    public static Handler getHandler() {
-        return BaseApplication.appHandler;
     }
 
     /**
@@ -628,21 +628,22 @@ public class BaseTools {
         });
     }
 
-    public static void setGlideImageViewRadius(GlideImageView imageView, int radius, int borderWidth, int borderColor, boolean pressedModeEnabled, int pressBorderColor, View.OnClickListener listener) {
+    @TargetApi(Build.VERSION_CODES.M)
+    public static void setGlideImageViewRadius(Context context, GlideImageView imageView, int radius, int borderWidth, int borderColor, boolean pressedModeEnabled, int pressBorderColor, View.OnClickListener listener) {
         imageView.setCornerRadius(radius);
         imageView.setBorderWidth(borderWidth);
         imageView.setBorderColor(borderColor);
         imageView.setPressedModeEnabled(pressedModeEnabled);
         imageView.setPressedBorderWidth(borderWidth);
         imageView.setPressedBorderColor(pressBorderColor);
-        imageView.setPressedMaskColor(BaseConstancts.COLOR_PRESS_MASK);
+        imageView.setPressedMaskColor(context.getColor(R.color.toast_press_mask));
         if (listener != null) {
             imageView.setOnClickListener(listener);
         }
     }
 
-    public static void setGlideImageViewRadius(GlideImageView imageView, int radius, int borderWidth, int borderColor, boolean pressedModeEnabled, int pressBorderColor) {
-        setGlideImageViewRadius(imageView, radius, borderWidth, borderColor, pressedModeEnabled, pressBorderColor, null);
+    public static void setGlideImageViewRadius(Context context, GlideImageView imageView, int radius, int borderWidth, int borderColor, boolean pressedModeEnabled, int pressBorderColor) {
+        setGlideImageViewRadius(context, imageView, radius, borderWidth, borderColor, pressedModeEnabled, pressBorderColor, null);
     }
 
     public static void setGlideImageViewCircle(GlideImageView imageView, int borderWidth, int borderColor, View.OnClickListener listener) {
@@ -676,7 +677,7 @@ public class BaseTools {
             double lng = Math.abs(Double.valueOf(lng1) - lng2);
             distance = df.format(Math.sqrt(lat * lat + lng * lng) * 100);
         } catch (Exception e) {
-            printErrorMessage(e);
+            e(e);
         }
         return distance;
     }
@@ -731,7 +732,7 @@ public class BaseTools {
             try {
                 io.close();
             } catch (IOException e) {
-                printErrorMessage(e);
+                e(e);
             }
         }
         return true;

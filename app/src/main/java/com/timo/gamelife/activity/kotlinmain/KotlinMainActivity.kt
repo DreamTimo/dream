@@ -37,7 +37,7 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
         super.onSaveInstanceState(outState)
         //奔溃前保存位置
         if (tab_layout != null) {
-            outState.putInt(BaseConstancts.currentPosition, tab_layout.currentTab)
+            outState.putInt("currentPosition", tab_layout.currentTab)
         }
     }
 
@@ -45,5 +45,7 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
         super.onDestroy()
         RxManager.getInstance().clear()
     }
+
+    override fun isMain(): Boolean = true
 }
 

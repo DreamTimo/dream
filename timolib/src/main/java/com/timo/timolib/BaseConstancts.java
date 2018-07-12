@@ -1,33 +1,34 @@
 package com.timo.timolib;
 
-import android.graphics.Color;
-import android.support.annotation.ColorInt;
-
 /**
  * 常量类
  */
-public interface BaseConstancts {
-    boolean ISLOG = true; //log信息
-    String TAG = "timo"; //log信息
-    String currentPosition = "currentPosition"; //log信息
-    String BASE_SHARE_NAME = "base_share_name";//sp保存名称
-    String BASE_PARAM = "base_param";
-    String BASE_PASSWORD = "base_password"; //密码
-    int cameraRequestCode = 9745;//开启相机的请求Code
-    int get_camera_permission_request = 100; //相机权限申请自定义码
-    @ColorInt
-    int COLOR_DEFAULT_TEXT = Color.parseColor("#FFFFFF");
-    @ColorInt
-    int COLOR_ERROR = Color.parseColor("#D8524E");
-    @ColorInt
-    int COLOR_INFO = Color.parseColor("#3278B5");
-    @ColorInt
-    int COLOR_SUCCESS = Color.parseColor("#5BB75B");
-    @ColorInt
-    int COLOR_WARNING = Color.parseColor("#FB9B4D");
-    @ColorInt
-    int COLOR_NORMAL = Color.parseColor("#444344");
-    @ColorInt
-    int COLOR_PRESS_MASK = Color.parseColor("#33000000");
+public class BaseConstancts {
+    /**
+     * log信息
+     */
+    public static boolean log = true;
+    public static String TAG = "timo";
+
+    /**
+     * 退出时设置：
+     * 应用退出时是否进入后台
+     * 按返回键应用相应退出的时间-毫秒
+     */
+    public static boolean exit_to_back = false;
+    public static int exit_time = 2000;
+
+    /**
+     * sp保存名称
+     * http缓存文件夹名称
+     * 定义一个参数常量值
+     * 开启相机的请求Code
+     */
+    public static final String BASE_SHARE_NAME = "base_share_name";
+    public static final String http_cache = "http_cache";
+    public static final String Params = "Params";
+    public static final String BASE_PASSWORD = "base_password";
+    public static final int cameraRequestCode = 9745;
+    public static final int get_camera_permission_request = 9746;
 }
 

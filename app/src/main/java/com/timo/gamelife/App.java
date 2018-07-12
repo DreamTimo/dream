@@ -6,6 +6,8 @@ import android.widget.ImageView;
 
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.BaseApplication;
+import com.timo.timolib.base.base_manager.AppInfo;
+import com.timo.timolib.network.Http;
 import com.timo.timolib.view.ninegridview.NineGridView;
 
 /**
@@ -16,6 +18,8 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Http.init("http://111.207.104.159:8088");
+        AppInfo.init(true, "timolog", true, 1000);
         NineGridView.setImageLoader(new PicassoImageLoader());
     }
 
@@ -26,7 +30,7 @@ public class App extends BaseApplication {
 
         @Override
         public void onDisplayImage(Context context, ImageView imageView, String url) {
-            BaseTools.load(context,url,imageView);
+            BaseTools.load(context, url, imageView);
         }
 
         @Override

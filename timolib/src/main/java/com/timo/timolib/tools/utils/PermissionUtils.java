@@ -158,15 +158,15 @@ public final class PermissionUtils {
             return ((Integer) checkOpNoThrowMethod.invoke(mAppOps, value, uid, pkg) == AppOpsManager.MODE_ALLOWED);
 
         } catch (ClassNotFoundException e) {
-            BaseTools.printErrorMessage(e);
+            BaseTools.e(e);
         } catch (NoSuchMethodException e) {
-            BaseTools.printErrorMessage(e);
+            BaseTools.e(e);
         } catch (NoSuchFieldException e) {
-            BaseTools.printErrorMessage(e);
+            BaseTools.e(e);
         } catch (InvocationTargetException e) {
-            BaseTools.printErrorMessage(e);
+            BaseTools.e(e);
         } catch (IllegalAccessException e) {
-            BaseTools.printErrorMessage(e);
+            BaseTools.e(e);
         }
         return false;
     }

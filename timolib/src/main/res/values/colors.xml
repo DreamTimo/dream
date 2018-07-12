@@ -74,5 +74,13 @@
     <color name="placeholder_yellow">#33fbc02d</color>
     <color name="placeholder_orange">#33f57c00</color>
 
+    <color name="toast_default">#FFFFFF</color>
+    <color name="toast_error">#D8524E</color>
+    <color name="toast_info">#3278B5</color>
+    <color name="toast_success">#5BB75B</color>
+    <color name="toast_warning">#FB9B4D</color>
+    <color name="toast_normal">#444344</color>
+    <color name="toast_press_mask">#33000000</color>
+
 
 </resources>

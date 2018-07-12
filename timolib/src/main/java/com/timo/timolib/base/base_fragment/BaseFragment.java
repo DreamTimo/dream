@@ -24,8 +24,6 @@ import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.tools.camera.CameraActivity;
 import com.timo.timolib.tools.utils.PermissionUtils;
 import com.timo.timolib.view.TitleBar;
-
-import java.io.Serializable;
 import java.util.List;
 
 
@@ -60,14 +58,6 @@ public abstract class BaseFragment extends Fragment {
 
     public void startActivityNoFinish(Class<?> cls) {
         startActivity(new Intent(BaseApplication.getInstance().getContext(), cls));
-    }
-
-    public void startActivityForMyResult(Class<?> cls, int code) {
-        startActivityForResult(new Intent(BaseApplication.getInstance().getContext(), cls), code);
-    }
-
-    public Serializable getMyResult(Intent data) {
-        return data.getSerializableExtra(BaseConstancts.BASE_PARAM);
     }
 
     /**
