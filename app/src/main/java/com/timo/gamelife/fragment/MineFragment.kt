@@ -4,7 +4,6 @@ import android.text.Html
 import android.view.View
 import com.timo.gamelife.R
 import com.timo.timolib.BaseTools
-import com.timo.timolib.base.base_fragment.SuperFragment
 import com.timo.timolib.view.banner.pagerstyle.ScaleInTransformer
 
 import java.util.ArrayList
@@ -41,8 +40,7 @@ class MineFragment : BaseFragment() {
         textview.text = charSequence
         textview.setOnClickListener {
             //            startActivityNoFinish(ProjectWebActivity::class.java)
-//            callPhone("15701545323")
-            openCamera()
+            toOpenContacts({ BaseTools.showToast("ok") })
         }
     }
 

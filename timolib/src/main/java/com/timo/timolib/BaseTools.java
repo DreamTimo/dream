@@ -87,6 +87,7 @@ public class BaseTools {
             e.printStackTrace();
         }
     }
+
     public static void e(Throwable e) {
         if (BaseConstancts.log) {
             e.printStackTrace();

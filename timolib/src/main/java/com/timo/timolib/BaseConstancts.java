@@ -28,8 +28,18 @@ public class BaseConstancts {
     public static final String http_cache = "http_cache";
     public static final String Params = "Params";
     public static final String BASE_PASSWORD = "base_password";
+
+    /**
+     * 申请权限对应的requestCode
+     */
     public static final int requestCode_camera = 7001;
     public static final int requestCode_phone = 7002;
-    public static final int get_camera_permission_request = 9746;
+    public static final int requestCode_sms = 7003;
+    public static final int requestCode_storage = 7004;
+    public static final int requestCode_calendar = 7005;
+    public static final int requestCode_contacts = 7006;
+    public static final int requestCode_location = 7007;
+    public static final int requestCode_audio = 7008;
+    public static final int requestCode_sensors = 7009;
 }
 
