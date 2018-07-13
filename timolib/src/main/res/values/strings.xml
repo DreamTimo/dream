@@ -13,14 +13,22 @@
     <string name="xloading_retry_text">点击重试</string>
 
     <!--提示话语-->
-    <string name="hint_camera_need_permission">请到设置-权限管理中开启相机权限</string>
     <string name="hint_exit">再按一次，退出程序</string>
 
 
-    <string name="net_error">网络访问错误，请稍后再试</string>
     <string name="http_error_not_init">未初始化</string>
-    <string name="empty">还没有数据哦</string>
     <string name="loading">数据加载中...</string>
-    <string name="reload">重新尝试</string>
-    <string name="no_net">网络不可用,请检查你的网络</string>
+
+    <string name="error_network">网络访问错误，请稍后再试</string>
+    <string name="error_no_network">网络不可用,请检查你的网络</string>
+
+    <string name="please_edit_right_phone">请输入正确的手机号码</string>
+    <string name="permission_call_phone">需要拨打电话的权限</string>
+
+    <string name="permission_need_apply">缺少功能所需权限。</string>
+    <string name="permission_to_setting">
+        缺少功能所需权限。
+        请进入设置页面开启所需权限。
+    </string>
+    <string name="permission_need">权限要求</string>
 </resources>

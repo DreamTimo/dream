@@ -61,9 +61,9 @@ public abstract class MySubscriber<T> extends Subscriber<T> {
         }
         BaseTools.e(e);
         if (!NetUtil.getInstance().isNetConnected(BaseApplication.getInstance().getContext())) {
-            _onError(BaseApplication.getInstance().getContext().getString(R.string.no_net));
+            _onError(BaseApplication.getInstance().getContext().getString(R.string.error_no_network));
         } else {
-            _onError(BaseApplication.getInstance().getContext().getString(R.string.net_error));
+            _onError(BaseApplication.getInstance().getContext().getString(R.string.error_network));
         }
     }
 

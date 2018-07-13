@@ -6,7 +6,7 @@ import com.timo.timolib.base.base_manager.AppManager;
  * Created by 蔡永汪 on 2017/10/31.
  */
 
-public abstract class BaseManagerFragment extends BaseFragment implements AppManager.AppListener {
+public abstract class BaseManagerFragment extends SuperFragment implements AppManager.AppListener {
 
     @Override
     public void onStart() {

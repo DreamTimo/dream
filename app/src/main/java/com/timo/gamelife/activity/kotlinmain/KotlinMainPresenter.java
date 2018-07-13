@@ -63,13 +63,6 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
 
     @Override
     public void showFragment(int position, FragmentManager fragmentManager) {
-        addSubscription(Http.getGsonApi(mView.getContext(), ServiceApi.class).showLinkman("c8192b9d81054e5f820ba9b5055f217a")
-                , new MySubscriber<ApiShowLinkman>(mView.getContext()) {
-            @Override
-            protected void _onNext(ApiShowLinkman o) {
-                BaseTools.showToast(o.getReturnData().getResult().get(0).getLinkmanId());
-            }
-        });
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (position) {
             //首页

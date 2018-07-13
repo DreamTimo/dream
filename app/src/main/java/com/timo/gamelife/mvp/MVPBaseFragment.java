@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.timo.timolib.base.base_fragment.BaseFragment;
+import com.timo.timolib.base.base_fragment.SuperFragment;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -13,7 +13,7 @@ import java.lang.reflect.ParameterizedType;
  * 邮箱 784787081@qq.com
  */
 
-public abstract class MVPBaseFragment<V extends BaseView, T extends BasePresenterImpl<V>> extends BaseFragment implements BaseView {
+public abstract class MVPBaseFragment<V extends BaseView, T extends BasePresenterImpl<V>> extends SuperFragment implements BaseView {
     public T mPresenter;
 
     @Override

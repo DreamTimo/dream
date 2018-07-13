@@ -2,18 +2,15 @@ package com.timo.gamelife.fragment
 
 import android.text.Html
 import android.view.View
-import android.widget.TextView
 import com.timo.gamelife.R
-import com.timo.gamelife.activity.projectweb.ProjectWebActivity
 import com.timo.timolib.BaseTools
-import com.timo.timolib.base.base_fragment.BaseFragment
-import com.timo.timolib.view.CommonWebView
-import com.timo.timolib.view.banner.Banner
+import com.timo.timolib.base.base_fragment.SuperFragment
 import com.timo.timolib.view.banner.pagerstyle.ScaleInTransformer
 
 import java.util.ArrayList
 
 import cn.jzvd.JZVideoPlayerStandard
+import com.timo.timolib.base.base_fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 /**
@@ -42,11 +39,16 @@ class MineFragment : BaseFragment() {
         val html = "<font color='#ff0000'>点击-></font><font color='#0000FF'>项目<font>"
         val charSequence = Html.fromHtml(html)
         textview.text = charSequence
-        textview.setOnClickListener { startActivityNoFinish(ProjectWebActivity::class.java) }
+        textview.setOnClickListener {
+            //            startActivityNoFinish(ProjectWebActivity::class.java)
+//            callPhone("15701545323")
+            openCamera()
+        }
     }
 
     override fun onPause() {
         super.onPause()
         jz_video.release()
     }
+
 }
