@@ -1,21 +1,7 @@
 package com.timo.gamelife.activity.kotlinmain;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-
-import com.timo.gamelife.BaseConstances;
 import com.timo.gamelife.R;
-import com.timo.gamelife.ServiceApi;
-import com.timo.gamelife.bean.ApiShowLinkman;
-import com.timo.gamelife.fragment.DreamFragment;
-import com.timo.gamelife.fragment.HomeFragment;
-import com.timo.gamelife.fragment.MineFragment;
 import com.timo.gamelife.mvp.BasePresenterImpl;
-import com.timo.timolib.BaseTools;
-import com.timo.timolib.network.Http;
-import com.timo.timolib.network.rx.MySubscriber;
-import com.timo.timolib.view.tablayout.CommonTabLayout;
-import com.timo.timolib.view.tablayout.listener.OnTabSelectListener;
 
 /**
  * MVPPlugin
@@ -28,66 +14,17 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
     private int[] mIconUnselectIds = {R.mipmap.icon_home_no_check, R.mipmap.icon_dream_no_check, R.mipmap.icon_mine_no_check};
 
     @Override
-    public void initTop(CommonTabLayout mTabLayout) {
-        BaseTools.setNavigation(mTabLayout, mTitles, mIconUnselectIds, mIconSelectIds, new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                mView.showFragment(position);
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-
-            }
-        });
-    }
-
-    private HomeFragment mHomeFragment;
-    private DreamFragment mDreamFragment;
-    private MineFragment mMineFragment;
-
-    @Override
-    public void initFragment(FragmentManager fragmentManager, CommonTabLayout mTabLayout, int replaceId) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        int currentTabPosition = 0;
-        mHomeFragment = new HomeFragment();
-        mDreamFragment = new DreamFragment();
-        mMineFragment = new MineFragment();
-        transaction.add(replaceId, mHomeFragment, BaseConstances.homeFragment);
-        transaction.add(replaceId, mDreamFragment, BaseConstances.dreamFragment);
-        transaction.add(replaceId, mMineFragment, BaseConstances.mineFragment);
-        transaction.commit();
-        mView.showFragment(currentTabPosition);
-        mTabLayout.setCurrentTab(currentTabPosition);
+    public String[] getTitles() {
+        return mTitles;
     }
 
     @Override
-    public void showFragment(int position, FragmentManager fragmentManager) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        switch (position) {
-            //首页
-            case 0:
-                transaction.hide(mDreamFragment);
-                transaction.hide(mMineFragment);
-                transaction.show(mHomeFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            //美女
-            case 1:
-                transaction.hide(mMineFragment);
-                transaction.hide(mHomeFragment);
-                transaction.show(mDreamFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            //视频
-            case 2:
-                transaction.hide(mHomeFragment);
-                transaction.hide(mDreamFragment);
-                transaction.show(mMineFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            default:
-                break;
-        }
+    public int[] getSelect() {
+        return mIconUnselectIds;
+    }
+
+    @Override
+    public int[] getSelected() {
+        return mIconSelectIds;
     }
 }

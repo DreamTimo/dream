@@ -245,16 +245,29 @@ public class BaseTools {
     }
 
     /**
-     * 设置导航
+     * 获取资源文件字符串信息
+     */
+    public static String getString(int id) {
+        return BaseApplication.getInstance().getString(id);
+    }
+
+    /**
+     * 设置底部导航
      */
     public static void setNavigation(CommonTabLayout mTabLayout, String[] titles, int[] noSelectPic, int[] selectedPic, OnTabSelectListener listener) {
+        if (titles.length != noSelectPic.length || noSelectPic.length != selectedPic.length) {
+            BaseTools.showToast(getString(R.string.error_navigation_datas));
+            return;
+        }
         ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {
             mTabEntities.add(new TabEntity(titles[i], selectedPic[i], noSelectPic[i]));
         }
         mTabLayout.setTabData(mTabEntities);
         //点击监听
-        mTabLayout.setOnTabSelectListener(listener);
+        if (listener != null) {
+            mTabLayout.setOnTabSelectListener(listener);
+        }
     }
 
     /**

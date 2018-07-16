@@ -17,8 +17,10 @@ import android.widget.TextView;
 
 import com.timo.gamelife.R;
 import com.timo.gamelife.activity.kotlinmain.KotlinMainActivity;
+import com.timo.gamelife.bean.UserBean;
 import com.timo.timolib.base.base_manager.AppInfo;
 import com.timo.timolib.base.base_activity.BaseActivity;
+import com.timo.timolib.network.rx.RxManager;
 
 import java.util.ArrayList;
 
@@ -35,16 +37,6 @@ public class GuideActivity extends BaseActivity {
     // 引导图片资源
     private static final int[] pics = {R.drawable.guide_a, R.drawable.guide_b, R.drawable.guide_c, R.drawable.guide_d, R.drawable.welcome_image};
     private Button bt_skip;
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == WHAT_JUMP_TO_MAIN) {
-                goToMain();
-            } else if (msg.what == REFRESH_TIME) {
-            }
-        }
-
-    };
 
     @Override
     protected int getContentResId() {
@@ -65,7 +57,12 @@ public class GuideActivity extends BaseActivity {
     }
 
     public void initWelcome() {
-        mHandler.sendEmptyMessageDelayed(WHAT_JUMP_TO_MAIN, 2000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                goToMain();
+            }
+        }, 2000);
     }
 
     public void initGuide() {
@@ -201,15 +198,10 @@ public class GuideActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mHandler.removeMessages(WHAT_JUMP_TO_MAIN);
-        mHandler.removeMessages(REFRESH_TIME);
-
-    }
-
     public void goToMain() {
+        UserBean userBean = new UserBean();
+        userBean.setName("蔡永汪");
+        AppInfo.saveUser(userBean);
         startActivityAddFinish(KotlinMainActivity.class);
     }
 

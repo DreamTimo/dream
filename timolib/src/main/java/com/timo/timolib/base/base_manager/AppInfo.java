@@ -133,7 +133,7 @@ public class AppInfo {
     /**
      * 保存用户信息
      */
-    public static void saveUser(Class userBean) {
+    public static void saveUser(Object userBean) {
         saveCacheData(userBean);
     }
 
@@ -151,8 +151,8 @@ public class AppInfo {
     /**
      * 获取用户信息
      */
-    public static Class getUser(Class userBean) {
-        return (Class) getCacheData(userBean.getSimpleName());
+    public static Object getUser(Class userBean) {
+        return getCacheData(userBean.getSimpleName());
     }
 
     /**

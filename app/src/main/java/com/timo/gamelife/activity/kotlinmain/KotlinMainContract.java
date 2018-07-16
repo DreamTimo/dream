@@ -1,10 +1,7 @@
 package com.timo.gamelife.activity.kotlinmain;
 
-import android.support.v4.app.FragmentManager;
-
 import com.timo.gamelife.mvp.BasePresenter;
 import com.timo.gamelife.mvp.BaseView;
-import com.timo.timolib.view.tablayout.CommonTabLayout;
 
 /**
  * MVPPlugin
@@ -17,10 +14,10 @@ public class KotlinMainContract {
     }
 
     public interface Presenter extends BasePresenter<View> {
-        void initTop(CommonTabLayout mTabLayout);
+        String[] getTitles();
 
-        void initFragment(FragmentManager fragmentManager, CommonTabLayout mTabLayout, int replaceId);
+        int[] getSelect();
 
-        void showFragment(int position, FragmentManager fragmentManager);
+        int[] getSelected();
     }
 }

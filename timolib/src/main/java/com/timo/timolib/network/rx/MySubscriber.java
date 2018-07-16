@@ -23,11 +23,11 @@ public abstract class MySubscriber<T> extends Subscriber<T> {
     }
 
     public MySubscriber(Context context) {
-        this(context, BaseApplication.getInstance().getContext().getString(R.string.loading), true);
+        this(context, BaseApplication.getInstance().getContext().getString(R.string.hint_loading), true);
     }
 
     public MySubscriber(Context context, boolean showDialog) {
-        this(context, BaseApplication.getInstance().getContext().getString(R.string.loading), showDialog);
+        this(context, BaseApplication.getInstance().getContext().getString(R.string.hint_loading), showDialog);
     }
 
     @Override

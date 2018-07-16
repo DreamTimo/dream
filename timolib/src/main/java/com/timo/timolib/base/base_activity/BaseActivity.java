@@ -48,7 +48,7 @@ public abstract class BaseActivity extends SuperActivity implements BasePermissi
     @Override
     public void toOpenCallPhone(String phone) {
         if (TextUtils.isEmpty(phone) || !RegexUtil.getInstance().isTel(phone)) {
-            BaseTools.showToast(getString(R.string.please_edit_right_phone));
+            BaseTools.showToast(getString(R.string.error_please_edit_right_phone));
             return;
         }
         this.tag_phone = phone;
@@ -66,7 +66,7 @@ public abstract class BaseActivity extends SuperActivity implements BasePermissi
     @Override
     public void toOpenSendSms(String phone) {
         if (TextUtils.isEmpty(phone) || !RegexUtil.getInstance().isTel(phone)) {
-            BaseTools.showToast(getString(R.string.please_edit_right_phone));
+            BaseTools.showToast(getString(R.string.error_please_edit_right_phone));
             return;
         }
         this.tag_phone = phone;

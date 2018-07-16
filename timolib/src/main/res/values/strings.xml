@@ -5,24 +5,13 @@
     <string name="cancel">取消</string>
     <string name="data_format">yyyy-MM-dd</string>
     <string name="select">%1$s/%2$s</string>
-
+    <!--加载信息-不动-->
     <string name="xloading_dialog_message">正在加载中</string>
     <string name="xloading_no_network_text">无网络连接，请检查你的网络</string>
     <string name="xloading_error_text">加载失败，请稍后再试</string>
     <string name="xloading_empty_text">暂无数据</string>
     <string name="xloading_retry_text">点击重试</string>
-
-    <!--提示话语-->
-    <string name="hint_exit">再按一次，退出程序</string>
-
-
-    <string name="http_error_not_init">未初始化</string>
-    <string name="loading">数据加载中...</string>
-
-    <string name="error_network">网络访问错误，请稍后再试</string>
-    <string name="error_no_network">网络不可用,请检查你的网络</string>
-
-    <string name="please_edit_right_phone">请输入正确的手机号码</string>
+    <!--权限提示-不动-->
     <string name="permission_call_phone">需要拨打电话权限</string>
     <string name="permission_sms">需要发短信权限</string>
     <string name="permission_camera">需要相机权限</string>
@@ -32,11 +21,19 @@
     <string name="permission_location">需要位置权限</string>
     <string name="permission_audio">需要录音权限</string>
     <string name="permission_sensors">需要传感器权限</string>
-
     <string name="permission_need_apply">缺少功能所需权限。</string>
     <string name="permission_to_setting">
         缺少功能所需权限。
         请进入设置页面开启所需权限。
     </string>
     <string name="permission_need">权限要求</string>
+    <!--提示话语-->
+    <string name="hint_exit">再按一次，退出程序</string>
+    <string name="hint_loading">数据加载中...</string>
+    <!--错误提示-->
+    <string name="error_http_not_init">未初始化</string>
+    <string name="error_network">网络访问错误，请稍后再试</string>
+    <string name="error_no_network">网络不可用,请检查你的网络</string>
+    <string name="error_navigation_datas">底部导航设置数据错误</string>
+    <string name="error_please_edit_right_phone">请输入正确的手机号码</string>
 </resources>

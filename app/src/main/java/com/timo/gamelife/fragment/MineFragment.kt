@@ -9,6 +9,7 @@ import com.timo.timolib.view.banner.pagerstyle.ScaleInTransformer
 import java.util.ArrayList
 
 import cn.jzvd.JZVideoPlayerStandard
+import com.luck.picture.lib.PictureSelector
 import com.timo.timolib.base.base_fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -40,7 +41,8 @@ class MineFragment : BaseFragment() {
         textview.text = charSequence
         textview.setOnClickListener {
             //            startActivityNoFinish(ProjectWebActivity::class.java)
-            toOpenContacts({ BaseTools.showToast("ok") })
+            //            toOpenContacts({ BaseTools.showToast("ok") })
+            BaseTools.showPictureSelector(activity)
         }
     }
 

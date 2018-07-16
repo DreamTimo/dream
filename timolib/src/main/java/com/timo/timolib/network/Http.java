@@ -48,7 +48,7 @@ public class Http {
      */
     public static <T> T getGsonApi(Context context, Class<T> service) {
         if (TextUtils.isEmpty(baseUrl)) {
-            BaseTools.showToast(context.getString(R.string.http_error_not_init));
+            BaseTools.showToast(context.getString(R.string.error_http_not_init));
             return null;
         }
         if (retrofit_gson == null) {
@@ -83,7 +83,7 @@ public class Http {
      */
     public static <T> T getStringApi(Context context, Class<T> service) {
         if (TextUtils.isEmpty(baseUrl)) {
-            BaseTools.showToast(context.getString(R.string.http_error_not_init));
+            BaseTools.showToast(context.getString(R.string.error_http_not_init));
             return null;
         }
         if (retrofit_string == null) {
