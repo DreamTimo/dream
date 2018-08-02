@@ -3,7 +3,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "27.0.3"
     defaultConfig {
-        minSdkVersion 16  //vr全景视频最低要求:19
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -28,12 +28,6 @@ dependencies {
     compile 'cn.jzvd:jiaozivideoplayer:6.+'
     //相册图片选择器
     compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.6'
-    //全景视频
-    //compile 'com.google.vr:sdk-videowidget:1.70.0'
-    //全景图片
-    //compile 'com.google.vr:sdk-panowidget:1.70.0'
-    //网络框架
-    //分包--解决okhttp冲突
     compile 'com.android.support:multidex:1.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.+'
     compile 'io.reactivex:rxandroid:1.2.0'
@@ -45,5 +39,4 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
     compile "com.github.bumptech.glide:okhttp3-integration:4.3.1"
-    compile project(':viewlib')
 }

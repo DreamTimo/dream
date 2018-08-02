@@ -46,9 +46,9 @@ class MineFragment : BaseFragment() {
         textview.setOnClickListener {
             //            startActivityNoFinish(ProjectWebActivity::class.java)
             //            toOpenContacts({ BaseTools.showToast("ok") })
-//            DaemonEnv.initialize(BaseApplication.getInstance().context, BgService::class.java, null)
-//            BgService.sShouldStopService = false
-//            DaemonEnv.startServiceMayBind(BgService::class.java)
+            DaemonEnv.initialize(BaseApplication.getInstance().context, BgService::class.java, null)
+            BgService.sShouldStopService = false
+            DaemonEnv.startServiceMayBind(BgService::class.java)
             toOpenCamera(CameraActivity::class.java)
         }
     }

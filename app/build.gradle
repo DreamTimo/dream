@@ -21,12 +21,13 @@ android {
             minifyEnabled false
         }
     }
+
     project.ext.versionCodes = ['armeabi-v7a':1 ]
 }
 
 dependencies {
-    compile project(':timolib')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile project(':timolib')
     compile project(':bgservice')
     compile project(':cameralib')
 }

@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/cameralib/cameralib.iml" filepath="$PROJECT_DIR$/cameralib/cameralib.iml" />
       <module fileurl="file://$PROJECT_DIR$/onlyone.iml" filepath="$PROJECT_DIR$/onlyone.iml" />
       <module fileurl="file://$PROJECT_DIR$/timolib/timolib.iml" filepath="$PROJECT_DIR$/timolib/timolib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/viewlib/viewlib.iml" filepath="$PROJECT_DIR$/viewlib/viewlib.iml" />
     </modules>
   </component>
 </project>

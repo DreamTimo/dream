@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$/bgservice" />
             <option value="$PROJECT_DIR$/cameralib" />
             <option value="$PROJECT_DIR$/timolib" />
-            <option value="$PROJECT_DIR$/viewlib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

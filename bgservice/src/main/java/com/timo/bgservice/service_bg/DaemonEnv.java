@@ -13,7 +13,7 @@ import java.util.Map;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
 
-public final class DaemonEnv {
+public class DaemonEnv {
 
     private DaemonEnv() {}
 
