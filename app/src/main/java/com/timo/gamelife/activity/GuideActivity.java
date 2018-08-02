@@ -1,7 +1,6 @@
 package com.timo.gamelife.activity;
 
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -20,7 +19,6 @@ import com.timo.gamelife.activity.kotlinmain.KotlinMainActivity;
 import com.timo.gamelife.bean.UserBean;
 import com.timo.timolib.base.base_manager.AppInfo;
 import com.timo.timolib.base.base_activity.BaseActivity;
-import com.timo.timolib.network.rx.RxManager;
 
 import java.util.ArrayList;
 

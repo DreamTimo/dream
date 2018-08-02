@@ -1,5 +1,6 @@
 package com.timo.gamelife.fragment
 
+import android.hardware.Camera
 import android.text.Html
 import android.view.View
 import com.timo.gamelife.R
@@ -9,7 +10,10 @@ import com.timo.timolib.view.banner.pagerstyle.ScaleInTransformer
 import java.util.ArrayList
 
 import cn.jzvd.JZVideoPlayerStandard
-import com.luck.picture.lib.PictureSelector
+import com.timo.bgservice.service_bg.DaemonEnv
+import com.timo.cameralib.camera.CameraActivity
+import com.timo.gamelife.BgService
+import com.timo.timolib.BaseApplication
 import com.timo.timolib.base.base_fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -42,7 +46,10 @@ class MineFragment : BaseFragment() {
         textview.setOnClickListener {
             //            startActivityNoFinish(ProjectWebActivity::class.java)
             //            toOpenContacts({ BaseTools.showToast("ok") })
-            BaseTools.showPictureSelector(activity)
+//            DaemonEnv.initialize(BaseApplication.getInstance().context, BgService::class.java, null)
+//            BgService.sShouldStopService = false
+//            DaemonEnv.startServiceMayBind(BgService::class.java)
+            toOpenCamera(CameraActivity::class.java)
         }
     }
 

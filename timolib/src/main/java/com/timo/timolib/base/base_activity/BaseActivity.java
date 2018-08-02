@@ -13,10 +13,9 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.R;
+import com.timo.timolib.tools.permissions.PermissionUtils;
 import com.timo.timolib.tools.permissions.permission_interface.BasePermissionInterface;
 import com.timo.timolib.tools.permissions.permission_interface.PermissionGrantedListener;
-import com.timo.timolib.tools.camera.CameraActivity;
-import com.timo.timolib.tools.permissions.PermissionUtils;
 import com.timo.timolib.tools.utils.math.RegexUtil;
 import com.timo.timolib.view.search.SearchFragment;
 import com.timo.timolib.view.search.custom.OnSearchClickListener;
@@ -35,11 +34,13 @@ public abstract class BaseActivity extends SuperActivity implements BasePermissi
     private PermissionGrantedListener mLocationListener;
     private PermissionGrantedListener mAudioListener;
     private PermissionGrantedListener mSensorsListener;
+    private Class cameraClass;
 
     @Override
-    public void toOpenCamera() {
+    public void toOpenCamera(Class cameraActivity) {
+        cameraClass = cameraActivity;
         if (PermissionUtils.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA)) {
-            startActivityForResult(new Intent(this, CameraActivity.class), BaseConstancts.requestCode_camera);
+            startActivityForResult(new Intent(this, cameraActivity), BaseConstancts.requestCode_camera);
         } else {
             PermissionUtils.requestPermissions(this, getString(R.string.app_name), BaseConstancts.requestCode_camera, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA);
         }
@@ -213,7 +214,9 @@ public abstract class BaseActivity extends SuperActivity implements BasePermissi
         if (requestCode == BaseConstancts.requestCode_phone) {
             toOpenCallPhone(tag_phone);
         } else if (requestCode == BaseConstancts.requestCode_camera) {
-            toOpenCamera();
+            if (cameraClass != null) {
+                toOpenCamera(cameraClass);
+            }
         } else if (requestCode == BaseConstancts.requestCode_sms) {
             toOpenSendSms(tag_phone);
         } else if (requestCode == BaseConstancts.requestCode_audio) {

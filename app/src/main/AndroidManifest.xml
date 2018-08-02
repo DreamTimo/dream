@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.timo.gamelife">
-
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!--android:name=".activity.GuideActivity"-->
+        <service android:name=".BgService"/>
+
         <activity
             android:name=".activity.GuideActivity"
             android:configChanges="orientation|keyboardHidden"

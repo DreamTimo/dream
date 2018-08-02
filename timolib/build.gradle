@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
-
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
     defaultConfig {
         minSdkVersion 16  //vr全景视频最低要求:19
         targetSdkVersion 25
@@ -29,9 +28,6 @@ dependencies {
     compile 'cn.jzvd:jiaozivideoplayer:6.+'
     //相册图片选择器
     compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.6'
-    //butterknife
-//    compile 'com.jakewharton:butterknife-compiler:8.+'
-//    compile 'com.jakewharton:butterknife:8.+'
     //全景视频
     //compile 'com.google.vr:sdk-videowidget:1.70.0'
     //全景图片
@@ -49,4 +45,5 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
     compile "com.github.bumptech.glide:okhttp3-integration:4.3.1"
+    compile project(':viewlib')
 }

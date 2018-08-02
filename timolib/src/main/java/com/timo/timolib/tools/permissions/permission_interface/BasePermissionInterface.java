@@ -12,7 +12,7 @@ public interface BasePermissionInterface {
     /**
      * 打开相机
      */
-    void toOpenCamera();
+    void toOpenCamera(Class cameraActivity);
 
     /**
      * 打电话

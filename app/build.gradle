@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 25
@@ -21,11 +21,14 @@ android {
             minifyEnabled false
         }
     }
+    project.ext.versionCodes = ['armeabi-v7a':1 ]
 }
 
 dependencies {
     compile project(':timolib')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile project(':bgservice')
+    compile project(':cameralib')
 }
 repositories {
     mavenCentral()

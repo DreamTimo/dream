@@ -1,7 +1,13 @@
 package com.timo.gamelife.activity.kotlinmain;
 
+import android.speech.tts.TextToSpeech;
+
+import com.timo.gamelife.App;
 import com.timo.gamelife.R;
 import com.timo.gamelife.mvp.BasePresenterImpl;
+import com.timo.timolib.BaseTools;
+
+import java.util.Locale;
 
 /**
  * MVPPlugin
@@ -22,7 +28,6 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
     public int[] getSelect() {
         return mIconUnselectIds;
     }
-
     @Override
     public int[] getSelected() {
         return mIconSelectIds;

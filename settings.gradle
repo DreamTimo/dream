@@ -1,1 +1,1 @@
-include ':app', ':timolib'
+include ':app', ':timolib', ':bgservice', ':cameralib', ':viewlib'

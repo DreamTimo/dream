@@ -7,10 +7,10 @@ import android.os.Process;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 
-import com.timo.timolib.R;
+import com.timo.timolib.BaseApplication;
 import com.timo.timolib.BaseConstancts;
 import com.timo.timolib.BaseTools;
-import com.timo.timolib.BaseApplication;
+import com.timo.timolib.R;
 import com.timo.timolib.tools.permissions.PermissionUtils;
 
 import java.io.Serializable;

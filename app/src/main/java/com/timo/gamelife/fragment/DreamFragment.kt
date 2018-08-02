@@ -5,7 +5,6 @@ import android.view.View
 import com.timo.gamelife.R
 import com.timo.timolib.BaseTools
 import com.timo.timolib.base.base_fragment.BaseFragment
-import com.timo.timolib.base.base_fragment.SuperFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
 /**

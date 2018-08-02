@@ -36,8 +36,6 @@ import com.timo.timolib.tools.glide.GlideImageView;
 import com.timo.timolib.tools.glide.progress.CircleProgressView;
 import com.timo.timolib.tools.glide.progress.OnGlideImageViewListener;
 import com.timo.timolib.tools.logger.Logger;
-import com.timo.timolib.tools.service_bg.DaemonEnv;
-import com.timo.timolib.tools.service_bg.IntentWrapper;
 import com.timo.timolib.tools.updata_app.UpdateAppHttpManager;
 import com.timo.timolib.tools.updata_app.UpdateAppManager;
 import com.timo.timolib.tools.utils.DialogUtils;
@@ -110,17 +108,6 @@ public class BaseTools {
         if (BaseConstancts.log) {
             Logger.json(json);
         }
-    }
-
-    public static void StartBgService() {
-        BgService.sShouldStopService = false;
-        DaemonEnv.startServiceMayBind(BgService.class);
-    }
-
-    public static void StartBgService(Activity warningActivity) {
-        IntentWrapper.whiteListMatters(warningActivity, "消息提醒!");
-        BgService.sShouldStopService = false;
-        DaemonEnv.startServiceMayBind(BgService.class);
     }
 
     /**

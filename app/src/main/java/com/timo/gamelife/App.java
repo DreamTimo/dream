@@ -6,7 +6,6 @@ import android.widget.ImageView;
 
 import com.timo.timolib.BaseTools;
 import com.timo.timolib.BaseApplication;
-import com.timo.timolib.base.base_manager.AppInfo;
 import com.timo.timolib.network.Http;
 import com.timo.timolib.view.ninegridview.NineGridView;
 
