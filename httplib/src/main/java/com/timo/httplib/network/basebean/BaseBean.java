@@ -1,4 +1,4 @@
-package com.timo.timolib.network.basebean;
+package com.timo.httplib.network.basebean;
 
 import java.io.Serializable;
 

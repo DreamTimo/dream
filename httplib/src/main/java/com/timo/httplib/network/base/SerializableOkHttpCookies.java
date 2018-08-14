@@ -1,4 +1,4 @@
-package com.timo.timolib.network.base;
+package com.timo.httplib.network.base;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

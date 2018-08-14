@@ -1,5 +1,6 @@
-package com.timo.timolib.network.base;
+package com.timo.httplib.network.base;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -57,7 +58,7 @@ public class CaheInterceptor implements Interceptor {
      * @return
      */
     public boolean isNetworkAvailable(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context.getApplicationContext().getSystemService(
+        @SuppressLint("WrongConstant") ConnectivityManager manager = (ConnectivityManager) context.getApplicationContext().getSystemService(
                 Context.CONNECTIVITY_SERVICE);
         if (null == manager)
             return false;

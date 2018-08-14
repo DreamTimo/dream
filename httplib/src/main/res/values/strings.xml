@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HttpLib</string>
+    <!--错误提示-->
+    <string name="error_http_not_init">未初始化</string>
+    <string name="error_network">网络访问错误，请稍后再试</string>
+    <string name="error_no_network">网络不可用,请检查你的网络</string>
+    <string name="error_navigation_datas">底部导航设置数据错误</string>
+    <string name="error_please_edit_right_phone">请输入正确的手机号码</string>
+    <string name="hint_loading">数据加载中...</string>
+</resources>

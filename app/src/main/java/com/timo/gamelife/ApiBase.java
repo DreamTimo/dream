@@ -1,6 +1,6 @@
 package com.timo.gamelife;
 
-import com.timo.timolib.network.basebean.BaseBean;
+import com.timo.httplib.network.basebean.BaseBean;
 
 public class ApiBase<T> extends BaseBean {
     private T returnData;

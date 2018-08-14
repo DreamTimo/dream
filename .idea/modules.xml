@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bgservice/bgservice.iml" filepath="$PROJECT_DIR$/bgservice/bgservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/cameralib/cameralib.iml" filepath="$PROJECT_DIR$/cameralib/cameralib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httplib/httplib.iml" filepath="$PROJECT_DIR$/httplib/httplib.iml" />
       <module fileurl="file://$PROJECT_DIR$/onlyone.iml" filepath="$PROJECT_DIR$/onlyone.iml" />
       <module fileurl="file://$PROJECT_DIR$/timolib/timolib.iml" filepath="$PROJECT_DIR$/timolib/timolib.iml" />
     </modules>

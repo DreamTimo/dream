@@ -1,6 +1,5 @@
 package com.timo.gamelife.fragment
 
-import android.hardware.Camera
 import android.text.Html
 import android.view.View
 import com.timo.gamelife.R

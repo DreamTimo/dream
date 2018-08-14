@@ -1,6 +1,6 @@
 package com.timo.gamelife.bean;
 
-import com.timo.timolib.network.basebean.BaseBean;
+import com.timo.httplib.network.basebean.BaseBean;
 
 /**
  * Created by 45590 on 2018/7/6.

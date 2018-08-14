@@ -1,13 +1,14 @@
 package com.timo.gamelife.activity.kotlinmain;
 
-import android.speech.tts.TextToSpeech;
-
-import com.timo.gamelife.App;
 import com.timo.gamelife.R;
+import com.timo.gamelife.ServiceApi;
+import com.timo.gamelife.bean.ApiShowLinkman;
 import com.timo.gamelife.mvp.BasePresenterImpl;
+import com.timo.httplib.network.MyHttp;
+import com.timo.httplib.network.MySubscriber;
 import com.timo.timolib.BaseTools;
 
-import java.util.Locale;
+import retrofit2.Response;
 
 /**
  * MVPPlugin
@@ -28,8 +29,18 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
     public int[] getSelect() {
         return mIconUnselectIds;
     }
+
     @Override
     public int[] getSelected() {
         return mIconSelectIds;
+    }
+
+    public void getData() {
+        addSubscription(MyHttp.getGsonApi(mView.getContext(), ServiceApi.class).showLinkman("2c59ebffe43d4736829e0eae47b50a36"), new MySubscriber<Response<ApiShowLinkman>>(mView.getContext()) {
+            @Override
+            protected void _onNext(Response<ApiShowLinkman> o) {
+                BaseTools.showToast(o.body().getStatus() + "");
+            }
+        });
     }
 }

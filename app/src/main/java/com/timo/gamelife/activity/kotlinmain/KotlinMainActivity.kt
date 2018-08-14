@@ -23,9 +23,7 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
     private var mDreamFragment: DreamFragment? = null
     private var mMineFragment: MineFragment? = null
     internal var textToSpeech: TextToSpeech? = null
-
     override fun getContentResId(): Int = R.layout.activity_main
-
     override fun initEvent() {
         val transaction = supportFragmentManager.beginTransaction()
         val currentTabPosition = 0
@@ -43,11 +41,11 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
             override fun onTabReselect(position: Int) = Unit
         })
         tab_layout.currentTab = currentTabPosition
-
     }
 
     override fun isMain(): Boolean = true
     override fun showFragment(position: Int) {
+        mPresenter.getData()
         textToSpeech = TextToSpeech(this, TextToSpeech.OnInitListener { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val result = textToSpeech!!.setLanguage(Locale.ENGLISH)
@@ -60,7 +58,6 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
         })
         val transaction = supportFragmentManager.beginTransaction()
         when (position) {
-        //首页
             0 -> {
                 transaction.hide(mDreamFragment)
                 transaction.hide(mMineFragment)
@@ -68,7 +65,6 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
                 transaction.commitAllowingStateLoss()
                 BaseTools.loadWeb(test_webview, "file:///android_asset/snow.html")
             }
-        //美女
             1 -> {
                 transaction.hide(mMineFragment)
                 transaction.hide(mHomeFragment)
@@ -76,7 +72,6 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
                 transaction.commitAllowingStateLoss()
                 BaseTools.loadWeb(test_webview, "file:///android_asset/sakura.html")
             }
-        //视频
             2 -> {
                 transaction.hide(mHomeFragment)
                 transaction.hide(mDreamFragment)
@@ -87,6 +82,7 @@ class KotlinMainActivity : MVPBaseActivity<KotlinMainContract.View, KotlinMainPr
             else -> {
             }
         }
+
     }
 }
 

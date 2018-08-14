@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/bgservice" />
             <option value="$PROJECT_DIR$/cameralib" />
+            <option value="$PROJECT_DIR$/httplib" />
             <option value="$PROJECT_DIR$/timolib" />
           </set>
         </option>

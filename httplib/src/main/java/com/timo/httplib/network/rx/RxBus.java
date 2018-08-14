@@ -1,12 +1,11 @@
-package com.timo.timolib.network.rx;
-
-import android.support.annotation.NonNull;
+package com.timo.httplib.network.rx;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import io.reactivex.annotations.NonNull;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
