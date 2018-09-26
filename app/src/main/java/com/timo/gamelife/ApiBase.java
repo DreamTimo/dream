@@ -5,7 +5,7 @@ import com.timo.httplib.network.basebean.BaseBean;
 public class ApiBase<T> extends BaseBean {
     private T returnData;
     private int status;
-    private String msg;
+    private String Msg;
 
     public T getReturnData() {
         return returnData;
@@ -24,10 +24,10 @@ public class ApiBase<T> extends BaseBean {
     }
 
     public String getMsg() {
-        return msg;
+        return Msg;
     }
 
     public void setMsg(String msg) {
-        this.msg = msg;
+        this.Msg = msg;
     }
 }

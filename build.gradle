@@ -2,6 +2,7 @@ buildscript {
     ext.kotlin_version = '1.2.41'
     repositories {
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.2'
@@ -16,8 +17,4 @@ allprojects {
         maven { url "https://dl.google.com/dl/android/maven2/"}
         maven { url 'https://jitpack.io' }
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

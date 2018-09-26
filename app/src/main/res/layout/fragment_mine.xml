@@ -16,10 +16,10 @@
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="180dp"/>
-    <cn.jzvd.JZVideoPlayerStandard
-        android:id="@+id/jz_video"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+    <!--<cn.jzvd.JZVideoPlayerStandard-->
+        <!--android:id="@+id/jz_video"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"/>-->
     <View
         style="@style/line"/>
     <ImageView

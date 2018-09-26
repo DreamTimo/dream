@@ -19,7 +19,7 @@ public class App extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        MyHttp.init("http://221.238.40.75:8188", new MyHttpListener() {
+        MyHttp.init("http://192.168.0.168:8080", new MyHttpListener() {
             @Override
             public void showLoadingDialog(Context context) {
                 DialogUtils.getInstance().showLoadingDialog(context, "加载中。。。", false);

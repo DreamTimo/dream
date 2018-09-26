@@ -1,13 +1,21 @@
 package com.timo.gamelife.activity.kotlinmain;
 
+import android.os.Environment;
+
 import com.timo.gamelife.R;
 import com.timo.gamelife.ServiceApi;
+import com.timo.gamelife.bean.ApiObj;
 import com.timo.gamelife.bean.ApiShowLinkman;
 import com.timo.gamelife.mvp.BasePresenterImpl;
 import com.timo.httplib.network.MyHttp;
 import com.timo.httplib.network.MySubscriber;
 import com.timo.timolib.BaseTools;
 
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Response;
 
 /**
@@ -36,10 +44,14 @@ public class KotlinMainPresenter extends BasePresenterImpl<KotlinMainContract.Vi
     }
 
     public void getData() {
-        addSubscription(MyHttp.getGsonApi(mView.getContext(), ServiceApi.class).showLinkman("2c59ebffe43d4736829e0eae47b50a36"), new MySubscriber<Response<ApiShowLinkman>>(mView.getContext()) {
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/tencent/MicroMsg/WeiXin/wx_camera_1534998696139.jpg");
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName());
+        RequestBody session = RequestBody.create(MediaType.parse("text/plain"), "0aca277faf7b4518b6024d4f38ccf756");
+        addSubscription(MyHttp.getGsonApi(mView.getContext(), ServiceApi.class).showLinkman(session, body), new MySubscriber<ApiObj>(mView.getContext()) {
             @Override
-            protected void _onNext(Response<ApiShowLinkman> o) {
-                BaseTools.showToast(o.body().getStatus() + "");
+            protected void _onNext(ApiObj o) {
+                BaseTools.showToast(o.getMsg());
             }
         });
     }

@@ -25,7 +25,6 @@ public class BaseConstancts {
      * 开启相机的请求Code
      */
     public static final String BASE_SHARE_NAME = "base_share_name";
-    public static final String http_cache = "http_cache";
     public static final String Params = "Params";
     public static final String BASE_PASSWORD = "base_password";
 
