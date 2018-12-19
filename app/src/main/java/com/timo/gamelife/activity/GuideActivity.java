@@ -1,5 +1,6 @@
 package com.timo.gamelife.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -141,6 +142,7 @@ public class GuideActivity extends BaseActivity {
         public void onPageScrolled(int arg0, float arg1, int arg2) {
         }
 
+        @SuppressLint("WrongConstant")
         @Override
         public void onPageSelected(int position) {
             position = position % imageList.size();

@@ -1,7 +1,6 @@
 package com.timo.gamelife.activity.projectweb;
 
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.timo.gamelife.R;
