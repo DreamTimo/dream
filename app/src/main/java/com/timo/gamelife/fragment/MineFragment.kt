@@ -37,5 +37,6 @@ class MineFragment : BaseFragment() {
         textview.setOnClickListener {
             toOpenCamera(CameraActivity::class.java)
         }
+
     }
 }
